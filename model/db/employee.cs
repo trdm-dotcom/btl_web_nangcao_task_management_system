@@ -5,9 +5,9 @@ using System.Web;
 
 namespace btl_web_nangcao_task_management_system.model.db
 {
-    public class employee
+    public class Employee
     {
-        public employee() { }
+        public Employee() { }
         private int id { get; set; }
         private string pasword { get; set; }
         private string name { get; set; }

@@ -5,9 +5,9 @@ using System.Web;
 
 namespace btl_web_nangcao_task_management_system.model.db
 {
-    public class task
+    public class Task
     {
-        public task()
+        public Task()
         {
         }
 
@@ -17,8 +17,10 @@ namespace btl_web_nangcao_task_management_system.model.db
         private int projectId { get; set; }
         private DateTime startDate { get; set; }
         private DateTime estimatedTime { get; set; }
-        private int employee_AssignTo { get; set; }
-        private int employee_AssigenBy { get; set; }
+        private int employee_Assignee { get; set; }
+        private int employee_Reporter { get; set; }
+        private int employee_QA { get; set; }
         private TaskStatus status { get; set; }
+        private TaskPriority priority { get; set; }
     }
 }

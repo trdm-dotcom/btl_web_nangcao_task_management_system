@@ -11,11 +11,11 @@ namespace btl_web_nangcao_task_management_system.model.db
         {
         }
 
-        private int Id { get; set; }
-        private string title { get; set; }
-        private string description { get; set; }
-        private DateTime startDate { get; set; }
-        private DateTime estimateTime { get; set; }
-        private ProjectStatus status { get; set; }
+        public int Id { get; set; }
+        public string title { get; set; }
+        public string description { get; set; }
+        public DateTime startDate { get; set; }
+        public DateTime estimateTime { get; set; }
+        public ProjectStatus status { get; set; }
     }
 }

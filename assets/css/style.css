@@ -149,10 +149,6 @@ select {
     appearance: none
 }
 
-select.form-control::-ms-expand {
-    display: none
-}
-
 textarea {
     resize: vertical;
     overflow: auto;
@@ -435,8 +431,8 @@ h4 {
 @supports (--css: variables) {
     @media (min-width: 64rem) {
         :root {
-            --text-base-size: 1.25em;
-            --text-scale-ratio: 1.25
+            --text-base-size: 1em;
+            --text-scale-ratio: 1.25;
         }
     }
 }
@@ -548,40 +544,6 @@ a {
         width: 100%;
         z-index: 10;
         z-index: var(--zindex-fixed-element)
-    }
-}
-
-.cd-logo-wrapper {
-    -ms-flex-negative: 0;
-    flex-shrink: 0
-}
-
-@media (min-width: 64rem) {
-    .cd-logo-wrapper {
-        width: 100%;
-        width: var(--cd-sidebar-width);
-        display: -ms-flexbox;
-        display: flex;
-        -ms-flex-pack: center;
-        justify-content: center;
-        -ms-flex-align: center;
-        align-items: center
-    }
-}
-
-.cd-logo {
-    display: block;
-    margin: 0 1.25em;
-    margin: 0 var(--space-md)
-}
-
-.cd-logo img {
-    display: block
-}
-
-@media (min-width: 64rem) {
-    .cd-logo {
-        margin: 0
     }
 }
 
@@ -990,4 +952,14 @@ a {
         padding: 0.5em 0.75em;
         padding: var(--space-xs) var(--space-sm)
     }
+}
+
+.detail-box .main-detail-box, .detail-box .header-detail-box{
+    padding: 1.25rem 1rem;
+}
+
+.detail-box .main-detail-box .child-element-detail-box {
+    margin-bottom: 1.5rem;
+    font-size: 0.75rem;
+
 }
