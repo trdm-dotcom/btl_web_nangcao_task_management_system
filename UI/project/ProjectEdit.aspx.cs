@@ -5,15 +5,18 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using btl_web_nangcao_task_management_system.model;
+using btl_web_nangcao_task_management_system.Repositories;
 using btl_web_nangcao_task_management_system.model.db;
 
 namespace btl_web_nangcao_task_management_system.UI
 {
     public partial class ProjectEdit : System.Web.UI.Page
     {
+        String connectionString = ConfigurationManager.ConnectionStrings["connTaskManagementSystem"].ConnectionString;
+
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            FillProjectIdDropDownList();
         }
 
         protected void updateButton_Click(object sender, EventArgs e)
@@ -22,18 +25,61 @@ namespace btl_web_nangcao_task_management_system.UI
             {
                 return;
             }
+            SqlConnection connection = new SqlConnection(connectionString);
             try
             {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                SqlTransaction transaction;
+                transaction = connection.BeginTransaction();
+                command.Connection = connection;
+                command.Transaction = transaction;
+
                 Project project = new Project();
                 project.title = titleTextBox.Text;
                 project.description = descriptionTextBox.Text;
                 project.startDate = Convert.ToDateTime(startDateTextBox.Text);
                 project.estimateTime = Convert.ToDateTime(estimateDateTextBox.Text);
                 project.status = (ProjectStatus)Enum.Parse(typeof(ProjectStatus), statusDropDownList.SelectedItem.Value);
+
+                try {
+                    ProjectRepository projectRepository = new ProjectRepository();
+                    projectRepository.save(command, project);
+                    transaction.Commit();
+                }
+                catch (Exception exp) {
+                    transaction.Rollback();
+                    throw exp;
+                }
             }
             catch (Exception exp)
             {
                 errorMessage.Text = "Internal error server";
+            }
+            finally {
+                connection.close();
+            }
+        }
+
+        private void LoadProjectData(int projectId) {
+
+        }
+
+        private void FillProjectIdDropDownList() {
+            SqlConnection connection = new SqlConnection(connectionString);
+            try{
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.Connection = connection;
+
+                ProjectRepository projectRepository = new ProjectRepository();
+                projectIdDropDownList.DataSource = projectRepository.findAll();
+                projectIdDropDownList.DataTextField = "tittle";
+                projectIdDropDownList.DataValueField = "id";
+                projectIdDropDownList.DataBind();
+            }
+            finally {
+                connection.close();
             }
         }
 

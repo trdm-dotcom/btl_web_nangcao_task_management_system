@@ -46,7 +46,7 @@ namespace btl_web_nangcao_task_management_system.UI
                 
                 try {
                     ProjectRepository projectRepository = new ProjectRepository();
-                    int projectID = projectRepository.InsertProject(command, project);
+                    int projectID = projectRepository.save(command, project);
                     
                     EmployeeRepository employeeRepository = new EmployeeRepository();
                     foreach (ListItem item in selectedEmployeeListBox.Items)
