@@ -30,7 +30,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
             }
         }
 
-        public List<Project> findBy(SqlCommand command) {
+        public List<Project> findBy(SqlCommand command, Project project) {
             try {
                 List<Project> projectList = new List<Project>();
                 command.CommandText = "";
