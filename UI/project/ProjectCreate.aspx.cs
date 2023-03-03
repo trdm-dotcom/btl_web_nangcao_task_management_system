@@ -14,7 +14,7 @@ namespace btl_web_nangcao_task_management_system.UI
 {
     public partial class ProjectCreate : System.Web.UI.Page
     {
-        String connectionString = ConfigurationManager.ConnectionStrings["connTaskManagementSystem"].ConnectionString;
+        String connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e)
         {

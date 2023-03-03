@@ -12,11 +12,11 @@ namespace btl_web_nangcao_task_management_system.UI.project
 {
     public partial class ProjectClose : System.Web.UI.Page
     {
-        String connectionString = ConfigurationManager.ConnectionStrings["connTaskManagementSystem"].ConnectionString;
+        String connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            FillProjectDropDownList()
         }
 
         protected void closeButton_Click(object sender, EventArgs e)
@@ -35,6 +35,9 @@ namespace btl_web_nangcao_task_management_system.UI.project
                 Project project = new Project();
                 project.Id = int.Parse(projectDropDownList.SelectedItem.Value);
                 project.status = ProjectStatus.CLOSE;
+
+                ProjectRepository projectRepository = new ProjectRepository();
+                projectRepository.save(command, project);
             }
             catch(Exception ex)
             {
@@ -60,6 +63,32 @@ namespace btl_web_nangcao_task_management_system.UI.project
 
                 Project project = new Project();
                 project.Id = int.Parse(projectDropDownList.SelectedItem.Value);
+
+                ProjectRepository projectRepository = new ProjectRepository();
+                project = projectRepository.findBy(command, project)[0];
+                closeButton.Enabled = !project.status.Equals(ProjectStatus.CLOSE); 
+            }
+            catch(Exception ex)
+            {
+                errorMessage.Text = "Internal error server";
+            }
+            finally {
+                connection.close();
+            }
+        }
+
+        private void FillProjectDropDownList() {
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.Connection = connection;
+                ProjectRepository projectRepository = new ProjectRepository();
+                projectDropDownList.DataSource = projectRepository.findAll();
+                projectDropDownList.DataTextField = "tittle";
+                projectDropDownList.DataValueField = "id";
+                projectDropDownList.DataBind(); 
             }
             catch(Exception ex)
             {
