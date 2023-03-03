@@ -12,11 +12,11 @@ namespace btl_web_nangcao_task_management_system.UI
 {
     public partial class ProjectEdit : System.Web.UI.Page
     {
-        String connectionString = ConfigurationManager.ConnectionStrings["connTaskManagementSystem"].ConnectionString;
+        String connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            FillProjectIdDropDownList();
+            FillProjectDropDownList();
         }
 
         protected void updateButton_Click(object sender, EventArgs e)
@@ -65,18 +65,18 @@ namespace btl_web_nangcao_task_management_system.UI
 
         }
 
-        private void FillProjectIdDropDownList() {
+        private void FillProjectDropDownList() {
             SqlConnection connection = new SqlConnection(connectionString);
-            try{
+            try
+            {
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
                 command.Connection = connection;
-
                 ProjectRepository projectRepository = new ProjectRepository();
-                projectIdDropDownList.DataSource = projectRepository.findAll();
-                projectIdDropDownList.DataTextField = "tittle";
-                projectIdDropDownList.DataValueField = "id";
-                projectIdDropDownList.DataBind();
+                projectDropDownList.DataSource = projectRepository.findAll();
+                projectDropDownList.DataTextField = "tittle";
+                projectDropDownList.DataValueField = "id";
+                projectDropDownList.DataBind();
             }
             finally {
                 connection.close();

@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
+using btl_web_nangcao_task_management_system.model;
 using btl_web_nangcao_task_management_system.model.db;
 
 namespace btl_web_nangcao_task_management_system.Repositories
@@ -41,6 +42,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
                     Project project = new Project();
                     project.id = dataRow["id"].ToString();
                     project.tittle = dataRow["tittle"].ToString();
+                    project.status = (ProjectStatus) Enum.Parse(typeof(ProjectStatus), dataRow["status"].ToString());
                     projectList.Add(project);
                 }
                 return projectList;
