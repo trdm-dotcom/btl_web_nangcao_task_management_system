@@ -8,11 +8,12 @@ namespace btl_web_nangcao_task_management_system.model.db
     public class Employee
     {
         public Employee() { }
-        private int id { get; set; }
-        private string pasword { get; set; }
-        private string name { get; set; }
-        private string email { get; set; }
-        private DateTime joiningDate { get; set; }
-        private EmployeeRole role { get; set; }
+        public int id { get; set; }
+        public string pasword { get; set; }
+        public string name { get; set; }
+        public string email { get; set; }
+        public EmployeeRole role { get; set; }
+        public DateTime createdAt { get; set; }
+        public DateTime updatedAt { get; set; }
     }
 }

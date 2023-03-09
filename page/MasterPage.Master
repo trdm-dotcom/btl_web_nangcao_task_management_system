@@ -1,0 +1,84 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="btl_web_nangcao_task_management_system.UI.MasterPage1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="~/assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="~/assets/css/reponsive.css" />
+    <script type="text/javascript">document.getElementsByTagName("html")[0].className += " js";</script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header class="cd-main-header js-cd-main-header">
+            <button class="reset cd-nav-trigger js-cd-nav-trigger" aria-label="Toggle menu"><span></span></button>
+            <ul class="cd-nav__list js-cd-nav__list">
+                <li class="cd-nav__item cd-nav__item--has-children js-cd-item--has-children">
+                    <a href="#0">
+                        <span>Account</span>
+                    </a>
+
+                    <ul class="cd-nav__sub-list">
+                        <li class="cd-nav__sub-item"><a href="#0">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+        <!-- .cd-main-header -->
+
+        <main class="cd-main-content">
+            <nav class="cd-side-nav js-cd-side-nav">
+                <ul class="cd-side__list js-cd-side__list">
+                    <li class="cd-side__item cd-side__item--has-children js-cd-item--has-children">
+                        <a href="#0">Project</a>
+                        <ul class="cd-side__sub-list">
+                            <li class="cd-side__sub-item"><a href="#0">Create a New Project</a></li>
+                            <li class="cd-side__sub-item"><a href="#0">Edit an Existing Project</a></li>
+                            <li class="cd-side__sub-item"><a href="#0">Close a Project</a></li>
+                        </ul>
+                    </li>
+                    <li class="cd-side__item cd-side__item--has-children js-cd-item--has-children">
+                        <a href="#0">Task</a>
+
+                        <ul class="cd-side__sub-list">
+                            <li class="cd-side__sub-item"><a href="#0">Create a Task</a></li>
+                            <li class="cd-side__sub-item"><a href="#0">Edit an Existing Task</a></li>
+                        </ul>
+                    </li>
+                    <li class="cd-side__item cd-side__item--has-children js-cd-item--has-children">
+                        <a href="#0">Employee</a>
+
+                        <ul class="cd-side__sub-list">
+                            <li class="cd-side__sub-item"><a href="#0">Create a new Employee</a></li>
+                            <li class="cd-side__sub-item"><a href="#0">Add Employee to Project</a></li>
+                            <li class="cd-side__sub-item"><a href="#0">Remove Employee from Project</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="cd-side__item cd-side__item--has-children js-cd-item--has-children">
+                        <a href="#0">Reports</a>
+
+                        <ul class="cd-side__sub-list">
+                            <li class="cd-side__sub-item"><a href="#0">Tasks And Projects</a></li>
+                            <li class="cd-side__sub-item"><a href="#0">Task History</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="cd-content-wrapper container">
+                <asp:ContentPlaceHolder ID="mainContentPlaceHolder" runat="server">
+                    <span></span>
+                </asp:ContentPlaceHolder>
+            </div>
+            <!-- .content-wrapper -->
+        </main>
+    </form>
+</body>
+<script src="~/assets/js/util.js" type="text/javascript"></script>
+<script src="~/assets/js/menu-aim.js" type="text/javascript"></script>
+<script src="~/assets/js/main.js" type="text/javascript"></script>
+</html>

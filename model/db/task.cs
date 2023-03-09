@@ -11,16 +11,18 @@ namespace btl_web_nangcao_task_management_system.model.db
         {
         }
 
-        private int id { get; set; }
-        private string name { get; set; }
-        private string description { get; set; }
-        private int projectId { get; set; }
-        private DateTime startDate { get; set; }
-        private DateTime estimatedTime { get; set; }
-        private int employee_Assignee { get; set; }
-        private int employee_Reporter { get; set; }
-        private int employee_QA { get; set; }
-        private TaskStatus status { get; set; }
-        private TaskPriority priority { get; set; }
+        public int id { get; set; }
+        public string name { get; set; }
+        public string description { get; set; }
+        public int projectId { get; set; }
+        public DateTime startDate { get; set; }
+        public DateTime estimatedTime { get; set; }
+        public int employeeAssignee { get; set; }
+        public int employeeReporter { get; set; }
+        public int employeeQA { get; set; }
+        public TaskStatus status { get; set; }
+        public TaskPriority priority { get; set; }
+        public DateTime createdAt { get; set; }
+        public DateTime updatedAt { get; set; }
     }
 }

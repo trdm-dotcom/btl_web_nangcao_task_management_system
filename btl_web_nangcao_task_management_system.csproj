@@ -43,6 +43,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net, Version=2.0.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.15\lib\net45\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Infrastructure, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Infrastructure.2.0.1\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -90,19 +93,19 @@
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\menu-aim.js" />
     <Content Include="assets\js\util.js" />
-    <Content Include="UI\employee\ProjectAddEmployee.aspx" />
-    <Content Include="UI\project\ProjectClose.aspx" />
-    <Content Include="UI\project\ProjectCreate.aspx" />
-    <Content Include="UI\project\ProjectEdit.aspx" />
-    <Content Include="UI\employee\ProjectRemoveEmployee.aspx" />
-    <Content Include="UI\task\TaskPage.aspx" />
-    <Content Include="UI\task\TaskCreate.aspx" />
-    <Content Include="UI\task\TaskEdit.aspx" />
-    <Content Include="UI\task\TaskView.aspx" />
+    <Content Include="page\project\ProjectAddEmployee.aspx" />
+    <Content Include="page\project\ProjectClose.aspx" />
+    <Content Include="page\project\ProjectCreate.aspx" />
+    <Content Include="page\project\ProjectEdit.aspx" />
+    <Content Include="page\project\ProjectPage.aspx" />
+    <Content Include="page\project\ProjectRemoveEmployee.aspx" />
+    <Content Include="page\task\TaskPage.aspx" />
+    <Content Include="page\task\TaskCreate.aspx" />
+    <Content Include="page\task\TaskEdit.aspx" />
+    <Content Include="page\task\TaskView.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="model\DBConnector.cs" />
     <Compile Include="model\db\EmployeeProject.cs" />
     <Compile Include="model\db\Comment.cs" />
     <Compile Include="model\db\Employee.cs" />
@@ -112,81 +115,93 @@
     <Compile Include="model\ProjectStatus.cs" />
     <Compile Include="model\TaskPriority.cs" />
     <Compile Include="model\TaskStatus.cs" />
+    <Compile Include="page\project\ProjectPage.aspx.cs">
+      <DependentUpon>ProjectPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="page\project\ProjectPage.aspx.designer.cs">
+      <DependentUpon>ProjectPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\MasterPage.Master.cs">
+    <Compile Include="repositories\EmployeeProjectRepository.cs" />
+    <Compile Include="repositories\EmployeeRepository.cs" />
+    <Compile Include="repositories\ProjectRepository.cs" />
+    <Compile Include="repositories\TaskRepository.cs" />
+    <Compile Include="page\MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\MasterPage.Master.designer.cs">
+    <Compile Include="page\MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="UI\employee\ProjectAddEmployee.aspx.cs">
+    <Compile Include="page\project\ProjectAddEmployee.aspx.cs">
       <DependentUpon>ProjectAddEmployee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\employee\ProjectAddEmployee.aspx.designer.cs">
+    <Compile Include="page\project\ProjectAddEmployee.aspx.designer.cs">
       <DependentUpon>ProjectAddEmployee.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\project\ProjectClose.aspx.cs">
+    <Compile Include="page\project\ProjectClose.aspx.cs">
       <DependentUpon>ProjectClose.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\project\ProjectClose.aspx.designer.cs">
+    <Compile Include="page\project\ProjectClose.aspx.designer.cs">
       <DependentUpon>ProjectClose.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\project\ProjectCreate.aspx.cs">
+    <Compile Include="page\project\ProjectCreate.aspx.cs">
       <DependentUpon>ProjectCreate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\project\ProjectCreate.aspx.designer.cs">
+    <Compile Include="page\project\ProjectCreate.aspx.designer.cs">
       <DependentUpon>ProjectCreate.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\project\ProjectEdit.aspx.cs">
+    <Compile Include="page\project\ProjectEdit.aspx.cs">
       <DependentUpon>ProjectEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\project\ProjectEdit.aspx.designer.cs">
+    <Compile Include="page\project\ProjectEdit.aspx.designer.cs">
       <DependentUpon>ProjectEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\employee\ProjectRemoveEmployee.aspx.cs">
+    <Compile Include="page\project\ProjectRemoveEmployee.aspx.cs">
       <DependentUpon>ProjectRemoveEmployee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\employee\ProjectRemoveEmployee.aspx.designer.cs">
+    <Compile Include="page\project\ProjectRemoveEmployee.aspx.designer.cs">
       <DependentUpon>ProjectRemoveEmployee.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\task\TaskPage.aspx.cs">
+    <Compile Include="page\task\TaskPage.aspx.cs">
       <DependentUpon>TaskPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\task\TaskPage.aspx.designer.cs">
+    <Compile Include="page\task\TaskPage.aspx.designer.cs">
       <DependentUpon>TaskPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\task\TaskCreate.aspx.cs">
+    <Compile Include="page\task\TaskCreate.aspx.cs">
       <DependentUpon>TaskCreate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\task\TaskCreate.aspx.designer.cs">
+    <Compile Include="page\task\TaskCreate.aspx.designer.cs">
       <DependentUpon>TaskCreate.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\task\TaskEdit.aspx.cs">
+    <Compile Include="page\task\TaskEdit.aspx.cs">
       <DependentUpon>TaskEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\task\TaskEdit.aspx.designer.cs">
+    <Compile Include="page\task\TaskEdit.aspx.designer.cs">
       <DependentUpon>TaskEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UI\task\TaskView.aspx.cs">
+    <Compile Include="page\task\TaskView.aspx.cs">
       <DependentUpon>TaskView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UI\task\TaskView.aspx.designer.cs">
+    <Compile Include="page\task\TaskView.aspx.designer.cs">
       <DependentUpon>TaskView.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="log4net.config" />
     <None Include="packages.config" />
-    <Content Include="UI\MasterPage.Master" />
+    <Content Include="page\MasterPage.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -194,7 +209,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="page\employee\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
