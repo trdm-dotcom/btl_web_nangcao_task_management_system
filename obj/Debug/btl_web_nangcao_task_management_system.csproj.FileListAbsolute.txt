@@ -70,3 +70,15 @@ C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangca
 C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\obj\Debug\btl_web_nangcao_task_management_system.pdb
 C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\bin\log4net.dll
 C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\bin\log4net.xml
+C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\bin\BCrypt.Net-Next.dll
+C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\bin\Newtonsoft.Json.dll
+C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\bin\System.Buffers.dll
+C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\bin\System.Memory.dll
+C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\bin\System.Numerics.Vectors.dll
+C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\bin\BCrypt.Net-Next.xml
+C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\bin\Newtonsoft.Json.xml
+C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\bin\System.Buffers.xml
+C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\bin\System.Memory.xml
+C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\bin\System.Numerics.Vectors.xml
+C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\bin\System.Runtime.CompilerServices.Unsafe.xml

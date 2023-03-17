@@ -9,7 +9,7 @@ namespace btl_web_nangcao_task_management_system.model.db
     {
         public Employee() { }
         public int id { get; set; }
-        public string pasword { get; set; }
+        public string password { get; set; }
         public string name { get; set; }
         public string email { get; set; }
         public EmployeeRole role { get; set; }

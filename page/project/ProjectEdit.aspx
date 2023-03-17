@@ -4,12 +4,6 @@
     <asp:Panel runat="server" ID="Panel1">
         <asp:Label ID="errorMessage" runat="server" CssClass="invalid-feedback"></asp:Label>
         <div class="form-group">
-            <asp:Label ID="Label1" runat="server" Text="Select Project to Edit:" AssociatedControl="projectDropDownList"></asp:Label>
-            <asp:DropDownList ID="projectDropDownList" runat="server" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="projectDropDownList_SelectedIndexChanged" OnDataBound="projectDropDownList_DataBound">
-            </asp:DropDownList>
-            <asp:Label ID="feedbackProject" runat="server" CssClass="invalid-feedback"></asp:Label>
-        </div>
-        <div class="form-group">
             <asp:Label ID="Label2" runat="server" Text="Project Title:" AssociatedControl="titleTextBox"></asp:Label>
             <asp:TextBox ID="titleTextBox" runat="server" CssClass="form-control"></asp:TextBox>
             <asp:Label ID="feedbackTitle" runat="server" CssClass="invalid-feedback"></asp:Label>
@@ -30,6 +24,12 @@
                 <asp:TextBox ID="estimateDateTextBox" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
                 <asp:Label ID="feedbackestimateDate" runat="server" CssClass="invalid-feedback"></asp:Label>
             </div>
+        </div>
+         <div class="form-group">
+            <asp:Label ID="Label1" runat="server" Text="Lead:" AssociatedControl="leadDropDownList"></asp:Label>
+            <asp:DropDownList ID="leadDropDownList" runat="server" AutoPostBack="false" CssClass="form-control" OnDataBound="leadDropDownList_DataBound">
+            </asp:DropDownList>
+            <asp:Label ID="feedbackLead" runat="server" CssClass="invalid-feedback"></asp:Label>
         </div>
         <asp:Button ID="updateButton" runat="server" Text="update" OnClick="updateButton_Click"/>
     </asp:Panel>

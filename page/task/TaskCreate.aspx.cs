@@ -153,7 +153,7 @@ namespace btl_web_nangcao_task_management_system.page.task
             else
             {
                 feedbackLabel.Text = string.Empty;
-                dropDownList.CssClass = dropDownList.CssClass.Replace("is-invalid", "");
+                dropDownList.CssClass = dropDownList.CssClass.Replace("is-invalid", string.Empty);
             }
             return isPassed;
         }
@@ -209,7 +209,7 @@ namespace btl_web_nangcao_task_management_system.page.task
             else
             {
                 feedbackTitle.Text = string.Empty;
-                titleTextBox.CssClass = titleTextBox.CssClass.Replace("is-invalid", "");
+                titleTextBox.CssClass = titleTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             if (string.IsNullOrEmpty(descriptionTextBox.Text))
             {
@@ -220,7 +220,7 @@ namespace btl_web_nangcao_task_management_system.page.task
             else
             {
                 feedbackDescription.Text = string.Empty;
-                descriptionTextBox.CssClass = descriptionTextBox.CssClass.Replace("is-invalid", "");
+                descriptionTextBox.CssClass = descriptionTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             if (string.IsNullOrEmpty(startDateTextBox.Text))
             {
@@ -231,7 +231,7 @@ namespace btl_web_nangcao_task_management_system.page.task
             else
             {
                 feedbackStartDate.Text = string.Empty;
-                startDateTextBox.CssClass = startDateTextBox.CssClass.Replace("is-invalid", "");
+                startDateTextBox.CssClass = startDateTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             if (string.IsNullOrEmpty(estimateDateTextBox.Text))
             {
@@ -242,7 +242,7 @@ namespace btl_web_nangcao_task_management_system.page.task
             else
             {
                 feedbackestimateDate.Text = string.Empty;
-                estimateDateTextBox.CssClass = estimateDateTextBox.CssClass.Replace("is-invalid", "");
+                estimateDateTextBox.CssClass = estimateDateTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
 
             if (!DateTime.TryParse(startDateTextBox.Text, out _)
@@ -255,7 +255,7 @@ namespace btl_web_nangcao_task_management_system.page.task
             else
             {
                 feedbackStartDate.Text = string.Empty;
-                startDateTextBox.CssClass = startDateTextBox.CssClass.Replace("is-invalid", "");
+                startDateTextBox.CssClass = startDateTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             if (!DateTime.TryParse(estimateDateTextBox.Text, out _)
                 || Convert.ToDateTime(estimateDateTextBox.Text) < DateTime.Now.Date)
@@ -267,7 +267,7 @@ namespace btl_web_nangcao_task_management_system.page.task
             else
             {
                 feedbackestimateDate.Text = string.Empty;
-                estimateDateTextBox.CssClass = estimateDateTextBox.CssClass.Replace("is-invalid", "");
+                estimateDateTextBox.CssClass = estimateDateTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             return isPassed;
         }

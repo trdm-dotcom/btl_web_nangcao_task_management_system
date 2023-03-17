@@ -9,6 +9,7 @@ using btl_web_nangcao_task_management_system.model;
 using btl_web_nangcao_task_management_system.model.db;
 using System.Diagnostics;
 using System.Text;
+using btl_web_nangcao_task_management_system.model.dto;
 
 namespace btl_web_nangcao_task_management_system.Repositories
 {
@@ -26,8 +27,9 @@ namespace btl_web_nangcao_task_management_system.Repositories
                 project.title = dataRow["title"].ToString();
                 project.description = dataRow["description"].ToString();
                 project.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
-                project.estimateTime = Convert.ToDateTime(dataRow["estimateTime"].ToString());
+                project.estimateDate = Convert.ToDateTime(dataRow["estimateDate"].ToString());
                 project.status = (ProjectStatus)Enum.Parse(typeof(ProjectStatus), dataRow["status"].ToString());
+                /*project.lead = int.Parse(dataRow["lead"].ToString());*/
                 projectList.Add(project);
             }
             return projectList;
@@ -69,8 +71,9 @@ namespace btl_web_nangcao_task_management_system.Repositories
                 item.title = dataRow["title"].ToString();
                 item.description = dataRow["description"].ToString();
                 item.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
-                item.estimateTime = Convert.ToDateTime(dataRow["estimateTime"].ToString());
+                item.estimateDate = Convert.ToDateTime(dataRow["estimateDate"].ToString());
                 item.status = (ProjectStatus)Enum.Parse(typeof(ProjectStatus), dataRow["status"].ToString());
+                /*item.lead = int.Parse(dataRow["lead"].ToString());*/
                 projectList.Add(item);
             }
             return projectList;
@@ -78,13 +81,14 @@ namespace btl_web_nangcao_task_management_system.Repositories
 
         public int save(SqlCommand command, Project project) {
             command.CommandType = CommandType.Text;
-            command.CommandText = "INSERT INTO t_project (title, description, startDate, estimateTime, status) " +
-                    " VALUES(@title, @description, @startDate, @estimateTime, @status);";
+            command.CommandText = "INSERT INTO t_project (title, description, startDate, estimateDate, status, lead) " +
+                    " VALUES(@title, @description, @startDate, @estimateDate, @status, @lead);";
             command.Parameters.AddWithValue("@title", project.title);
             command.Parameters.AddWithValue("@description", project.description);
             command.Parameters.AddWithValue("@startDate", project.startDate);
-            command.Parameters.AddWithValue("@estimateTime", project.estimateTime);
+            command.Parameters.AddWithValue("@estimateDate", project.estimateDate);
             command.Parameters.AddWithValue("@status", Enum.GetName(typeof(ProjectStatus), project.status));
+            command.Parameters.AddWithValue("@lead", project.lead);
             return (int)command.ExecuteScalar();
         }
 
@@ -107,6 +111,28 @@ namespace btl_web_nangcao_task_management_system.Repositories
                 command.Parameters.AddWithValue(string.Format("@{0}", element.Key), element.Value);
             }
             command.ExecuteNonQuery();
+        }
+
+        public List<ProjectDto> findAllProjectJoinEmployee(SqlCommand command) {
+            command.CommandType = CommandType.Text;
+            command.CommandText = "SELECT p.*, e.name FROM t_project AS p LEFT JOIN t_employee AS e ON p.lead = e.id;";
+            DataTable dataTable = new DataTable();
+            dataTable.Load(command.ExecuteReader());
+            List<ProjectDto> projectList = new List<ProjectDto>();
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                ProjectDto item = new ProjectDto();
+                item.id = int.Parse(dataRow["id"].ToString());
+                item.title = dataRow["title"].ToString();
+                item.description = dataRow["description"].ToString();
+                item.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
+                item.estimateDate = Convert.ToDateTime(dataRow["estimateDate"].ToString());
+                item.status = (ProjectStatus)Enum.Parse(typeof(ProjectStatus), dataRow["status"].ToString());
+      /*          item.lead = int.Parse(dataRow["lead"].ToString())*/;
+                item.leadName = dataRow["name"].ToString();
+                projectList.Add(item);
+            }
+            return projectList;
         }
     }
 }

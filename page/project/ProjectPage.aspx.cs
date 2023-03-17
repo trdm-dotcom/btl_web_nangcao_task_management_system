@@ -1,4 +1,6 @@
-﻿using btl_web_nangcao_task_management_system.model.db;
+﻿using btl_web_nangcao_task_management_system.model;
+using btl_web_nangcao_task_management_system.model.db;
+using btl_web_nangcao_task_management_system.model.dto;
 using btl_web_nangcao_task_management_system.Repositories;
 using System;
 using System.Collections.Generic;
@@ -17,10 +19,7 @@ namespace btl_web_nangcao_task_management_system.page.project
         string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
-            {
-                fillProjectGridView();
-            }
+            fillProjectGridView();
         }
 
         public void fillProjectGridView()
@@ -30,9 +29,8 @@ namespace btl_web_nangcao_task_management_system.page.project
         }
 
 
-        private List<Project> getProjects()
+        private List<ProjectDto> getProjects()
         {
-            List<Project> projects = new List<Project>();
             SqlConnection connection = new SqlConnection(connectionString);
             try
             {
@@ -40,14 +38,11 @@ namespace btl_web_nangcao_task_management_system.page.project
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
                 ProjectRepository projectRepository = new ProjectRepository();
-                projects = projectRepository.findAll(command);
-                projects.Sort();
-                return projects;
+                return projectRepository.findAllProjectJoinEmployee(command);
             }   
             catch (Exception ex)  
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
-                return projects;
+                return null;
             }
             finally
             {
@@ -60,6 +55,16 @@ namespace btl_web_nangcao_task_management_system.page.project
             ProjectGridView.PageIndex = e.NewPageIndex;
             ProjectGridView.DataSource = getProjects();
             ProjectGridView.DataBind();
+        }
+
+        protected string showStatus(Object obj)
+        {
+            return Enum.GetName(typeof(ProjectStatus), obj);
+        }
+
+        protected string showDate(Object obj)
+        {
+            return obj.ToString();
         }
     }
 }

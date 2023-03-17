@@ -46,6 +46,13 @@
                     <asp:ListBox ID="selectedEmployeeListBox" runat="server" Height="100%" Width="100%" CssClass="form-control"></asp:ListBox>
                 </div>
             </div>
+            <asp:Label ID="feedbackEmployee" runat="server" CssClass="invalid-feedback"></asp:Label>
+        </div>
+        <div class="form-group">
+            <asp:Label ID="Label5" runat="server" Text="Lead:" AssociatedControl="leadDropDownList"></asp:Label>
+            <asp:DropDownList ID="leadDropDownList" runat="server" AutoPostBack="false" CssClass="form-control" OnDataBound="leadDropDownList_DataBound">
+            </asp:DropDownList>
+            <asp:Label ID="feedbackLead" runat="server" CssClass="invalid-feedback"></asp:Label>
         </div>
         <asp:Button ID="saveButton" runat="server" Text="Save" OnClick="saveButton_Click"/>
     </asp:Panel>

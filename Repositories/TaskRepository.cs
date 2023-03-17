@@ -86,13 +86,13 @@ namespace btl_web_nangcao_task_management_system.Repositories
         public int save(SqlCommand command, Task task)
         {
             command.CommandType = CommandType.Text;
-            command.CommandText = "INSERT INTO t_task(name, description, projectId, startDate, estimateTime, employeeReporter, employeeAssignee, employeeQA, status, priority)" +
-                    " VALUES(@name, @description, @projectId, @startDate, @estimateTime, @employeeReporter, @employeeAssignee, @employeeQA, @status, @priority);";
+            command.CommandText = "INSERT INTO t_task(name, description, projectId, startDate, estimateDate, employeeReporter, employeeAssignee, employeeQA, status, priority)" +
+                    " VALUES(@name, @description, @projectId, @startDate, @estimateDate, @employeeReporter, @employeeAssignee, @employeeQA, @status, @priority);";
             command.Parameters.AddWithValue("@name", task.name);
             command.Parameters.AddWithValue("@description", task.description);
             command.Parameters.AddWithValue("@projectId", task.projectId);
             command.Parameters.AddWithValue("@startDate", task.startDate);
-            command.Parameters.AddWithValue("@estimateTime", task.estimatedTime);
+            command.Parameters.AddWithValue("@estimateDate", task.estimatedTime);
             command.Parameters.AddWithValue("@employeeReporter", task.employeeReporter);
             command.Parameters.AddWithValue("@employeeAssignee", task.employeeAssignee);
             command.Parameters.AddWithValue("@employeeQA", task.employeeQA);

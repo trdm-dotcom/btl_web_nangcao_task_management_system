@@ -41,8 +41,9 @@ namespace btl_web_nangcao_task_management_system.page
                 project.title = titleTextBox.Text;
                 project.description = descriptionTextBox.Text;
                 project.startDate = Convert.ToDateTime(startDateTextBox.Text);
-                project.estimateTime = Convert.ToDateTime(estimateDateTextBox.Text);
+                project.estimateDate = Convert.ToDateTime(estimateDateTextBox.Text);
                 project.status = ProjectStatus.OPEN;
+                project.lead = int.Parse(leadDropDownList.SelectedItem.Value);
                 try {
                     ProjectRepository projectRepository = new ProjectRepository();
                     int projectID = projectRepository.save(command, project);
@@ -81,10 +82,10 @@ namespace btl_web_nangcao_task_management_system.page
             {
                 return;
             }
-
             ListItem listItemObject = new ListItem();
             listItemObject.Text = allEmployeeListBox.SelectedItem.Text;
             listItemObject.Value = allEmployeeListBox.SelectedItem.Value;
+            leadDropDownList.Items.Insert(1, listItemObject);
             selectedEmployeeListBox.Items.Insert(0, listItemObject);
 
             allEmployeeListBox.Items.RemoveAt(allEmployeeListBox.SelectedIndex);
@@ -101,6 +102,7 @@ namespace btl_web_nangcao_task_management_system.page
                 ListItem listItemObject = new ListItem();
                 listItemObject.Text = item.Text;
                 listItemObject.Value = item.Value;
+                leadDropDownList.Items.Insert(1, listItemObject);
                 selectedEmployeeListBox.Items.Insert(0, listItemObject);
             }
             allEmployeeListBox.Items.Clear();
@@ -119,6 +121,7 @@ namespace btl_web_nangcao_task_management_system.page
             allEmployeeListBox.Items.Insert(0, listItemObject);
 
             selectedEmployeeListBox.Items.RemoveAt(selectedEmployeeListBox.SelectedIndex);
+            leadDropDownList.Items.RemoveAt(selectedEmployeeListBox.SelectedIndex);
         }
 
         protected void allRemoveButton_Click(object sender, EventArgs e)
@@ -135,11 +138,12 @@ namespace btl_web_nangcao_task_management_system.page
                 allEmployeeListBox.Items.Insert(0, listItemObject);
             }
             selectedEmployeeListBox.Items.Clear();
+            leadDropDownList.Items.Clear(); 
         }
 
         private bool CheckInputValues()
         {
-            bool isPassed = true;
+            bool isPassed = validDropDownList(leadDropDownList, feedbackLead, "Please select project's lead");
             if (string.IsNullOrEmpty(titleTextBox.Text))
             {
                 titleTextBox.CssClass = string.Format("{0} is-invalid", titleTextBox.CssClass);
@@ -149,7 +153,7 @@ namespace btl_web_nangcao_task_management_system.page
             else
             {
                 feedbackTitle.Text = string.Empty;
-                titleTextBox.CssClass = titleTextBox.CssClass.Replace("is-invalid", "");
+                titleTextBox.CssClass = titleTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             if (string.IsNullOrEmpty(descriptionTextBox.Text))
             {
@@ -160,7 +164,7 @@ namespace btl_web_nangcao_task_management_system.page
             else
             {
                 feedbackDescription.Text = string.Empty;
-                descriptionTextBox.CssClass = descriptionTextBox.CssClass.Replace("is-invalid", "");
+                descriptionTextBox.CssClass = descriptionTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             if (string.IsNullOrEmpty(startDateTextBox.Text))
             {
@@ -171,7 +175,7 @@ namespace btl_web_nangcao_task_management_system.page
             else
             {
                 feedbackStartDate.Text = string.Empty;
-                startDateTextBox.CssClass = startDateTextBox.CssClass.Replace("is-invalid", "");
+                startDateTextBox.CssClass = startDateTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             if (string.IsNullOrEmpty(estimateDateTextBox.Text))
             {
@@ -182,7 +186,7 @@ namespace btl_web_nangcao_task_management_system.page
             else
             {
                 feedbackestimateDate.Text = string.Empty;
-                estimateDateTextBox.CssClass = estimateDateTextBox.CssClass.Replace("is-invalid", "");
+                estimateDateTextBox.CssClass = estimateDateTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
 
             if (!DateTime.TryParse(startDateTextBox.Text, out _) 
@@ -195,7 +199,7 @@ namespace btl_web_nangcao_task_management_system.page
             else
             {
                 feedbackStartDate.Text = string.Empty;
-                startDateTextBox.CssClass = startDateTextBox.CssClass.Replace("is-invalid", "");
+                startDateTextBox.CssClass = startDateTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             if (!DateTime.TryParse(estimateDateTextBox.Text, out _)
                 || Convert.ToDateTime(estimateDateTextBox.Text) < DateTime.Now.Date)
@@ -207,7 +211,18 @@ namespace btl_web_nangcao_task_management_system.page
             else
             {
                 feedbackestimateDate.Text = string.Empty;
-                estimateDateTextBox.CssClass = estimateDateTextBox.CssClass.Replace("is-invalid", "");
+                estimateDateTextBox.CssClass = estimateDateTextBox.CssClass.Replace("is-invalid", string.Empty);
+            }
+            if(selectedEmployeeListBox.Items.Count < 1)
+            {
+                selectedEmployeeListBox.CssClass = string.Format("{0} is-invalid", selectedEmployeeListBox.CssClass);
+                feedbackEmployee.Text = "Please select employee";
+                isPassed = false;
+            }
+            else
+            {
+                feedbackEmployee.Text = string.Empty;
+                selectedEmployeeListBox.CssClass = selectedEmployeeListBox.CssClass.Replace("is-invalid", string.Empty);
             }
             return isPassed;
         }
@@ -236,6 +251,29 @@ namespace btl_web_nangcao_task_management_system.page
             {
                 connection.Close();
             }
+        }
+
+        private bool validDropDownList(DropDownList dropDownList, Label feedbackLabel, string errorMessage)
+        {
+            bool isPassed = true;
+            if (dropDownList.SelectedIndex <= 0
+                || dropDownList.SelectedItem.Value == null)
+            {
+                dropDownList.CssClass = string.Format("{0} is-invalid", dropDownList.CssClass);
+                feedbackLabel.Text = errorMessage;
+                isPassed = false;
+            }
+            else
+            {
+                feedbackLabel.Text = string.Empty;
+                dropDownList.CssClass = dropDownList.CssClass.Replace("is-invalid", string.Empty);
+            }
+            return isPassed;
+        }
+
+        protected void leadDropDownList_DataBound(object sender, EventArgs e)
+        {
+            leadDropDownList.Items.Insert(0, new ListItem("-Select-"));
         }
     }
 }

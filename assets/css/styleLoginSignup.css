@@ -1,0 +1,131 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font: inherit
+}
+
+:root {
+    --cd-color-1: hsl(210, 10%, 27%);
+    --cd-color-1-h: 210;
+    --cd-color-1-s: 10%;
+    --cd-color-1-l: 27%;
+    --cd-color-2: hsl(203, 79%, 44%);
+    --cd-color-2-h: 203;
+    --cd-color-2-s: 79%;
+    --cd-color-2-l: 44%;
+    --cd-color-3: hsl(0, 0%, 100%);
+    --cd-color-3-h: 0;
+    --cd-color-3-s: 0%;
+    --cd-color-3-l: 100%;
+    --cd-color-4: hsl(9, 100%, 70%);
+    --cd-color-4-h: 9;
+    --cd-color-4-s: 100%;
+    --cd-color-4-l: 70%;
+    --cd-header-height: 45px;
+    --cd-sidebar-width: 100%;
+    --font-primary: 'Open Sans', sans-serif;
+    --text-base-size: 1em;
+    --color-contrast-high: hsl(240, 4%, 20%);
+    --color-contrast-high-h: 240;
+    --color-contrast-high-s: 4%;
+    --color-contrast-high-l: 20%;
+    --color-contrast-higher: hsl(240, 8%, 12%);
+    --color-contrast-higher-h: 240;
+    --color-contrast-higher-s: 8%;
+    --color-contrast-higher-l: 12%
+}
+
+body {
+    font-size: 1em;
+    font-size: var(--text-base-size, 1em);
+    font-family: 'Open Sans', sans-serif;
+    font-family: var(--font-primary, sans-serif);
+    color: hsl(240, 4%, 20%);
+    color: var(--color-contrast-high, #313135);
+    min-height: 100vh;
+    width: 100%;
+    background-color: hsl(210, 10%, 18.9%);
+    background-color: hsl(var(--cd-color-1-h), var(--cd-color-1-s), calc(var(--cd-color-1-l)*0.7));
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 430px;
+    width: 100%;
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.container .registration {
+    display: none;
+}
+
+#check:checked~.registration {
+    display: block;
+}
+
+#check:checked~.login {
+    display: none;
+}
+
+#check {
+    display: none;
+}
+
+.container .form {
+    padding: 2rem;
+}
+
+.form .header {
+    display: block;
+    font-size: 2rem;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.form a {
+    font-size: 16px;
+    text-decoration: none;
+}
+
+.form input.button {
+    height: 60px;
+    width: 100%;
+    padding: 0 15px;
+    font-size: 17px;
+    margin-bottom: 1.3rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-top: 1.7rem;
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.form input.button:hover {
+    background-color: hsl(210, 10%, 12.15%);
+    background-color: hsl(var(--cd-color-1-h), var(--cd-color-1-s), calc(var(--cd-color-1-l)*0.45));
+}
+
+.signup {
+    font-size: 17px;
+    text-align: center;
+}
+
+.signup label {
+    color: #009579;
+    cursor: pointer;
+}
+
+.signup a:hover {
+    color: var(--cd-color-4);
+}

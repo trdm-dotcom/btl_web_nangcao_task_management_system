@@ -14,14 +14,14 @@ namespace btl_web_nangcao_task_management_system.Repositories
 {
     class EmployeeRepository {
 
-        public int save(SqlCommand command, Employee employee) {
+        public void save(SqlCommand command, Employee employee) {
             command.CommandType = CommandType.Text;
-            command.CommandText = "INSERT INTO t_employee (password, email, role) " +
-                " VALUES(@password, @email, @role);";
-            command.Parameters.AddWithValue("@password", employee.pasword);
+            command.CommandText = "INSERT INTO t_employee (password, email, role, name) " +
+                " VALUES(@password, @email, @role, @name);";
+            command.Parameters.AddWithValue("@name", employee.name);
+            command.Parameters.AddWithValue("@password", employee.password);
             command.Parameters.AddWithValue("@email", employee.email);
             command.Parameters.AddWithValue("role", Enum.GetName(typeof(EmployeeRole), employee.role));
-            return (int)command.ExecuteScalar();
         }
 
         public List<Employee> findAll(SqlCommand command)
@@ -79,6 +79,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
                 item.id = int.Parse(dataRow["id"].ToString());
                 item.name = dataRow["name"].ToString();
                 item.email = dataRow["email"].ToString();
+                item.password = dataRow["password"].ToString();
                 item.role = (EmployeeRole)Enum.Parse(typeof(EmployeeRole), dataRow["role"].ToString());
                 employeeList.Add(item);
             }

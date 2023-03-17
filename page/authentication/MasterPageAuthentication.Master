@@ -1,0 +1,26 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPageAuthentication.master.cs" Inherits="btl_web_nangcao_task_management_system.page.authentication.MasterPageAuthentication" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="~/assets/css/styleLoginSignup.css" />
+    <link rel="stylesheet" type="text/css" href="~/assets/css/reponsive.css" />
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div class="container">
+        <div class="form">
+            <asp:Label runat="server" CssClass="header" ID="labelHeader"></asp:Label>
+            <form id="form1" runat="server">
+                <div>
+                    <asp:ContentPlaceHolder ID="mainContentPlaceHolder" runat="server">
+                    </asp:ContentPlaceHolder>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

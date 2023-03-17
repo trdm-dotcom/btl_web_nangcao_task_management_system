@@ -11,7 +11,12 @@ namespace btl_web_nangcao_task_management_system.UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["userId"] == null)
+            {
+                Response.Clear();
+                Response.Redirect("~/page/authentication/Login.aspx");
+                Response.Close();
+            }
         }
     }
 }

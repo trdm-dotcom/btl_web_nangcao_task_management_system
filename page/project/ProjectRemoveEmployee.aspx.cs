@@ -172,7 +172,7 @@ namespace btl_web_nangcao_task_management_system.page.project
             else
             {
                 feedbackLabel.Text = string.Empty;
-                dropDownList.CssClass = dropDownList.CssClass.Replace("is-invalid", "");
+                dropDownList.CssClass = dropDownList.CssClass.Replace("is-invalid", string.Empty);
             }
             return isPassed;
         }

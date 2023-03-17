@@ -15,21 +15,31 @@ namespace btl_web_nangcao_task_management_system.page
     public partial class ProjectEdit : System.Web.UI.Page
     {
         String connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
             {
-                FillProjectDropDownList();
                 if (!string.IsNullOrEmpty(Request.QueryString["project"]))
                 {
-                    LoadProjectData(Request.QueryString["project"]);
+                    LoadProjectData(int.Parse(Request.QueryString["project"]));
+                }
+                else
+                {
+                    Response.Clear();
+                    Response.Redirect("ProjectPage.aspx");
+                    Response.Close();
                 }
             }
         }
 
         protected void updateButton_Click(object sender, EventArgs e)
         {
+            errorMessage.Text = string.Empty;
+            if (!string.IsNullOrEmpty(Request.QueryString["project"]))
+            {
+                errorMessage.Text = "Invalid project";
+            }
             if (!CheckInputValues())
             {
                 return;
@@ -45,7 +55,7 @@ namespace btl_web_nangcao_task_management_system.page
                 ProjectRepository projectRepository = new ProjectRepository();
                 Dictionary<string, object> parametes = new Dictionary<string, object>
                 {
-                    {"id",  projectDropDownList.SelectedItem.Value}
+                    {"id",  int.Parse(Request.QueryString["project"])}
                 };
                 List<Project> projects = projectRepository.findByConditionAnd(command, parametes);
                 try {
@@ -59,7 +69,7 @@ namespace btl_web_nangcao_task_management_system.page
                                 {"title",  titleTextBox.Text},
                                 {"description", descriptionTextBox.Text},
                                 {"startDate", Convert.ToDateTime(startDateTextBox.Text)},
-                                {"estimateTime", Convert.ToDateTime(estimateDateTextBox.Text)}
+                                {"estimateDate", Convert.ToDateTime(estimateDateTextBox.Text)}
                             };
                             projectRepository.update(command, parameters, project.id);
                             transaction.Commit();
@@ -81,6 +91,7 @@ namespace btl_web_nangcao_task_management_system.page
             }
             catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
                 errorMessage.Text = "Internal error server";
             }
             finally {
@@ -88,49 +99,9 @@ namespace btl_web_nangcao_task_management_system.page
             }
         }
 
-        private void LoadProjectData(int projectId) {
-            SqlConnection connection = new SqlConnection(connectionString);
-            try
-            {
-                connection.Open();
-                SqlCommand command = connection.CreateCommand();
-                command.Connection = connection;
-                Dictionary<string, object> parameters = new Dictionary<string, object>
-                {
-                    { "id", int.Parse(projectDropDownList.SelectedItem.Value) }
-                };
-                ProjectRepository projectRepository = new ProjectRepository();
-                List<Project> result = projectRepository.findByConditionAnd(command, parameters);
-                if (result.Count > 0)
-                {
-                    if (result[0].status.Equals(ProjectStatus.OPEN))
-                    {
-                        Project project = result[0];
-                        titleTextBox.Text = project.title;
-                        descriptionTextBox.Text = project.description;
-                        startDateTextBox.Text = project.startDate.ToShortDateString();
-                        estimateDateTextBox.Text = project.estimateTime.ToShortDateString();
-                    }
-                    else
-                    {
-                        errorMessage.Text = "Projec was close"; 
-                        updateButton.Enabled = false;
-                    }
-                }
-                else
-                {
-                    errorMessage.Text = "Project not found";
-                    updateButton.Enabled = false;
-                }
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
-        private void LoadProjectData(string projectKey)
+        private void LoadProjectData(int projectId)
         {
+            errorMessage.Text = string.Empty;
             SqlConnection connection = new SqlConnection(connectionString);
             try
             {
@@ -139,7 +110,7 @@ namespace btl_web_nangcao_task_management_system.page
                 command.Connection = connection;
                 Dictionary<string, object> parameters = new Dictionary<string, object>
                 {
-                    { "key", projectKey }
+                    { "id", projectId }
                 };
                 ProjectRepository projectRepository = new ProjectRepository();
                 List<Project> result = projectRepository.findByConditionAnd(command, parameters);
@@ -150,8 +121,8 @@ namespace btl_web_nangcao_task_management_system.page
                         Project project = result[0];
                         titleTextBox.Text = project.title;
                         descriptionTextBox.Text = project.description;
-                        startDateTextBox.Text = project.startDate.ToShortDateString();
-                        estimateDateTextBox.Text = project.estimateTime.ToShortDateString();
+                        startDateTextBox.Text = project.startDate.ToString("yyyy-MM-dd");
+                        estimateDateTextBox.Text = project.estimateDate.ToString("yyyy-MM-dd");
                     }
                     else
                     {
@@ -171,37 +142,9 @@ namespace btl_web_nangcao_task_management_system.page
             }
         }
 
-        private void FillProjectDropDownList()
-        {
-            SqlConnection connection = new SqlConnection(connectionString);
-            try
-            {
-                connection.Open();
-                SqlCommand command = connection.CreateCommand();
-                command.Connection = connection;
-                ProjectRepository projectRepository = new ProjectRepository();
-                Dictionary<string, object> parameters = new Dictionary<string, object>
-                {
-                    {"status", Enum.GetName(typeof(ProjectStatus), ProjectStatus.OPEN)}
-                };
-                projectDropDownList.DataSource = projectRepository.findByConditionAnd(command, parameters);
-                projectDropDownList.DataTextField = "title";
-                projectDropDownList.DataValueField = "id";
-                projectDropDownList.DataBind();
-            }
-            catch (Exception ex)
-            {
-                errorMessage.Text = "Internal error server";
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
         private bool CheckInputValues()
         {
-            bool isPassed = validDropDownList(projectDropDownList, feedbackProject, "Please select a project");
+            bool isPassed = validDropDownList(leadDropDownList, feedbackLead, "Please select project's lead");
             if (string.IsNullOrEmpty(titleTextBox.Text))
             {
                 titleTextBox.CssClass = string.Format("{0} is-invalid", titleTextBox.CssClass);
@@ -211,7 +154,7 @@ namespace btl_web_nangcao_task_management_system.page
             else
             {
                 feedbackTitle.Text = string.Empty;
-                titleTextBox.CssClass = titleTextBox.CssClass.Replace("is-invalid", "");
+                titleTextBox.CssClass = titleTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             if (string.IsNullOrEmpty(descriptionTextBox.Text))
             {
@@ -222,7 +165,7 @@ namespace btl_web_nangcao_task_management_system.page
             else
             {
                 feedbackDescription.Text = string.Empty;
-                descriptionTextBox.CssClass = descriptionTextBox.CssClass.Replace("is-invalid", "");
+                descriptionTextBox.CssClass = descriptionTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             if (string.IsNullOrEmpty(startDateTextBox.Text))
             {
@@ -233,7 +176,7 @@ namespace btl_web_nangcao_task_management_system.page
             else
             {
                 feedbackStartDate.Text = string.Empty;
-                startDateTextBox.CssClass = startDateTextBox.CssClass.Replace("is-invalid", "");
+                startDateTextBox.CssClass = startDateTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             if (string.IsNullOrEmpty(estimateDateTextBox.Text))
             {
@@ -244,7 +187,7 @@ namespace btl_web_nangcao_task_management_system.page
             else
             {
                 feedbackestimateDate.Text = string.Empty;
-                estimateDateTextBox.CssClass = estimateDateTextBox.CssClass.Replace("is-invalid", "");
+                estimateDateTextBox.CssClass = estimateDateTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
 
             if (!DateTime.TryParse(startDateTextBox.Text, out _)
@@ -257,7 +200,7 @@ namespace btl_web_nangcao_task_management_system.page
             else
             {
                 feedbackStartDate.Text = string.Empty;
-                startDateTextBox.CssClass = startDateTextBox.CssClass.Replace("is-invalid", "");
+                startDateTextBox.CssClass = startDateTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             if (!DateTime.TryParse(estimateDateTextBox.Text, out _)
                 || Convert.ToDateTime(estimateDateTextBox.Text) < DateTime.Now.Date)
@@ -269,27 +212,34 @@ namespace btl_web_nangcao_task_management_system.page
             else
             {
                 feedbackestimateDate.Text = string.Empty;
-                estimateDateTextBox.CssClass = estimateDateTextBox.CssClass.Replace("is-invalid", "");
+                estimateDateTextBox.CssClass = estimateDateTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             return isPassed;
         }
 
-        protected void projectDropDownList_SelectedIndexChanged(object sender, EventArgs e)
+        private void FillEmployeeListBox(int projectId)
         {
-            if (!validDropDownList(projectDropDownList, feedbackProject, "Please select a project"))
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
             {
-                titleTextBox.Text = string.Empty;
-                descriptionTextBox.Text = string.Empty;
-                startDateTextBox.Text = string.Empty;
-                estimateDateTextBox.Text = string.Empty;
-                return;
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.Connection = connection;
+                EmployeeProjectRepository employeeProjectRepository = new EmployeeProjectRepository();
+                leadDropDownList.DataSource = employeeProjectRepository.getByProjectId(command, projectId);
+                leadDropDownList.DataTextField = "employeeName";
+                leadDropDownList.DataValueField = "employeeId";
+                leadDropDownList.DataBind();
             }
-            LoadProjectData(int.Parse(projectDropDownList.SelectedItem.Value));
-        }
-
-        protected void projectDropDownList_DataBound(object sender, EventArgs e)
-        {
-            projectDropDownList.Items.Insert(0, new ListItem("-Select-"));
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+                errorMessage.Text = "Internal error server";
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
 
         private bool validDropDownList(DropDownList dropDownList, Label feedbackLabel, string errorMessage)
@@ -305,9 +255,14 @@ namespace btl_web_nangcao_task_management_system.page
             else
             {
                 feedbackLabel.Text = string.Empty;
-                dropDownList.CssClass = dropDownList.CssClass.Replace("is-invalid", "");
+                dropDownList.CssClass = dropDownList.CssClass.Replace("is-invalid", string.Empty);
             }
             return isPassed;
+        }
+
+        protected void leadDropDownList_DataBound(object sender, EventArgs e)
+        {
+            leadDropDownList.Items.Insert(0, new ListItem("-Select-"));
         }
     }
 }
