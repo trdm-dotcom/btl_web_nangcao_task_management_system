@@ -14,8 +14,8 @@ namespace btl_web_nangcao_task_management_system.page.task
 {
     public partial class TaskCreate : System.Web.UI.Page
     {
-        String connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
-
+        string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
             FillProjectDropDownList();
@@ -65,12 +65,14 @@ namespace btl_web_nangcao_task_management_system.page.task
                 }
                 catch (Exception ex)
                 {
+                    log.error("error trying to insert", ex);
                     transaction.Rollback();
                     throw ex;
                 }
             }
             catch (Exception ex)
             {
+                log.error("error trying to do something", ex);
                 errorMessage.Text = "Internal error server";
             }
             finally
@@ -123,6 +125,7 @@ namespace btl_web_nangcao_task_management_system.page.task
             }
             catch (Exception ex)
             {
+                log.error("error trying to do something", ex);
                 errorMessage.Text = "Internal error server";
             }
             finally
@@ -189,6 +192,7 @@ namespace btl_web_nangcao_task_management_system.page.task
             }
             catch (Exception ex)
             {
+                log.error("error trying to do something", ex);
                 errorMessage.Text = "Internal error server";
             }
             finally

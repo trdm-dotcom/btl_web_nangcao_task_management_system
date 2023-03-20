@@ -15,8 +15,8 @@ namespace btl_web_nangcao_task_management_system.page
 {
     public partial class ProjectCreate : System.Web.UI.Page
     {
-        String connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
-
+        string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
             FillEmployeeListBox();
@@ -60,15 +60,15 @@ namespace btl_web_nangcao_task_management_system.page
                     }
                     transaction.Commit();
                 }
-                catch (Exception exp) {
-                    System.Diagnostics.Debug.WriteLine(exp.Message);
+                catch (Exception ex) {
+                    log.error("error trying to insert", ex);
                     transaction.Rollback();
-                    throw exp;
+                    throw ex;
                 }
             }
-            catch (Exception exp)
+            catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(exp.Message);
+                log.error("error trying to something", ex);
                 errorMessage.Text = "Internal error server";
             }
             finally {
@@ -244,7 +244,7 @@ namespace btl_web_nangcao_task_management_system.page
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                log.error("error trying to something", ex);
                 errorMessage.Text = "Internal error server";
             }
             finally
