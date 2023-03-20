@@ -14,4 +14,32 @@
     <div class="signup">
         <span class="signup">Don't have an account?<a href="SignUp.aspx">signup</a></span>
     </div>
+    <script>
+        const emailTextBox = document.getElementById("<%= emailTextBox.ClientID %>");
+        const passwordTextBox = document.getElementById("<%= passwordTextBox.ClientID %>");
+        const feedbackEmail = document.getElementById("<%= feedbackEmail.ClientID %>");
+        const feedbackPassword = document.getElementById("<%= feedbackPassword.ClientID %>");
+        function validateForm() {
+            let valid = true;
+            if(!emailTextBox.value.trim()) {
+                valid = false;
+                emailTextBox.classList.add("is-invalid");
+                feedbackEmail.textContent = "Please enter your email";
+            }
+            else {
+                emailTextBox.classList.remove("is-invalid");
+                feedbackEmail.textContent = null;
+            }
+            if(!passwordTextBox.value.trim()) {
+                valid = false;
+                passwordTextBox.classList.add("is-invalid");
+                feedbackPassword.textContent = "Please enter your password";
+            } 
+            else {
+                passwordTextBox.classList.remove("is-invalid");
+                feedbackPassword.textContent = null;
+            }
+            return valid;
+        }
+    </script>
 </asp:Content>
