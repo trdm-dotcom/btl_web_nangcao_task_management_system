@@ -15,8 +15,9 @@ namespace btl_web_nangcao_task_management_system.page.authentication
 {
     public partial class Login : System.Web.UI.Page
     {
-        String connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
+        string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
         HttpCookie cookie = null;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
             ((MasterPageAuthentication)Master).LabelHeaderMasterPageAuthentication.Text = "Login";
@@ -73,7 +74,7 @@ namespace btl_web_nangcao_task_management_system.page.authentication
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine(ex.Message);
+                log.error("error trying to do something", ex);
                 errorMessage.Text = "Internal error server";
             }
             finally
