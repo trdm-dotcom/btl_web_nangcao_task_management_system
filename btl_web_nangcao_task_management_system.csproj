@@ -113,6 +113,7 @@
     <Content Include="assets\js\main.js" />
     <Content Include="assets\js\menu-aim.js" />
     <Content Include="assets\js\util.js" />
+    <Content Include="assets\js\fetchAjax.js" />
     <Content Include="page\authentication\Login.aspx" />
     <Content Include="page\authentication\SignUp.aspx" />
     <Content Include="page\Home.aspx" />

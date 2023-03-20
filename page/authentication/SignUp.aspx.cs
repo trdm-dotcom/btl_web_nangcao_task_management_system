@@ -17,8 +17,8 @@ namespace btl_web_nangcao_task_management_system.page.authentication
     public partial class SignUp : System.Web.UI.Page
     {
         string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
-        const string EMAIL_REGEX = "^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$";
-        const string NAME_REGEX = "^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s\\W|_]+$";
+        const string EMAIL_REGEX = "^(?!\.)[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$(?<!\.)";
+        const string NAME_REGEX = "^(?<!\.)^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s]*$(?<!\.)";
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -98,8 +98,16 @@ namespace btl_web_nangcao_task_management_system.page.authentication
             }
             else
             {
-                feedbackEmail.Text = string.Empty;
-                emailTextBox.CssClass = emailTextBox.CssClass.Replace("is-invalid", string.Empty);
+                int exists = checkEmailAlreadyExists(emailTextBox.Text);
+                if(exists > 0 || exists == -1){
+                    isPassed = false;
+                    emailTextBox.CssClass = string.Format("{0} is-invalid", emailTextBox.CssClass);
+                    feedbackEmail.Text = "Email already exists";
+                }
+                else {
+                    feedbackEmail.Text = string.Empty;
+                    emailTextBox.CssClass = emailTextBox.CssClass.Replace("is-invalid", string.Empty);
+                }
             }
             if (string.IsNullOrEmpty(passwordTextBox.Text))
             {
@@ -125,6 +133,40 @@ namespace btl_web_nangcao_task_management_system.page.authentication
                 confirmPasswordTextBox.CssClass = confirmPasswordTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             return isPassed;
+        }
+        
+        [System.Web.Services.WebMethod]
+        public string checkEmailAlreadyExists(string email) {
+            bool exists = checkEmailAlreadyExists(email) == 0;
+            Dictionary<string, bool> response = new Dictionary<string, bool>
+            {
+                {"exists",  exists}
+            };
+            return JsonConvert.SerializeObject(response);
+        }
+
+        private int doCheckEmailAlreadyExists(string email) {
+            bool isExists = 0;
+            SqlConnection connection = new SqlConnection(connectionString);
+            try {
+                connection.Open();
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.Connection = connection;
+                EmployeeRepository employeeRepository = new EmployeeRepository();
+                Dictionary<string, object> parametes = new Dictionary<string, object>
+                {
+                    {"email",  email}
+                };
+                isExists = employeeRepository.findByConditionAnd(command, parametes).Count;
+            }
+            catch (Exception ex) {
+                isExists = -1;
+            }
+            finally {
+                connection.Close();
+            }
+            return isExists;
         }
     }
 }
