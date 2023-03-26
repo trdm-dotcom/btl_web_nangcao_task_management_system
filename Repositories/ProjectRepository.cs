@@ -20,16 +20,17 @@ namespace btl_web_nangcao_task_management_system.Repositories
             command.CommandText = "SELECT * FROM t_project WHERE 1=1";
             DataTable dataTable = new DataTable();
             dataTable.Load(command.ExecuteReader());
+            command.Parameters.Clear();
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 Project project = new Project();
-                project.id = int.Parse(dataRow["id"].ToString());
+                project.id = (long)dataRow["id"];
                 project.title = dataRow["title"].ToString();
                 project.description = dataRow["description"].ToString();
                 project.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
                 project.estimateDate = Convert.ToDateTime(dataRow["estimateDate"].ToString());
                 project.status = (ProjectStatus)Enum.Parse(typeof(ProjectStatus), dataRow["status"].ToString());
-                /*project.lead = int.Parse(dataRow["lead"].ToString());*/
+                project.lead = (long)dataRow["lead"];
                 projectList.Add(project);
             }
             return projectList;
@@ -64,24 +65,25 @@ namespace btl_web_nangcao_task_management_system.Repositories
             }
             DataTable dataTable = new DataTable();
             dataTable.Load(command.ExecuteReader());
+            command.Parameters.Clear();
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 Project item = new Project();
-                item.id = int.Parse(dataRow["id"].ToString());
+                item.id = (long)dataRow["id"];
                 item.title = dataRow["title"].ToString();
                 item.description = dataRow["description"].ToString();
                 item.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
                 item.estimateDate = Convert.ToDateTime(dataRow["estimateDate"].ToString());
                 item.status = (ProjectStatus)Enum.Parse(typeof(ProjectStatus), dataRow["status"].ToString());
-                /*item.lead = int.Parse(dataRow["lead"].ToString());*/
+                item.lead = (long)dataRow["lead"];
                 projectList.Add(item);
             }
             return projectList;
         }
 
-        public int save(SqlCommand command, Project project) {
+        public long save(SqlCommand command, Project project) {
             command.CommandType = CommandType.Text;
-            command.CommandText = "INSERT INTO t_project (title, description, startDate, estimateDate, status, lead) " +
+            command.CommandText = "INSERT INTO t_project (title, description, startDate, estimateDate, status, lead) output INSERTED.ID" +
                     " VALUES(@title, @description, @startDate, @estimateDate, @status, @lead);";
             command.Parameters.AddWithValue("@title", project.title);
             command.Parameters.AddWithValue("@description", project.description);
@@ -89,10 +91,12 @@ namespace btl_web_nangcao_task_management_system.Repositories
             command.Parameters.AddWithValue("@estimateDate", project.estimateDate);
             command.Parameters.AddWithValue("@status", Enum.GetName(typeof(ProjectStatus), project.status));
             command.Parameters.AddWithValue("@lead", project.lead);
-            return (int)command.ExecuteScalar();
+            long id = (long)command.ExecuteScalar();
+            command.Parameters.Clear();
+            return id;
         }
 
-        public void update(SqlCommand command, Dictionary<string, object> parameters, int id)
+        public void update(SqlCommand command, Dictionary<string, object> parameters, long id)
         {
             StringBuilder sb = new StringBuilder("UPDATE t_project SET");
             foreach (string key in parameters.Keys)
@@ -102,7 +106,6 @@ namespace btl_web_nangcao_task_management_system.Repositories
             }
             sb.Remove(sb.Length - 1, 1);
             sb.Append(" WHERE id = @id");
-            System.Diagnostics.Debug.WriteLine(sb.ToString());
             command.CommandType = CommandType.Text;
             command.CommandText = sb.ToString();
             command.Parameters.AddWithValue("@id", id);
@@ -111,6 +114,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
                 command.Parameters.AddWithValue(string.Format("@{0}", element.Key), element.Value);
             }
             command.ExecuteNonQuery();
+            command.Parameters.Clear();
         }
 
         public List<ProjectDto> findAllProjectJoinEmployee(SqlCommand command) {
@@ -118,17 +122,18 @@ namespace btl_web_nangcao_task_management_system.Repositories
             command.CommandText = "SELECT p.*, e.name FROM t_project AS p LEFT JOIN t_employee AS e ON p.lead = e.id;";
             DataTable dataTable = new DataTable();
             dataTable.Load(command.ExecuteReader());
+            command.Parameters.Clear();
             List<ProjectDto> projectList = new List<ProjectDto>();
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 ProjectDto item = new ProjectDto();
-                item.id = int.Parse(dataRow["id"].ToString());
+                item.id = (long)dataRow["id"];
                 item.title = dataRow["title"].ToString();
                 item.description = dataRow["description"].ToString();
                 item.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
                 item.estimateDate = Convert.ToDateTime(dataRow["estimateDate"].ToString());
                 item.status = (ProjectStatus)Enum.Parse(typeof(ProjectStatus), dataRow["status"].ToString());
-      /*          item.lead = int.Parse(dataRow["lead"].ToString())*/;
+                item.lead = (long)dataRow["lead"];
                 item.leadName = dataRow["name"].ToString();
                 projectList.Add(item);
             }

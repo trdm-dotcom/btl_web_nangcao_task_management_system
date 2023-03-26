@@ -11,16 +11,17 @@ namespace btl_web_nangcao_task_management_system.Repositories
 {
     public class EmployeeProjectRepository
     {
-        public int save(SqlCommand command, EmployeeProject employeeProject)
+        public void save(SqlCommand command, EmployeeProject employeeProject)
         {
             command.CommandType = CommandType.Text;
             command.CommandText = "INSERT INTO t_employeeProject (employeeId, projectId, employeeName, projectName)" +
-                " VALUES(@employeeId, @projectId, @employeeName, @projectName)";
+                " VALUES(@employeeId, @projectId, @employeeName, @projectName);";
             command.Parameters.AddWithValue("@employeeId", employeeProject.employeeId);
             command.Parameters.AddWithValue("@projectId", employeeProject.projectId);
             command.Parameters.AddWithValue("@employeeName", employeeProject.employeeName);
             command.Parameters.AddWithValue("@projectName", employeeProject.projectName);
-            return (int)command.ExecuteScalar();
+            command.ExecuteNonQuery();
+            command.Parameters.Clear();
         }
 
         public void delete(SqlCommand command, EmployeeProject employee)
@@ -30,6 +31,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
             command.Parameters.AddWithValue("@employeeId", employee.employeeId);
             command.Parameters.AddWithValue("@projectId", employee.projectId);
             command.ExecuteNonQuery();
+            command.Parameters.Clear();
         }
 
         public List<EmployeeProject> findByConditionAnd(SqlCommand command, Dictionary<string, object> parameters)
@@ -62,34 +64,55 @@ namespace btl_web_nangcao_task_management_system.Repositories
             }
             DataTable dataTable = new DataTable();
             dataTable.Load(command.ExecuteReader());
+            command.Parameters.Clear();
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 EmployeeProject employeeProject = new EmployeeProject();
-                employeeProject.employeeId = int.Parse(dataRow["employeeId"].ToString());
+                employeeProject.employeeId = (long)dataRow["employeeId"];
                 employeeProject.employeeName = dataRow["employeeName"].ToString();
                 employeeProject.projectName = dataRow["projectName"].ToString();
-                employeeProject.projectId = int.Parse(dataRow["projectId"].ToString());
+                employeeProject.projectId = (long)dataRow["projectId"];
                 employeeProjectList.Add(employeeProject);
             }
             return employeeProjectList;
         }
 
-        public List<EmployeeProject> getByProjectId(SqlCommand command, int id)
+        public List<EmployeeProject> getAllInProject(SqlCommand command, int id)
         {
             List<EmployeeProject> employeeProjectList = new List<EmployeeProject>();
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT * FROM t_employee AS e LEFT JOIN t_employeeProject AS ep " +
-                "ON e.id = ep.employeeId WHERE ep.projectId = @projectId";
+            command.CommandText = "SELECT * FROM t_employeeProject WHERE projectId = @projectId";
             command.Parameters.AddWithValue("@projectId", id);
             DataTable dataTable = new DataTable();
             dataTable.Load(command.ExecuteReader());
+            command.Parameters.Clear();
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 EmployeeProject employeeProject = new EmployeeProject();
-                employeeProject.employeeId = int.Parse(dataRow["employeeId"].ToString());
+                employeeProject.employeeId = (long)dataRow["employeeId"];
                 employeeProject.employeeName = dataRow["employeeName"].ToString();
                 employeeProject.projectName = dataRow["projectName"].ToString();
-                employeeProject.projectId = int.Parse(dataRow["projectId"].ToString());
+                employeeProject.projectId = (long)dataRow["projectId"];
+                employeeProjectList.Add(employeeProject);
+            }
+            return employeeProjectList;
+        }
+
+        public List<EmployeeProject> getAllNotInProject(SqlCommand command, int id)
+        {
+            List<EmployeeProject> employeeProjectList = new List<EmployeeProject>();
+            command.CommandType = CommandType.Text;
+            command.CommandText = "SELECT * FROM t_employee AS e WHERE NOT EXISTS (" +
+                " SELECT projectId FROM t_employeeProject AS ep WHERE ep.employeeId = e.id AND projectId = @projectId) ";
+            command.Parameters.AddWithValue("@projectId", id);
+            DataTable dataTable = new DataTable();
+            dataTable.Load(command.ExecuteReader());
+            command.Parameters.Clear();
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                EmployeeProject employeeProject = new EmployeeProject();
+                employeeProject.employeeId = (long)dataRow["employeeId"];
+                employeeProject.employeeName = dataRow["employeeName"].ToString();
                 employeeProjectList.Add(employeeProject);
             }
             return employeeProjectList;

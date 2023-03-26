@@ -1,0 +1,281 @@
+ERROR 2023-03-26 16:33:12 – [6] error trying to insert method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 58 
+System.FormatException: Input string was not in a correct format.
+   at System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt32(String value)
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 58
+ERROR 2023-03-26 16:33:12 – [6] error trying to something method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 58 
+System.FormatException: Input string was not in a correct format.
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 69
+ERROR 2023-03-26 16:37:36 – [7] error trying to insert method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 62 
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ID'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at btl_web_nangcao_task_management_system.Repositories.EmployeeProjectRepository.save(SqlCommand command, EmployeeProject employeeProject) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\EmployeeProjectRepository.cs:line 23
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 62
+ClientConnectionId:be31dc13-fb1f-477a-8375-b6134d1ec5b0
+Error Number:207,State:1,Class:16
+ERROR 2023-03-26 16:37:36 – [7] error trying to something method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 62 
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ID'.
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 69
+ClientConnectionId:be31dc13-fb1f-477a-8375-b6134d1ec5b0
+Error Number:207,State:1,Class:16
+ERROR 2023-03-26 16:43:49 – [6] error trying to insert method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 61 
+System.Data.SqlClient.SqlException (0x80131904): The variable name '@employeeId' has already been declared. Variable names must be unique within a query batch or stored procedure.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at btl_web_nangcao_task_management_system.Repositories.EmployeeProjectRepository.save(SqlCommand command, EmployeeProject employeeProject) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\EmployeeProjectRepository.cs:line 23
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 61
+ClientConnectionId:a71deb6d-5455-470c-a9f4-ba56af129968
+Error Number:134,State:1,Class:15
+ERROR 2023-03-26 16:43:50 – [6] error trying to something method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 61 
+System.Data.SqlClient.SqlException (0x80131904): The variable name '@employeeId' has already been declared. Variable names must be unique within a query batch or stored procedure.
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 68
+ClientConnectionId:a71deb6d-5455-470c-a9f4-ba56af129968
+Error Number:134,State:1,Class:15
+ERROR 2023-03-26 16:45:43 – [6] error trying to insert method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 63 
+System.Data.SqlClient.SqlException (0x80131904): The variable name '@employeeId' has already been declared. Variable names must be unique within a query batch or stored procedure.
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 70
+ClientConnectionId:d47a7d81-beea-4e6a-9ce8-60570aeab59e
+Error Number:134,State:1,Class:15
+ERROR 2023-03-26 16:45:43 – [6] error trying to something method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 63 
+System.Data.SqlClient.SqlException (0x80131904): The variable name '@employeeId' has already been declared. Variable names must be unique within a query batch or stored procedure.
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 77
+ClientConnectionId:d47a7d81-beea-4e6a-9ce8-60570aeab59e
+Error Number:134,State:1,Class:15
+ERROR 2023-03-26 16:50:07 – [7] error trying to insert method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 63 
+System.Data.SqlClient.SqlException (0x80131904): The variable name '@employeeId' has already been declared. Variable names must be unique within a query batch or stored procedure.
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 70
+ClientConnectionId:0cce6326-68e1-4c6f-ad78-c73d6eb3b79c
+Error Number:134,State:1,Class:15
+ERROR 2023-03-26 16:50:07 – [7] error trying to something method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 63 
+System.Data.SqlClient.SqlException (0x80131904): The variable name '@employeeId' has already been declared. Variable names must be unique within a query batch or stored procedure.
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 77
+ClientConnectionId:0cce6326-68e1-4c6f-ad78-c73d6eb3b79c
+Error Number:134,State:1,Class:15
+ERROR 2023-03-26 17:07:41 – [9] error trying to insert method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 65 
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 65
+ERROR 2023-03-26 17:07:41 – [9] error trying to something method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 65 
+System.InvalidOperationException: This SqlTransaction has completed; it is no longer usable.
+   at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 71
+ERROR 2023-03-26 18:49:12 – [6] error trying to update method:updateButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectEdit 
+ line: 79 
+System.Data.SqlClient.SqlException (0x80131904): The variable name '@id' has already been declared. Variable names must be unique within a query batch or stored procedure.
+Must declare the scalar variable "@title".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at btl_web_nangcao_task_management_system.Repositories.ProjectRepository.update(SqlCommand command, Dictionary`2 parameters, Int64 id) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\ProjectRepository.cs:line 113
+   at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 79
+ClientConnectionId:6f27b5e3-680a-48b0-bf4b-aedcfc8f5e6a
+Error Number:134,State:1,Class:15
+ERROR 2023-03-26 18:49:12 – [6] error trying to do something method:updateButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectEdit 
+ line: 79 
+System.Data.SqlClient.SqlException (0x80131904): The variable name '@id' has already been declared. Variable names must be unique within a query batch or stored procedure.
+Must declare the scalar variable "@title".
+   at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 96
+ClientConnectionId:6f27b5e3-680a-48b0-bf4b-aedcfc8f5e6a
+Error Number:134,State:1,Class:15
+ERROR 2023-03-26 18:50:08 – [6] error trying to update method:updateButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectEdit 
+ line: 79 
+System.Data.SqlClient.SqlException (0x80131904): The variable name '@id' has already been declared. Variable names must be unique within a query batch or stored procedure.
+Must declare the scalar variable "@title".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at btl_web_nangcao_task_management_system.Repositories.ProjectRepository.update(SqlCommand command, Dictionary`2 parameters, Int64 id) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\ProjectRepository.cs:line 113
+   at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 79
+ClientConnectionId:5d952e29-dc48-40e8-9d99-f915329161f5
+Error Number:134,State:1,Class:15
+ERROR 2023-03-26 18:50:08 – [6] error trying to do something method:updateButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectEdit 
+ line: 79 
+System.Data.SqlClient.SqlException (0x80131904): The variable name '@id' has already been declared. Variable names must be unique within a query batch or stored procedure.
+Must declare the scalar variable "@title".
+   at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 97
+ClientConnectionId:5d952e29-dc48-40e8-9d99-f915329161f5
+Error Number:134,State:1,Class:15
+ERROR 2023-03-26 18:59:29 – [6] error trying to update method:updateButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectEdit 
+ line: 79 
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@title".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at btl_web_nangcao_task_management_system.Repositories.ProjectRepository.update(SqlCommand command, Dictionary`2 parameters, Int64 id) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\ProjectRepository.cs:line 117
+   at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 79
+ClientConnectionId:8a1711a1-4a25-476d-b75e-111f676daf8e
+Error Number:137,State:2,Class:15
+ERROR 2023-03-26 18:59:29 – [6] error trying to do something method:updateButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectEdit 
+ line: 79 
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@title".
+   at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 97
+ClientConnectionId:8a1711a1-4a25-476d-b75e-111f676daf8e
+Error Number:137,State:2,Class:15
+ERROR 2023-03-26 19:08:37 – [6] error trying to update method:updateButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectEdit 
+ line: 79 
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@title".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at btl_web_nangcao_task_management_system.Repositories.ProjectRepository.update(SqlCommand command, Dictionary`2 parameters, Int64 id) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\ProjectRepository.cs:line 117
+   at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 79
+ClientConnectionId:e5493402-dbbb-4be2-9776-c8437d574bb6
+Error Number:137,State:2,Class:15
+ERROR 2023-03-26 19:08:37 – [6] error trying to do something method:updateButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectEdit 
+ line: 79 
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@title".
+   at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 97
+ClientConnectionId:e5493402-dbbb-4be2-9776-c8437d574bb6
+Error Number:137,State:2,Class:15
+ERROR 2023-03-26 19:08:57 – [6] error trying to insert method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 65 
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 65
+ERROR 2023-03-26 19:08:57 – [6] error trying to something method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 65 
+System.InvalidOperationException: This SqlTransaction has completed; it is no longer usable.
+   at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 71
+ERROR 2023-03-26 22:43:58 – [6] error trying to update record method:closeButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectClose 
+ line: 78 
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@status".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at btl_web_nangcao_task_management_system.Repositories.ProjectRepository.update(SqlCommand command, Dictionary`2 parameters, Int64 id) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\ProjectRepository.cs:line 117
+   at btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectClose.aspx.cs:line 78
+ClientConnectionId:6e000299-b61e-4509-a1f4-c0137c96e8c0
+Error Number:137,State:2,Class:15
+ERROR 2023-03-26 22:43:58 – [6] error trying to do something method:closeButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectClose 
+ line: 78 
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@status".
+   at btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectClose.aspx.cs:line 95
+ClientConnectionId:6e000299-b61e-4509-a1f4-c0137c96e8c0
+Error Number:137,State:2,Class:15
+ERROR 2023-03-26 22:45:06 – [6] error trying to update record method:closeButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectClose 
+ line: 78 
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@status".
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at btl_web_nangcao_task_management_system.Repositories.ProjectRepository.update(SqlCommand command, Dictionary`2 parameters, Int64 id) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\ProjectRepository.cs:line 117
+   at btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectClose.aspx.cs:line 78
+ClientConnectionId:d6ef9056-e092-4e2b-b5be-33bde52629ca
+Error Number:137,State:2,Class:15
+ERROR 2023-03-26 22:45:06 – [6] error trying to do something method:closeButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectClose 
+ line: 78 
+System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variable "@status".
+   at btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectClose.aspx.cs:line 96
+ClientConnectionId:d6ef9056-e092-4e2b-b5be-33bde52629ca
+Error Number:137,State:2,Class:15

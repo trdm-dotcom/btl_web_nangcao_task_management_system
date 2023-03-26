@@ -642,6 +642,13 @@ textarea {
     color: #dc3545;
 }
 
+.success-feedback {
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 80%;
+    color: #28a745;
+}
+
 .form-control.is-invalid {
     border-color: #dc3545;
 }

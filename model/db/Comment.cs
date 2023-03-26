@@ -10,10 +10,10 @@ namespace btl_web_nangcao_task_management_system.model.db
         public Comment()
         {
         }
-        public int id { set; get; }
-        public int employeeId { set; get; }
+        public long id { set; get; }
+        public long employeeId { set; get; }
         public string employeeName { set; get; }
-        public int taskId { set; get; }
+        public long taskId { set; get; }
         public string content { set; get; }
         public DateTime createdAt { get; set; }
     }

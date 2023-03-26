@@ -18,17 +18,18 @@ namespace btl_web_nangcao_task_management_system.Repositories
             command.CommandText = "SELECT * FROM t_task WHERE 1=1";
             DataTable dataTable = new DataTable();
             dataTable.Load(command.ExecuteReader());
+            command.Parameters.Clear();
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 Task task = new Task();
-                task.id = int.Parse(dataRow["id"].ToString());
+                task.id = (long)dataRow["id"];
                 task.name = dataRow["name"].ToString();
                 task.description = dataRow["description"].ToString();
                 task.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
                 task.estimatedTime = Convert.ToDateTime(dataRow["estimatedTime"].ToString());
-                task.employeeReporter = int.Parse(dataRow["employeeReporter"].ToString());
-                task.employeeAssignee = int.Parse(dataRow["employeeAssignee"].ToString());
-                task.employeeQA = int.Parse(dataRow["employeeQA"].ToString());
+                task.employeeReporter = (long)dataRow["employeeReporter"];
+                task.employeeAssignee = (long)dataRow["employeeAssignee"];
+                task.employeeQA = (long)dataRow["employeeQA"];
                 task.status = (TaskStatus)Enum.Parse(typeof(TaskStatus), dataRow["status"].ToString());
                 task.priority = (TaskPriority)Enum.Parse(typeof(TaskPriority), dataRow["priority"].ToString());
                 taskList.Add(task);
@@ -65,17 +66,18 @@ namespace btl_web_nangcao_task_management_system.Repositories
             }
             DataTable dataTable = new DataTable();
             dataTable.Load(command.ExecuteReader());
+            command.Parameters.Clear();
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 Task item = new Task();
-                item.id = int.Parse(dataRow["id"].ToString());
+                item.id = (long)dataRow["id"];
                 item.name = dataRow["name"].ToString();
                 item.description = dataRow["description"].ToString();
                 item.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
                 item.estimatedTime = Convert.ToDateTime(dataRow["estimatedTime"].ToString());
-                item.employeeReporter = int.Parse(dataRow["employeeReporter"].ToString());
-                item.employeeAssignee = int.Parse(dataRow["employeeAssignee"].ToString());
-                item.employeeQA = int.Parse(dataRow["employeeQA"].ToString());
+                item.employeeReporter = (long)dataRow["employeeReporter"];
+                item.employeeAssignee = (long)dataRow["employeeAssignee"];
+                item.employeeQA = (long)dataRow["employeeQA"];
                 item.status = (TaskStatus)Enum.Parse(typeof(TaskStatus), dataRow["status"].ToString());
                 item.priority = (TaskPriority)Enum.Parse(typeof(TaskPriority), dataRow["priority"].ToString());
                 taskList.Add(item);
@@ -83,10 +85,10 @@ namespace btl_web_nangcao_task_management_system.Repositories
             return taskList;
         }
 
-        public int save(SqlCommand command, Task task)
+        public long save(SqlCommand command, Task task)
         {
             command.CommandType = CommandType.Text;
-            command.CommandText = "INSERT INTO t_task(name, description, projectId, startDate, estimateDate, employeeReporter, employeeAssignee, employeeQA, status, priority)" +
+            command.CommandText = "INSERT INTO t_task(name, description, projectId, startDate, estimateDate, employeeReporter, employeeAssignee, employeeQA, status, priority) output INSERTED.ID" +
                     " VALUES(@name, @description, @projectId, @startDate, @estimateDate, @employeeReporter, @employeeAssignee, @employeeQA, @status, @priority);";
             command.Parameters.AddWithValue("@name", task.name);
             command.Parameters.AddWithValue("@description", task.description);
@@ -98,7 +100,9 @@ namespace btl_web_nangcao_task_management_system.Repositories
             command.Parameters.AddWithValue("@employeeQA", task.employeeQA);
             command.Parameters.AddWithValue("@status", Enum.GetName(typeof(TaskStatus), task.status));
             command.Parameters.AddWithValue("@priority", Enum.GetName(typeof(TaskPriority), task.priority));
-            return (int)command.ExecuteScalar();
+            long id = (long)command.ExecuteScalar();
+            command.Parameters.Clear();
+            return id;
         }
 
         public void update(SqlCommand command, Dictionary<string, object> parameters, int id)
@@ -119,6 +123,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
                 command.Parameters.AddWithValue(string.Format("@{0}", element.Key), element.Value);
             }
             command.ExecuteNonQuery();
+            command.Parameters.Clear();
         }
     }
 }

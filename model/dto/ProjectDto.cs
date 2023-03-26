@@ -10,6 +10,5 @@ namespace btl_web_nangcao_task_management_system.model.dto
     {
         public ProjectDto() { }
         public string leadName { get; set; }
-        
     }
 }

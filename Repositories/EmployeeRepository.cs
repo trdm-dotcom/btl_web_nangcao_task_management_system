@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Web;
@@ -14,14 +15,17 @@ namespace btl_web_nangcao_task_management_system.Repositories
 {
     class EmployeeRepository {
 
-        public void save(SqlCommand command, Employee employee) {
+        public long save(SqlCommand command, Employee employee) {
             command.CommandType = CommandType.Text;
-            command.CommandText = "INSERT INTO t_employee (password, email, role, name) " +
+            command.CommandText = "INSERT INTO t_employee (password, email, role, name) output INSERTED.ID " +
                 " VALUES(@password, @email, @role, @name);";
             command.Parameters.AddWithValue("@name", employee.name);
             command.Parameters.AddWithValue("@password", employee.password);
             command.Parameters.AddWithValue("@email", employee.email);
             command.Parameters.AddWithValue("role", Enum.GetName(typeof(EmployeeRole), employee.role));
+            long id = (long)command.ExecuteScalar();
+            command.Parameters.Clear();
+            return id;
         }
 
         public List<Employee> findAll(SqlCommand command)
@@ -31,10 +35,11 @@ namespace btl_web_nangcao_task_management_system.Repositories
             command.CommandText = "SELECT * FROM t_employee WHERE 1=1";
             DataTable dataTable = new DataTable();
             dataTable.Load(command.ExecuteReader());
+            command.Parameters.Clear();
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 Employee employee = new Employee();
-                employee.id = int.Parse(dataRow["id"].ToString());
+                employee.id = (long)dataRow["id"];
                 employee.name = dataRow["name"].ToString();
                 employee.email = dataRow["email"].ToString();
                 employee.role = (EmployeeRole)Enum.Parse(typeof(EmployeeRole), dataRow["role"].ToString());
@@ -73,10 +78,11 @@ namespace btl_web_nangcao_task_management_system.Repositories
             }
             DataTable dataTable = new DataTable();
             dataTable.Load(command.ExecuteReader());
+            command.Parameters.Clear();
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 Employee item = new Employee();
-                item.id = int.Parse(dataRow["id"].ToString());
+                item.id = (long)dataRow["id"];
                 item.name = dataRow["name"].ToString();
                 item.email = dataRow["email"].ToString();
                 item.password = dataRow["password"].ToString();
@@ -95,10 +101,11 @@ namespace btl_web_nangcao_task_management_system.Repositories
             command.Parameters.AddWithValue("@projectId", projectId);
             DataTable dataTable = new DataTable();
             dataTable.Load(command.ExecuteReader());
+            command.Parameters.Clear();
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 Employee item = new Employee();
-                item.id = int.Parse(dataRow["id"].ToString());
+                item.id = (long)dataRow["id"];
                 item.name = dataRow["name"].ToString();
                 item.email = dataRow["email"].ToString();
                 item.role = (EmployeeRole)Enum.Parse(typeof(EmployeeRole), dataRow["role"].ToString());
@@ -125,6 +132,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
                 command.Parameters.AddWithValue(string.Format("@{0}", element.Key), element.Value);
             }
             command.ExecuteNonQuery();
+            command.Parameters.Clear();
         }
     }
 }

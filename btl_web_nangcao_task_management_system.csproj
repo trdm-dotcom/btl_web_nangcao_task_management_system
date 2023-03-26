@@ -114,19 +114,19 @@
     <Content Include="assets\js\menu-aim.js" />
     <Content Include="assets\js\util.js" />
     <Content Include="assets\js\fetchAjax.js" />
-    <Content Include="page\authentication\Login.aspx" />
-    <Content Include="page\authentication\SignUp.aspx" />
-    <Content Include="page\Home.aspx" />
-    <Content Include="page\project\ProjectAddEmployee.aspx" />
-    <Content Include="page\project\ProjectClose.aspx" />
-    <Content Include="page\project\ProjectCreate.aspx" />
-    <Content Include="page\project\ProjectEdit.aspx" />
-    <Content Include="page\project\ProjectPage.aspx" />
-    <Content Include="page\project\ProjectRemoveEmployee.aspx" />
-    <Content Include="page\task\TaskPage.aspx" />
-    <Content Include="page\task\TaskCreate.aspx" />
-    <Content Include="page\task\TaskEdit.aspx" />
-    <Content Include="page\task\TaskView.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="SignUp.aspx" />
+    <Content Include="Home.aspx" />
+    <Content Include="ProjectAddEmployee.aspx" />
+    <Content Include="ProjectClose.aspx" />
+    <Content Include="ProjectCreate.aspx" />
+    <Content Include="ProjectEdit.aspx" />
+    <Content Include="ProjectPage.aspx" />
+    <Content Include="ProjectRemoveEmployee.aspx" />
+    <Content Include="TaskPage.aspx" />
+    <Content Include="TaskCreate.aspx" />
+    <Content Include="TaskEdit.aspx" />
+    <Content Include="TaskView.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -140,39 +140,38 @@
     <Compile Include="model\ProjectStatus.cs" />
     <Compile Include="model\TaskPriority.cs" />
     <Compile Include="model\TaskStatus.cs" />
-    <Compile Include="page\authentication\Login.aspx.cs">
+    <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page\authentication\Login.aspx.designer.cs">
+    <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page\authentication\MasterPageAuthentication.Master.cs">
+    <Compile Include="MasterPageAuthentication.Master.cs">
       <DependentUpon>MasterPageAuthentication.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page\authentication\MasterPageAuthentication.Master.designer.cs">
+    <Compile Include="MasterPageAuthentication.Master.designer.cs">
       <DependentUpon>MasterPageAuthentication.Master</DependentUpon>
     </Compile>
-    <Compile Include="page\authentication\SignUp.aspx.cs">
-      <DependentUpon>SignUp.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="page\authentication\SignUp.aspx.designer.cs">
+    <Compile Include="SignUp.aspx.cs">
       <DependentUpon>SignUp.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page\Home.aspx.cs">
+    <Compile Include="SignUp.aspx.designer.cs">
+      <DependentUpon>SignUp.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page\Home.aspx.designer.cs">
+    <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page\project\ProjectPage.aspx.cs">
+    <Compile Include="ProjectPage.aspx.cs">
       <DependentUpon>ProjectPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page\project\ProjectPage.aspx.designer.cs">
+    <Compile Include="ProjectPage.aspx.designer.cs">
       <DependentUpon>ProjectPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -180,82 +179,82 @@
     <Compile Include="repositories\EmployeeRepository.cs" />
     <Compile Include="repositories\ProjectRepository.cs" />
     <Compile Include="repositories\TaskRepository.cs" />
-    <Compile Include="page\MasterPage.Master.cs">
+    <Compile Include="MasterPage.Master.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page\MasterPage.Master.designer.cs">
+    <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
     </Compile>
-    <Compile Include="page\project\ProjectAddEmployee.aspx.cs">
+    <Compile Include="ProjectAddEmployee.aspx.cs">
       <DependentUpon>ProjectAddEmployee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page\project\ProjectAddEmployee.aspx.designer.cs">
+    <Compile Include="ProjectAddEmployee.aspx.designer.cs">
       <DependentUpon>ProjectAddEmployee.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page\project\ProjectClose.aspx.cs">
+    <Compile Include="ProjectClose.aspx.cs">
       <DependentUpon>ProjectClose.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page\project\ProjectClose.aspx.designer.cs">
+    <Compile Include="ProjectClose.aspx.designer.cs">
       <DependentUpon>ProjectClose.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page\project\ProjectCreate.aspx.cs">
+    <Compile Include="ProjectCreate.aspx.cs">
       <DependentUpon>ProjectCreate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page\project\ProjectCreate.aspx.designer.cs">
+    <Compile Include="ProjectCreate.aspx.designer.cs">
       <DependentUpon>ProjectCreate.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page\project\ProjectEdit.aspx.cs">
+    <Compile Include="ProjectEdit.aspx.cs">
       <DependentUpon>ProjectEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page\project\ProjectEdit.aspx.designer.cs">
+    <Compile Include="ProjectEdit.aspx.designer.cs">
       <DependentUpon>ProjectEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page\project\ProjectRemoveEmployee.aspx.cs">
+    <Compile Include="ProjectRemoveEmployee.aspx.cs">
       <DependentUpon>ProjectRemoveEmployee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page\project\ProjectRemoveEmployee.aspx.designer.cs">
+    <Compile Include="ProjectRemoveEmployee.aspx.designer.cs">
       <DependentUpon>ProjectRemoveEmployee.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page\task\TaskPage.aspx.cs">
+    <Compile Include="TaskPage.aspx.cs">
       <DependentUpon>TaskPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page\task\TaskPage.aspx.designer.cs">
+    <Compile Include="TaskPage.aspx.designer.cs">
       <DependentUpon>TaskPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page\task\TaskCreate.aspx.cs">
+    <Compile Include="TaskCreate.aspx.cs">
       <DependentUpon>TaskCreate.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page\task\TaskCreate.aspx.designer.cs">
+    <Compile Include="TaskCreate.aspx.designer.cs">
       <DependentUpon>TaskCreate.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page\task\TaskEdit.aspx.cs">
+    <Compile Include="TaskEdit.aspx.cs">
       <DependentUpon>TaskEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page\task\TaskEdit.aspx.designer.cs">
+    <Compile Include="TaskEdit.aspx.designer.cs">
       <DependentUpon>TaskEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="page\task\TaskView.aspx.cs">
+    <Compile Include="TaskView.aspx.cs">
       <DependentUpon>TaskView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="page\task\TaskView.aspx.designer.cs">
+    <Compile Include="TaskView.aspx.designer.cs">
       <DependentUpon>TaskView.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="log4net.config" />
     <None Include="packages.config" />
-    <Content Include="page\MasterPage.Master" />
-    <Content Include="page\authentication\MasterPageAuthentication.Master" />
+    <Content Include="MasterPage.Master" />
+    <Content Include="MasterPageAuthentication.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -263,9 +262,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="page\employee\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

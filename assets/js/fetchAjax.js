@@ -1,99 +1,71 @@
 function methodGet(url) {
-  return new Promise(function (resolve, reject) {
-    let req = window.XMLHttpRequest
-      ? new XMLHttpRequest()
-      : new window.ActiveXObject("Microsoft.XMLHTTP");
-    req.open("GET", url, true);
-    req.timeout = 20000;
-    req.onload = () => {
-      if (req.status == 200) resolve(JSON.parse(req.responseText));
-      else if (req.status == 404) throw new Error("Not found");
-    };
-    req.ontimeout = (event) => {
-      throw new Error("Timeout");
-    };
-    req.onerror = (error) => {
-      reject(error);
-    };
-    try {
-      req.send(null);
-    } catch (error) {
-      reject(error);
-    }
-  });
+    console.log(`do request ajaxt method get url ${url}`);
+    return new Promise(function (resolve, reject) {
+        let req = new XMLHttpRequest();
+        req.open("GET", url, true);
+        req.setRequestHeader("content-type", "application/json");
+        req.setRequestHeader("Accept", "application/json");
+        req.onload = () => {
+            if (req.status == 200) resolve(JSON.parse(req.responseText));
+            else reject(Error(req.statusText));
+        };
+        req.onerror = () => {
+            reject(Error('error fetching JSON data'));
+        };
+        req.send(null);
+    });
 }
 
 function methodPost(url, body) {
-  return new Promise(function (resolve, reject) {
-    let req = window.XMLHttpRequest
-      ? new XMLHttpRequest()
-      : new window.ActiveXObject("Microsoft.XMLHTTP");
-    req.open("POST", url, true);
-    req.timeout = 20000;
-    req.onload = () => {
-      if (req.status == 200) resolve(JSON.parse(req.responseText));
-      else if (req.status == 404) throw new Error("Not found");
-    };
-    req.ontimeout = (event) => {
-      throw new Error("Timeout");
-    };
-    req.onerror = (error) => {
-      reject(error);
-    };
-    try {
-      req.send(JSON.stringify(body));
-    } catch (error) {
-      reject(error);
-    }
-  });
+    console.log(`do request ajaxt method post url ${url}`);
+    return new Promise(function (resolve, reject) {
+        let req = new XMLHttpRequest();
+        req.open("POST", url, true);
+        req.setRequestHeader("content-type", "application/json");
+        req.setRequestHeader("Accept", "application/json");
+        req.onload = () => {
+            if (req.status == 200) resolve(JSON.parse(req.responseText));
+            else reject(Error(req.statusText));
+        };
+        req.onerror = () => {
+            reject(Error('error fetching JSON data'));
+        };
+        req.send(JSON.stringify(body));
+    });
 }
 
 function methodPut(url, body) {
-  return new Promise(function (resolve, reject) {
-    let req = window.XMLHttpRequest
-      ? new XMLHttpRequest()
-      : new window.ActiveXObject("Microsoft.XMLHTTP");
-    req.open("PUT", url, true);
-    req.timeout = 20000;
-    req.onload = () => {
-      if (req.status == 200) resolve(JSON.parse(req.responseText));
-      else if (req.status == 404) throw new Error("Not found");
-    };
-    req.ontimeout = (event) => {
-      throw new Error("Timeout");
-    };
-    req.onerror = (error) => {
-      reject(error);
-    };
-    try {
-      req.send(JSON.stringify(body));
-    } catch (error) {
-      reject(error);
-    }
-  });
+    console.log(`do request ajaxt method put url ${url}`);
+    return new Promise(function (resolve, reject) {
+        let req = new XMLHttpRequest();
+        req.open("PUT", url, true);
+        req.setRequestHeader("content-type", "application/json");
+        req.setRequestHeader("Accept", "application/json");
+        req.onload = () => {
+            if (req.status == 200) resolve(JSON.parse(req.responseText));
+            else reject(Error(req.statusText));
+        };
+        req.onerror = () => {
+            reject(Error('error fetching JSON data'));
+        };
+        req.send(JSON.stringify(body));
+    });
 }
 
 function methodDelete(url) {
-  return new Promise(function (resolve, reject) {
-    let req = window.XMLHttpRequest
-      ? new XMLHttpRequest()
-      : new window.ActiveXObject("Microsoft.XMLHTTP");
-    req.open("DELETE", url, true);
-    req.timeout = 20000;
-    req.onload = () => {
-      if (req.status == 200) resolve(JSON.parse(req.responseText));
-      else if (req.status == 404) throw new Error("Not found");
-    };
-    req.ontimeout = (event) => {
-      throw new Error("Timeout");
-    };
-    req.onerror = (error) => {
-      reject(error);
-    };
-    try {
-      req.send(null);
-    } catch (error) {
-      reject(error);
-    }
-  });
+    console.log(`do request ajaxt method delete url ${url}`);
+    return new Promise(function (resolve, reject) {
+        let req = new XMLHttpRequest();
+        req.open("DELETE", url, true);
+        req.setRequestHeader("content-type", "application/json");
+        req.setRequestHeader("Accept", "application/json");
+        req.onload = () => {
+            if (req.status == 200) resolve(JSON.parse(req.responseText));
+            else reject(Error(req.statusText));
+        };
+        req.onerror = () => {
+            reject(Error('error fetching JSON data'));
+        };
+        req.send(null);
+    });
 }
