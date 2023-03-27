@@ -1,4 +1,4 @@
-ERROR 2023-03-26 16:33:12 – [6] error trying to insert method:saveButton_Click 
+ERROR 2023-03-26 16:33:12 ï¿½ [6] error trying to insert method:saveButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectCreate 
  line: 58 
@@ -7,13 +7,13 @@ System.FormatException: Input string was not in a correct format.
    at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
    at System.Convert.ToInt32(String value)
    at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 58
-ERROR 2023-03-26 16:33:12 – [6] error trying to something method:saveButton_Click 
+ERROR 2023-03-26 16:33:12 ï¿½ [6] error trying to something method:saveButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectCreate 
  line: 58 
 System.FormatException: Input string was not in a correct format.
    at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 69
-ERROR 2023-03-26 16:37:36 – [7] error trying to insert method:saveButton_Click 
+ERROR 2023-03-26 16:37:36 ï¿½ [7] error trying to insert method:saveButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectCreate 
  line: 62 
@@ -32,7 +32,7 @@ System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ID'.
    at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 62
 ClientConnectionId:be31dc13-fb1f-477a-8375-b6134d1ec5b0
 Error Number:207,State:1,Class:16
-ERROR 2023-03-26 16:37:36 – [7] error trying to something method:saveButton_Click 
+ERROR 2023-03-26 16:37:36 ï¿½ [7] error trying to something method:saveButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectCreate 
  line: 62 
@@ -40,7 +40,7 @@ System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'ID'.
    at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 69
 ClientConnectionId:be31dc13-fb1f-477a-8375-b6134d1ec5b0
 Error Number:207,State:1,Class:16
-ERROR 2023-03-26 16:43:49 – [6] error trying to insert method:saveButton_Click 
+ERROR 2023-03-26 16:43:49 ï¿½ [6] error trying to insert method:saveButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectCreate 
  line: 61 
@@ -57,7 +57,7 @@ System.Data.SqlClient.SqlException (0x80131904): The variable name '@employeeId'
    at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 61
 ClientConnectionId:a71deb6d-5455-470c-a9f4-ba56af129968
 Error Number:134,State:1,Class:15
-ERROR 2023-03-26 16:43:50 – [6] error trying to something method:saveButton_Click 
+ERROR 2023-03-26 16:43:50 ï¿½ [6] error trying to something method:saveButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectCreate 
  line: 61 
@@ -65,7 +65,7 @@ System.Data.SqlClient.SqlException (0x80131904): The variable name '@employeeId'
    at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 68
 ClientConnectionId:a71deb6d-5455-470c-a9f4-ba56af129968
 Error Number:134,State:1,Class:15
-ERROR 2023-03-26 16:45:43 – [6] error trying to insert method:saveButton_Click 
+ERROR 2023-03-26 16:45:43 ï¿½ [6] error trying to insert method:saveButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectCreate 
  line: 63 
@@ -73,7 +73,7 @@ System.Data.SqlClient.SqlException (0x80131904): The variable name '@employeeId'
    at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 70
 ClientConnectionId:d47a7d81-beea-4e6a-9ce8-60570aeab59e
 Error Number:134,State:1,Class:15
-ERROR 2023-03-26 16:45:43 – [6] error trying to something method:saveButton_Click 
+ERROR 2023-03-26 16:45:43 ï¿½ [6] error trying to something method:saveButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectCreate 
  line: 63 
@@ -81,7 +81,7 @@ System.Data.SqlClient.SqlException (0x80131904): The variable name '@employeeId'
    at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 77
 ClientConnectionId:d47a7d81-beea-4e6a-9ce8-60570aeab59e
 Error Number:134,State:1,Class:15
-ERROR 2023-03-26 16:50:07 – [7] error trying to insert method:saveButton_Click 
+ERROR 2023-03-26 16:50:07 ï¿½ [7] error trying to insert method:saveButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectCreate 
  line: 63 
@@ -89,7 +89,7 @@ System.Data.SqlClient.SqlException (0x80131904): The variable name '@employeeId'
    at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 70
 ClientConnectionId:0cce6326-68e1-4c6f-ad78-c73d6eb3b79c
 Error Number:134,State:1,Class:15
-ERROR 2023-03-26 16:50:07 – [7] error trying to something method:saveButton_Click 
+ERROR 2023-03-26 16:50:07 ï¿½ [7] error trying to something method:saveButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectCreate 
  line: 63 
@@ -97,7 +97,7 @@ System.Data.SqlClient.SqlException (0x80131904): The variable name '@employeeId'
    at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 77
 ClientConnectionId:0cce6326-68e1-4c6f-ad78-c73d6eb3b79c
 Error Number:134,State:1,Class:15
-ERROR 2023-03-26 17:07:41 – [9] error trying to insert method:saveButton_Click 
+ERROR 2023-03-26 17:07:41 ï¿½ [9] error trying to insert method:saveButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectCreate 
  line: 65 
@@ -107,7 +107,7 @@ System.Threading.ThreadAbortException: Thread was being aborted.
    at System.Web.HttpResponse.AbortCurrentThread()
    at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
    at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 65
-ERROR 2023-03-26 17:07:41 – [9] error trying to something method:saveButton_Click 
+ERROR 2023-03-26 17:07:41 ï¿½ [9] error trying to something method:saveButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectCreate 
  line: 65 
@@ -115,7 +115,7 @@ System.InvalidOperationException: This SqlTransaction has completed; it is no lo
    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
    at System.Data.SqlClient.SqlTransaction.Rollback()
    at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 71
-ERROR 2023-03-26 18:49:12 – [6] error trying to update method:updateButton_Click 
+ERROR 2023-03-26 18:49:12 ï¿½ [6] error trying to update method:updateButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectEdit 
  line: 79 
@@ -133,7 +133,7 @@ Must declare the scalar variable "@title".
    at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 79
 ClientConnectionId:6f27b5e3-680a-48b0-bf4b-aedcfc8f5e6a
 Error Number:134,State:1,Class:15
-ERROR 2023-03-26 18:49:12 – [6] error trying to do something method:updateButton_Click 
+ERROR 2023-03-26 18:49:12 ï¿½ [6] error trying to do something method:updateButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectEdit 
  line: 79 
@@ -142,7 +142,7 @@ Must declare the scalar variable "@title".
    at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 96
 ClientConnectionId:6f27b5e3-680a-48b0-bf4b-aedcfc8f5e6a
 Error Number:134,State:1,Class:15
-ERROR 2023-03-26 18:50:08 – [6] error trying to update method:updateButton_Click 
+ERROR 2023-03-26 18:50:08 ï¿½ [6] error trying to update method:updateButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectEdit 
  line: 79 
@@ -160,7 +160,7 @@ Must declare the scalar variable "@title".
    at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 79
 ClientConnectionId:5d952e29-dc48-40e8-9d99-f915329161f5
 Error Number:134,State:1,Class:15
-ERROR 2023-03-26 18:50:08 – [6] error trying to do something method:updateButton_Click 
+ERROR 2023-03-26 18:50:08 ï¿½ [6] error trying to do something method:updateButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectEdit 
  line: 79 
@@ -169,7 +169,7 @@ Must declare the scalar variable "@title".
    at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 97
 ClientConnectionId:5d952e29-dc48-40e8-9d99-f915329161f5
 Error Number:134,State:1,Class:15
-ERROR 2023-03-26 18:59:29 – [6] error trying to update method:updateButton_Click 
+ERROR 2023-03-26 18:59:29 ï¿½ [6] error trying to update method:updateButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectEdit 
  line: 79 
@@ -184,7 +184,7 @@ System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variabl
    at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 79
 ClientConnectionId:8a1711a1-4a25-476d-b75e-111f676daf8e
 Error Number:137,State:2,Class:15
-ERROR 2023-03-26 18:59:29 – [6] error trying to do something method:updateButton_Click 
+ERROR 2023-03-26 18:59:29 ï¿½ [6] error trying to do something method:updateButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectEdit 
  line: 79 
@@ -192,7 +192,7 @@ System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variabl
    at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 97
 ClientConnectionId:8a1711a1-4a25-476d-b75e-111f676daf8e
 Error Number:137,State:2,Class:15
-ERROR 2023-03-26 19:08:37 – [6] error trying to update method:updateButton_Click 
+ERROR 2023-03-26 19:08:37 ï¿½ [6] error trying to update method:updateButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectEdit 
  line: 79 
@@ -207,7 +207,8 @@ System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variabl
    at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 79
 ClientConnectionId:e5493402-dbbb-4be2-9776-c8437d574bb6
 Error Number:137,State:2,Class:15
-ERROR 2023-03-26 19:08:37 – [6] error trying to do something method:updateButton_Click 
+ERROR 2023-03-26 19:08:37 ï¿½ [6] error trying to do
+            } something method:updateButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectEdit 
  line: 79 
@@ -215,7 +216,7 @@ System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variabl
    at btl_web_nangcao_task_management_system.page.ProjectEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectEdit.aspx.cs:line 97
 ClientConnectionId:e5493402-dbbb-4be2-9776-c8437d574bb6
 Error Number:137,State:2,Class:15
-ERROR 2023-03-26 19:08:57 – [6] error trying to insert method:saveButton_Click 
+ERROR 2023-03-26 19:08:57 ï¿½ [6] error trying to insert method:saveButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectCreate 
  line: 65 
@@ -225,7 +226,7 @@ System.Threading.ThreadAbortException: Thread was being aborted.
    at System.Web.HttpResponse.AbortCurrentThread()
    at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
    at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 65
-ERROR 2023-03-26 19:08:57 – [6] error trying to something method:saveButton_Click 
+ERROR 2023-03-26 19:08:57 ï¿½ [6] error trying to something method:saveButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
  type:btl_web_nangcao_task_management_system.page.ProjectCreate 
  line: 65 
@@ -233,7 +234,7 @@ System.InvalidOperationException: This SqlTransaction has completed; it is no lo
    at System.Data.SqlClient.SqlTransaction.ZombieCheck()
    at System.Data.SqlClient.SqlTransaction.Rollback()
    at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 71
-ERROR 2023-03-26 22:43:58 – [6] error trying to update record method:closeButton_Click 
+ERROR 2023-03-26 22:43:58 ï¿½ [6] error trying to update record method:closeButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click 
  type:btl_web_nangcao_task_management_system.page.project.ProjectClose 
  line: 78 
@@ -248,7 +249,7 @@ System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variabl
    at btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectClose.aspx.cs:line 78
 ClientConnectionId:6e000299-b61e-4509-a1f4-c0137c96e8c0
 Error Number:137,State:2,Class:15
-ERROR 2023-03-26 22:43:58 – [6] error trying to do something method:closeButton_Click 
+ERROR 2023-03-26 22:43:58 ï¿½ [6] error trying to do something method:closeButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click 
  type:btl_web_nangcao_task_management_system.page.project.ProjectClose 
  line: 78 
@@ -256,7 +257,7 @@ System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variabl
    at btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectClose.aspx.cs:line 95
 ClientConnectionId:6e000299-b61e-4509-a1f4-c0137c96e8c0
 Error Number:137,State:2,Class:15
-ERROR 2023-03-26 22:45:06 – [6] error trying to update record method:closeButton_Click 
+ERROR 2023-03-26 22:45:06 ï¿½ [6] error trying to update record method:closeButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click 
  type:btl_web_nangcao_task_management_system.page.project.ProjectClose 
  line: 78 
@@ -271,7 +272,7 @@ System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variabl
    at btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectClose.aspx.cs:line 78
 ClientConnectionId:d6ef9056-e092-4e2b-b5be-33bde52629ca
 Error Number:137,State:2,Class:15
-ERROR 2023-03-26 22:45:06 – [6] error trying to do something method:closeButton_Click 
+ERROR 2023-03-26 22:45:06 ï¿½ [6] error trying to do something method:closeButton_Click 
  stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click 
  type:btl_web_nangcao_task_management_system.page.project.ProjectClose 
  line: 78 
