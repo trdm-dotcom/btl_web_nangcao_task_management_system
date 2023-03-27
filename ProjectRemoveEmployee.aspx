@@ -71,24 +71,31 @@
         }
 
         function doRequest() {
+            successMessage.innerText = null;
+            errorMessage.innerText = null;
             if (validateForm()) {
-                let employeeIds = removeEmployeeListBox.options.map((option) => {
-                    if (option.selected) {
-                        option.value;
-                    }
-                });
+                let employeeIds = removeEmployeeListBox.options
+                .filter((opt) => { 
+                    return opt.selected 
+                })
+                .map((opt) => opt.value);
                 const body = {
                     "projectId": projectDropDownList.value,
                     "employeeId": employeeIds
                 };
-                console.log(body);
-               /* methodPut("ProjectRemoveEmployee.aspx/removeEmployee", body)
+                methodPost("ProjectRemoveEmployee.aspx/removeEmployee", body)
                     .then((data) => {
-                        console.log(data);
+                        let response = JSON.parse(data);
+                        if(response.error) {
+                            successMessage.innerText = "Remove success";
+                        }
+                        else {
+                            errorMessage.innerText = response.message
+                        }
                     })
                     .catch((err) => {
                         errorMessage.innerText = err.message;
-                    });*/
+                    });
             }
             return false;
         }
