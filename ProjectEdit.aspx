@@ -35,7 +35,77 @@
             </asp:DropDownList>
             <asp:Label ID="feedbackLead" runat="server" CssClass="invalid-feedback"></asp:Label>
         </div>
-        <asp:Button ID="updateButton" runat="server" Text="update" OnClick="updateButton_Click" />
+        <asp:Button ID="updateButton" runat="server" Text="update" OnClick="updateButton_Click" OnClientClick="return validateForm()"/>
     </asp:Panel>
+    <script>
+        const titleTextBox = document.getElementById("<%= titleTextBox.ClientID %>");
+        const descriptionTextBox = document.getElementById("<%= descriptionTextBox.ClientID %>");
+        const startDateTextBox = document.getElementById("<%= startDateTextBox.ClientID %>");
+        const estimateDateTextBox = document.getElementById("<%= estimateDateTextBox.ClientID %>");
+        const leadDropDownList = document.getElementById("<%= leadDropDownList.ClientID %>");
+
+
+        const feedbackTitle = document.getElementById("<%= feedbackTitle.ClientID %>");
+        const feedbackDescription = document.getElementById("<%= feedbackDescription.ClientID %>");
+        const feedbackStartDate = document.getElementById("<%= feedbackStartDate.ClientID %>");
+        const feedbackestimateDate = document.getElementById("<%= feedbackestimateDate.ClientID %>");
+        const feedbackLead = document.getElementById("<%= feedbackLead.ClientID %>");
+
+        function validateForm() {
+            let valid = true;
+            let now = Date.parse(new Date().toJSON().slice(0, 10));
+            if (!titleTextBox.value.trim()) {
+                valid = false;
+                titleTextBox.classList.add("is-invalid");
+                feedbackTitle.innerText = "Please enter project title";
+            }
+            else {
+                titleTextBox.classList.remove("is-invalid");
+                feedbackTitle.innerText = null;
+            }
+            if (!descriptionTextBox.value.trim()) {
+                valid = false;
+                descriptionTextBox.classList.add("is-invalid");
+                feedbackDescription.innerText = "Please enter project description";
+            }
+            else {
+                descriptionTextBox.classList.remove("is-invalid");
+                feedbackDescription.innerText = null;
+            }
+            if (!startDateTextBox.value.trim()) {
+                valid = false;
+                startDateTextBox.classList.add("is-invalid");
+                feedbackStartDate.innerText = "Please enter project start date";
+            }
+            else {
+                startDateTextBox.classList.remove("is-invalid");
+                feedbackStartDate.innerText = null;
+            }
+            if (!estimateDateTextBox.value.trim()) {
+                valid = false;
+                estimateDateTextBox.classList.add("is-invalid");
+                feedbackestimateDate.innerText = "Please enter estimate date";
+            }
+            else if (Date.parse(estimateDateTextBox.value.trim()) < now) {
+                valid = false;
+                estimateDateTextBox.classList.add("is-invalid");
+                feedbackestimateDate.innerText = "Please enter valid date";
+            }
+            else {
+                estimateDateTextBox.classList.remove("is-invalid");
+                feedbackestimateDate.innerText = null;
+            }
+            if (!leadDropDownList.value || leadDropDownList.selectedIndex < 1) {
+                valid = false;
+                leadDropDownList.classList.add("is-invalid");
+                feedbackLead.innerText = "Please select project's lead";
+            }
+            else {
+                leadDropDownList.classList.remove("is-invalid");
+                feedbackLead.innerText = null;
+            }
+            return valid;
+        }
+    </script>
 </asp:Content>
 

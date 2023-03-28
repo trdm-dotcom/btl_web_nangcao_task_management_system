@@ -27,6 +27,8 @@ namespace btl_web_nangcao_task_management_system.page
 
         protected void saveButton_Click(object sender, EventArgs e)
         {
+            errorMessage.Text = string.Empty;
+            successMessage.Text = string.Empty;
             if (!CheckInputValues())
             {
                 return;
@@ -46,7 +48,7 @@ namespace btl_web_nangcao_task_management_system.page
                 project.startDate = Convert.ToDateTime(startDateTextBox.Text);
                 project.estimateDate = Convert.ToDateTime(estimateDateTextBox.Text);
                 project.status = ProjectStatus.OPEN;
-                project.lead = int.Parse(leadDropDownList.SelectedItem.Value);
+                project.lead = long.Parse(leadDropDownList.SelectedItem.Value);
                 try {
                     ProjectRepository projectRepository = new ProjectRepository();
                     long projectID = projectRepository.save(command, project);
@@ -62,7 +64,7 @@ namespace btl_web_nangcao_task_management_system.page
                     }
                     transaction.Commit();
                     Response.Clear();
-                    Response.Redirect(Request.RawUrl);
+                    Response.Redirect(string.Format("ProjectEdit.aspx?project={0}", projectID));
                     Response.Close();
                 }
                 catch (Exception ex) {
@@ -186,7 +188,7 @@ namespace btl_web_nangcao_task_management_system.page
         private bool validDropDownList(DropDownList dropDownList, Label feedbackLabel, string errorMessage)
         {
             bool isPassed = true;
-            if (dropDownList.SelectedIndex <= 0
+            if (dropDownList.SelectedIndex < 1
                 || dropDownList.SelectedItem.Value == null)
             {
                 dropDownList.CssClass = string.Format("{0} is-invalid", dropDownList.CssClass);

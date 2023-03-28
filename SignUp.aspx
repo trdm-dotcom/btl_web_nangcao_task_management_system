@@ -23,7 +23,7 @@
             placeholder="Confirm your password" CssClass="form-control"></asp:TextBox>
         <asp:Label ID="feedbackConfirmPassword" runat="server" CssClass="invalid-feedback"></asp:Label>
     </div>
-    <asp:Button runat="server" CssClass="button" ID="signupButton" Text="Signup" OnClick="signupButton_Click"/>
+    <asp:Button runat="server" CssClass="button" ID="signupButton" Text="Signup" OnClick="signupButton_Click" OnClientClick="return validateForm()"/>
     <div class="signup">
         <span class="signup">Already have an account?<a href="Login.aspx">Login</a></span>
     </div>
@@ -40,7 +40,7 @@
         const EMAIL_REGEX = new RegExp("^(?!\\.)[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$(?<!\\.)");
         const NAME_REGEX = new RegExp("^(?<!\\.)^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]*$(?<!\\.)");
 
-        signupButton.onclick = async function validateForm() {
+        function validateForm() {
             let valid = true;
             if (!nameTextBox.value.trim()) {
                 valid = false;
@@ -67,17 +67,8 @@
                 feedbackEmail.innerText = "Invalid email";
             }
             else {
-                let result = await checkcheckEmailAlreadyExists(emailTextBox.value);
-                let exists = JSON.parse(result.d).exists;
-                if (exists) {
-                    valid = false;
-                    emailTextBox.classList.add("is-invalid");
-                    feedbackEmail.innerText = "Email already exists";
-                }
-                else {
-                    emailTextBox.classList.remove("is-invalid");
-                    feedbackEmail.innerText = null;
-                }
+                emailTextBox.classList.remove("is-invalid");
+                feedbackEmail.innerText = null;
             }
             if (!passwordTextBox.value.trim()) {
                 valid = false;
@@ -98,19 +89,6 @@
                 feedbackConfirmPassword.innerText = null;
             }
             return valid;
-        }
-
-        async function checkcheckEmailAlreadyExists(email) {
-            const body = {
-                "email": email
-            };
-            try {
-                return await methodPost('SignUp.aspx/checkEmailAlreadyExists', body);
-            }
-            catch (err) {
-                console.error("error request ajax", err);
-                return false;
-            }
         }
     </script>
 </asp:Content>

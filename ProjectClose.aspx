@@ -25,7 +25,7 @@
         const statusProjectLabel = document.getElementById("<%= statusProjectLabel.ClientID %>");
         projectDropDownList.onchange = function() {
             let projectId = projectDropDownList.value;
-            if (projectId) {
+            if (projectId && projectDropDownList.selectedIndex > 0) {
                 methodGet(`ProjectClose.aspx?action=loadProject&project=${projectId}`)
                     .then((data) => {
                         statusProjectLabel.innerText = data.status
@@ -38,7 +38,7 @@
 
         function validateForm() {
             let valid = true;
-            if (!projectDropDownList.value) {
+            if (!projectDropDownList.value || projectDropDownList.selectedIndex < 1) {
                 valid = false;
                 projectDropDownList.classList.add();
                 feedbackProject.innerText = "Please select a project";

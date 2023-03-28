@@ -279,3 +279,353 @@ System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variabl
    at btl_web_nangcao_task_management_system.page.project.ProjectClose.closeButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectClose.aspx.cs:line 96
 ClientConnectionId:d6ef9056-e092-4e2b-b5be-33bde52629ca
 Error Number:137,State:2,Class:15
+ERROR 2023-03-28 22:50:58 – [6] error trying to delete method:removeEmployee 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee 
+ line: 73 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'AND'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at btl_web_nangcao_task_management_system.Repositories.EmployeeProjectRepository.delete(SqlCommand command, EmployeeProject employee) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\EmployeeProjectRepository.cs:line 33
+   at btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.<>c__DisplayClass3_2.<removeEmployee>b__0(Int64 employeeId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectRemoveEmployee.aspx.cs:line 78
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee(List`1 employeeIds, Int64 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectRemoveEmployee.aspx.cs:line 73
+ClientConnectionId:d236c766-55c9-4a2a-93b8-32fafea0d847
+Error Number:102,State:1,Class:15
+ERROR 2023-03-28 22:50:59 – [6] error trying to do something method:removeEmployee 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee 
+ line: 73 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'AND'.
+   at btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee(List`1 employeeIds, Int64 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectRemoveEmployee.aspx.cs:line 99
+ClientConnectionId:d236c766-55c9-4a2a-93b8-32fafea0d847
+Error Number:102,State:1,Class:15
+ERROR 2023-03-28 22:52:19 – [5] error trying to delete method:removeEmployee 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee 
+ line: 74 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'AND'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at btl_web_nangcao_task_management_system.Repositories.EmployeeProjectRepository.delete(SqlCommand command, EmployeeProject employee) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\EmployeeProjectRepository.cs:line 33
+   at btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.<>c__DisplayClass3_2.<removeEmployee>b__0(Int64 employeeId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectRemoveEmployee.aspx.cs:line 79
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee(List`1 employeeIds, Int64 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectRemoveEmployee.aspx.cs:line 74
+ClientConnectionId:64bfad95-229f-409b-b5b8-bee93af45bf3
+Error Number:102,State:1,Class:15
+ERROR 2023-03-28 22:52:19 – [5] error trying to do something method:removeEmployee 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee 
+ line: 74 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'AND'.
+   at btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee(List`1 employeeIds, Int64 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectRemoveEmployee.aspx.cs:line 101
+ClientConnectionId:64bfad95-229f-409b-b5b8-bee93af45bf3
+Error Number:102,State:1,Class:15
+ERROR 2023-03-28 22:52:59 – [6] error trying to delete method:removeEmployee 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee 
+ line: 74 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'AND'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at btl_web_nangcao_task_management_system.Repositories.EmployeeProjectRepository.delete(SqlCommand command, EmployeeProject employee) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\EmployeeProjectRepository.cs:line 33
+   at btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.<>c__DisplayClass3_2.<removeEmployee>b__0(Int64 employeeId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectRemoveEmployee.aspx.cs:line 79
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee(List`1 employeeIds, Int64 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectRemoveEmployee.aspx.cs:line 74
+ClientConnectionId:abf5ad27-0847-4e09-aaa1-5c5ef4d2421d
+Error Number:102,State:1,Class:15
+ERROR 2023-03-28 22:52:59 – [6] error trying to do something method:removeEmployee 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee 
+ line: 74 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'AND'.
+   at btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee(List`1 employeeIds, Int64 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectRemoveEmployee.aspx.cs:line 101
+ClientConnectionId:abf5ad27-0847-4e09-aaa1-5c5ef4d2421d
+Error Number:102,State:1,Class:15
+ERROR 2023-03-28 22:53:33 – [6] error trying to delete method:removeEmployee 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee 
+ line: 74 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'AND'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, String methodName, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at btl_web_nangcao_task_management_system.Repositories.EmployeeProjectRepository.delete(SqlCommand command, EmployeeProject employee) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\EmployeeProjectRepository.cs:line 33
+   at btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.<>c__DisplayClass3_2.<removeEmployee>b__0(Int64 employeeId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectRemoveEmployee.aspx.cs:line 79
+   at System.Collections.Generic.List`1.ForEach(Action`1 action)
+   at btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee(List`1 employeeIds, Int64 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectRemoveEmployee.aspx.cs:line 74
+ClientConnectionId:561a4b03-27fa-4c7c-9c11-1659e116eeff
+Error Number:102,State:1,Class:15
+ERROR 2023-03-28 22:53:33 – [6] error trying to do something method:removeEmployee 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee 
+ line: 74 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'AND'.
+   at btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee.removeEmployee(List`1 employeeIds, Int64 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectRemoveEmployee.aspx.cs:line 101
+ClientConnectionId:561a4b03-27fa-4c7c-9c11-1659e116eeff
+Error Number:102,State:1,Class:15
+ERROR 2023-03-28 23:32:35 – [6] error trying to do something method:FillEmployeeListBox 
+ stacktrace:System.Web.UI.Page.ProcessRequestMain > System.Web.UI.Page.RaiseChangedEvents > System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged > btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee.projectDropDownList_SelectedIndexChanged > btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee.FillEmployeeListBox 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee 
+ line: 155 
+System.ArgumentException: Column 'employeeId' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at btl_web_nangcao_task_management_system.Repositories.EmployeeProjectRepository.getAllNotInProject(SqlCommand command, Int32 id) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\EmployeeProjectRepository.cs:line 114
+   at btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee.FillEmployeeListBox(Int32 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectAddEmployee.aspx.cs:line 155
+ERROR 2023-03-28 23:32:38 – [6] error trying to do something method:FillEmployeeListBox 
+ stacktrace:System.Web.UI.Page.ProcessRequestMain > System.Web.UI.Page.RaiseChangedEvents > System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged > btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee.projectDropDownList_SelectedIndexChanged > btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee.FillEmployeeListBox 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee 
+ line: 155 
+System.ArgumentException: Column 'employeeId' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at btl_web_nangcao_task_management_system.Repositories.EmployeeProjectRepository.getAllNotInProject(SqlCommand command, Int32 id) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\EmployeeProjectRepository.cs:line 114
+   at btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee.FillEmployeeListBox(Int32 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectAddEmployee.aspx.cs:line 155
+ERROR 2023-03-28 23:34:17 – [6] error trying to do something method:FillEmployeeListBox 
+ stacktrace:System.Web.UI.Page.ProcessRequestMain > System.Web.UI.Page.RaiseChangedEvents > System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged > btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee.projectDropDownList_SelectedIndexChanged > btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee.FillEmployeeListBox 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee 
+ line: 156 
+System.ArgumentException: Column 'employeeId' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at btl_web_nangcao_task_management_system.Repositories.EmployeeProjectRepository.getAllNotInProject(SqlCommand command, Int64 id) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\EmployeeProjectRepository.cs:line 114
+   at btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee.FillEmployeeListBox(Int64 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectAddEmployee.aspx.cs:line 156
+ERROR 2023-03-28 23:36:08 – [6] error trying to do something method:FillEmployeeListBox 
+ stacktrace:System.Web.UI.Page.ProcessRequestMain > System.Web.UI.Page.RaiseChangedEvents > System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged > btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee.projectDropDownList_SelectedIndexChanged > btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee.FillEmployeeListBox 
+ type:btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee 
+ line: 156 
+System.ArgumentException: Column 'employeeId' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at btl_web_nangcao_task_management_system.Repositories.EmployeeProjectRepository.getAllNotInProject(SqlCommand command, Int64 id) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\EmployeeProjectRepository.cs:line 114
+   at btl_web_nangcao_task_management_system.page.project.ProjectAddEmployee.FillEmployeeListBox(Int64 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectAddEmployee.aspx.cs:line 156
+ERROR 2023-03-28 23:39:26 – [6] error trying to insert method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 65 
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 65
+ERROR 2023-03-28 23:39:27 – [6] error trying to something method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 65 
+System.InvalidOperationException: This SqlTransaction has completed; it is no longer usable.
+   at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 71
+ERROR 2023-03-29 00:06:16 – [6] error trying to do something method:GetEmployees 
+ stacktrace:System.Web.UI.Page.ProcessRequestMain > System.Web.UI.Page.RaiseChangedEvents > System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged > btl_web_nangcao_task_management_system.page.task.TaskCreate.projectDropDownList_SelectedIndexChanged > btl_web_nangcao_task_management_system.page.task.TaskCreate.GetEmployees 
+ type:btl_web_nangcao_task_management_system.page.task.TaskCreate 
+ line: 124 
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 't_employProject'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.Repositories.EmployeeRepository.findByEmployeeProjectProjectId(SqlCommand command, Int32 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\EmployeeRepository.cs:line 103
+   at btl_web_nangcao_task_management_system.page.task.TaskCreate.GetEmployees(Int32 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskCreate.aspx.cs:line 124
+ClientConnectionId:25a0e4a4-8fc4-4c24-8f9d-b5d4e7c85fd1
+Error Number:208,State:1,Class:16
+ERROR 2023-03-29 00:13:03 – [6] error trying to insert method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 67 
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 67
+ERROR 2023-03-29 00:13:03 – [6] error trying to something method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 67 
+System.InvalidOperationException: This SqlTransaction has completed; it is no longer usable.
+   at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 73
+ERROR 2023-03-29 00:14:01 – [6] error trying to insert method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 67 
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 67
+ERROR 2023-03-29 00:14:01 – [6] error trying to something method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.ProjectCreate 
+ line: 67 
+System.InvalidOperationException: This SqlTransaction has completed; it is no longer usable.
+   at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at btl_web_nangcao_task_management_system.page.ProjectCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\ProjectCreate.aspx.cs:line 73
+ERROR 2023-03-29 00:17:57 – [5] error trying to do something method:GetEmployees 
+ stacktrace:System.Web.UI.Page.ProcessRequestMain > System.Web.UI.Page.RaiseChangedEvents > System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged > btl_web_nangcao_task_management_system.page.task.TaskCreate.projectDropDownList_SelectedIndexChanged > btl_web_nangcao_task_management_system.page.task.TaskCreate.GetEmployees 
+ type:btl_web_nangcao_task_management_system.page.task.TaskCreate 
+ line: 124 
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 't_employProject'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.Repositories.EmployeeRepository.findByEmployeeProjectProjectId(SqlCommand command, Int32 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\EmployeeRepository.cs:line 103
+   at btl_web_nangcao_task_management_system.page.task.TaskCreate.GetEmployees(Int32 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskCreate.aspx.cs:line 124
+ClientConnectionId:e351d11e-d088-4a7b-9c22-e011586e4eab
+Error Number:208,State:1,Class:16
+ERROR 2023-03-29 00:17:57 – [5] error trying to insert method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.task.TaskCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.task.TaskCreate 
+ line: 60 
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'estimateDate'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at btl_web_nangcao_task_management_system.Repositories.TaskRepository.save(SqlCommand command, Task task) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\TaskRepository.cs:line 103
+   at btl_web_nangcao_task_management_system.page.task.TaskCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskCreate.aspx.cs:line 60
+ClientConnectionId:e351d11e-d088-4a7b-9c22-e011586e4eab
+Error Number:207,State:1,Class:16
+ERROR 2023-03-29 00:17:57 – [5] error trying to do something method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.task.TaskCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.task.TaskCreate 
+ line: 60 
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'estimateDate'.
+   at btl_web_nangcao_task_management_system.page.task.TaskCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskCreate.aspx.cs:line 70
+ClientConnectionId:e351d11e-d088-4a7b-9c22-e011586e4eab
+Error Number:207,State:1,Class:16
+ERROR 2023-03-29 00:19:04 – [6] error trying to do something method:GetEmployees 
+ stacktrace:System.Web.UI.Page.ProcessRequestMain > System.Web.UI.Page.RaiseChangedEvents > System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged > btl_web_nangcao_task_management_system.page.task.TaskCreate.projectDropDownList_SelectedIndexChanged > btl_web_nangcao_task_management_system.page.task.TaskCreate.GetEmployees 
+ type:btl_web_nangcao_task_management_system.page.task.TaskCreate 
+ line: 126 
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 't_employProject'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.Repositories.EmployeeRepository.findByEmployeeProjectProjectId(SqlCommand command, Int32 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\EmployeeRepository.cs:line 103
+   at btl_web_nangcao_task_management_system.page.task.TaskCreate.GetEmployees(Int32 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskCreate.aspx.cs:line 126
+ClientConnectionId:f7f22cc9-1326-4f28-9c38-79695d0dc2a2
+Error Number:208,State:1,Class:16
+ERROR 2023-03-29 00:19:04 – [6] error trying to insert method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.task.TaskCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.task.TaskCreate 
+ line: 61 
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'estimateDate'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteScalar()
+   at btl_web_nangcao_task_management_system.Repositories.TaskRepository.save(SqlCommand command, Task task) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\TaskRepository.cs:line 103
+   at btl_web_nangcao_task_management_system.page.task.TaskCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskCreate.aspx.cs:line 61
+ClientConnectionId:f7f22cc9-1326-4f28-9c38-79695d0dc2a2
+Error Number:207,State:1,Class:16
+ERROR 2023-03-29 00:19:04 – [6] error trying to do something method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.task.TaskCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.task.TaskCreate 
+ line: 61 
+System.Data.SqlClient.SqlException (0x80131904): Invalid column name 'estimateDate'.
+   at btl_web_nangcao_task_management_system.page.task.TaskCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskCreate.aspx.cs:line 71
+ClientConnectionId:f7f22cc9-1326-4f28-9c38-79695d0dc2a2
+Error Number:207,State:1,Class:16
+ERROR 2023-03-29 00:29:32 – [7] error trying to do something method:GetEmployees 
+ stacktrace:System.Web.UI.Page.ProcessRequestMain > System.Web.UI.Page.RaiseChangedEvents > System.Web.UI.WebControls.ListControl.OnSelectedIndexChanged > btl_web_nangcao_task_management_system.page.task.TaskCreate.projectDropDownList_SelectedIndexChanged > btl_web_nangcao_task_management_system.page.task.TaskCreate.GetEmployees 
+ type:btl_web_nangcao_task_management_system.page.task.TaskCreate 
+ line: 126 
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 't_employProject'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.Repositories.EmployeeRepository.findByEmployeeProjectProjectId(SqlCommand command, Int32 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\EmployeeRepository.cs:line 103
+   at btl_web_nangcao_task_management_system.page.task.TaskCreate.GetEmployees(Int32 projectId) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskCreate.aspx.cs:line 126
+ClientConnectionId:1f69501d-2ffb-4d62-863c-7de1ce7ac91a
+Error Number:208,State:1,Class:16
+ERROR 2023-03-29 00:29:32 – [7] error trying to insert method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.task.TaskCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.task.TaskCreate 
+ line: 64 
+System.Threading.ThreadAbortException: Thread was being aborted.
+   at System.Threading.Thread.AbortInternal()
+   at System.Threading.Thread.Abort(Object stateInfo)
+   at System.Web.HttpResponse.AbortCurrentThread()
+   at System.Web.HttpResponse.Redirect(String url, Boolean endResponse, Boolean permanent)
+   at btl_web_nangcao_task_management_system.page.task.TaskCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskCreate.aspx.cs:line 64
+ERROR 2023-03-29 00:29:32 – [7] error trying to do something method:saveButton_Click 
+ stacktrace:System.Web.UI.Page.ProcessRequest > System.Web.UI.Page.ProcessRequestMain > System.Web.UI.WebControls.Button.RaisePostBackEvent > System.Web.UI.WebControls.Button.OnClick > btl_web_nangcao_task_management_system.page.task.TaskCreate.saveButton_Click 
+ type:btl_web_nangcao_task_management_system.page.task.TaskCreate 
+ line: 64 
+System.InvalidOperationException: This SqlTransaction has completed; it is no longer usable.
+   at System.Data.SqlClient.SqlTransaction.ZombieCheck()
+   at System.Data.SqlClient.SqlTransaction.Rollback()
+   at btl_web_nangcao_task_management_system.page.task.TaskCreate.saveButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskCreate.aspx.cs:line 70

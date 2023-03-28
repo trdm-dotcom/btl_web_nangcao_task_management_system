@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Web;
@@ -111,7 +112,7 @@ namespace btl_web_nangcao_task_management_system.page.project
             {
                 return;
             }
-            FillEmployeeListBox(int.Parse(projectDropDownList.SelectedItem.Value));
+            FillEmployeeListBox(long.Parse(projectDropDownList.SelectedItem.Value));
         }
 
         private void FillProjectDropDownList()
@@ -143,7 +144,7 @@ namespace btl_web_nangcao_task_management_system.page.project
             }
         }
 
-        private void FillEmployeeListBox(int projectId)
+        private void FillEmployeeListBox(long projectId)
         {
             SqlConnection connection = new SqlConnection(connectionString);
             try
@@ -164,6 +165,7 @@ namespace btl_web_nangcao_task_management_system.page.project
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex);
                 log.Error("error trying to do something", ex);
                 errorMessage.Text = "Internal error server";
             }
@@ -176,7 +178,7 @@ namespace btl_web_nangcao_task_management_system.page.project
         private bool validDropDownList(DropDownList dropDownList, Label feedbackLabel, string errorMessage)
         {
             bool isPassed = true;
-            if (dropDownList.SelectedIndex <= 0
+            if (dropDownList.SelectedIndex < 1
                 || dropDownList.SelectedItem.Value == null)
             {
                 dropDownList.CssClass = string.Format("{0} is-invalid", dropDownList.CssClass);

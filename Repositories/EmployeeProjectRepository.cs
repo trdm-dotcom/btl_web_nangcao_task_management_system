@@ -27,7 +27,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
         public void delete(SqlCommand command, EmployeeProject employee)
         {
             command.CommandType = CommandType.Text;
-            command.CommandText = "DELETE FROM t_employeeProject WHERE employeeId = @employeeId AND ";
+            command.CommandText = "DELETE FROM t_employeeProject WHERE employeeId = @employeeId AND projectId = @projectId;";
             command.Parameters.AddWithValue("@employeeId", employee.employeeId);
             command.Parameters.AddWithValue("@projectId", employee.projectId);
             command.ExecuteNonQuery();
@@ -77,7 +77,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
             return employeeProjectList;
         }
 
-        public List<EmployeeProject> getAllInProject(SqlCommand command, int id)
+        public List<EmployeeProject> getAllInProject(SqlCommand command, long id)
         {
             List<EmployeeProject> employeeProjectList = new List<EmployeeProject>();
             command.CommandType = CommandType.Text;
@@ -91,14 +91,12 @@ namespace btl_web_nangcao_task_management_system.Repositories
                 EmployeeProject employeeProject = new EmployeeProject();
                 employeeProject.employeeId = (long)dataRow["employeeId"];
                 employeeProject.employeeName = dataRow["employeeName"].ToString();
-                employeeProject.projectName = dataRow["projectName"].ToString();
-                employeeProject.projectId = (long)dataRow["projectId"];
                 employeeProjectList.Add(employeeProject);
             }
             return employeeProjectList;
         }
 
-        public List<EmployeeProject> getAllNotInProject(SqlCommand command, int id)
+        public List<EmployeeProject> getAllNotInProject(SqlCommand command, long id)
         {
             List<EmployeeProject> employeeProjectList = new List<EmployeeProject>();
             command.CommandType = CommandType.Text;
@@ -111,8 +109,8 @@ namespace btl_web_nangcao_task_management_system.Repositories
             foreach (DataRow dataRow in dataTable.Rows)
             {
                 EmployeeProject employeeProject = new EmployeeProject();
-                employeeProject.employeeId = (long)dataRow["employeeId"];
-                employeeProject.employeeName = dataRow["employeeName"].ToString();
+                employeeProject.employeeId = (long)dataRow["id"];
+                employeeProject.employeeName = dataRow["name"].ToString();
                 employeeProjectList.Add(employeeProject);
             }
             return employeeProjectList;

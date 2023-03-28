@@ -154,7 +154,6 @@ namespace btl_web_nangcao_task_management_system.page
                     ListItem listItem = leadDropDownList.Items.FindByValue(result[0].lead.ToString());
                     if (listItem != null)
                     {
-                        Debug.WriteLine(listItem.Text);
                         listItem.Selected = true;
                     }
                 }
@@ -222,19 +221,6 @@ namespace btl_web_nangcao_task_management_system.page
                 feedbackestimateDate.Text = string.Empty;
                 estimateDateTextBox.CssClass = estimateDateTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
-
-            if (!DateTime.TryParse(startDateTextBox.Text, out _)
-                || Convert.ToDateTime(startDateTextBox.Text) < DateTime.Now.Date)
-            {
-                startDateTextBox.CssClass = string.Format("{0} is-invalid", titleTextBox.CssClass);
-                feedbackStartDate.Text = "Please enter valid date";
-                isPassed = false;
-            }
-            else
-            {
-                feedbackStartDate.Text = string.Empty;
-                startDateTextBox.CssClass = startDateTextBox.CssClass.Replace("is-invalid", string.Empty);
-            }
             if (!DateTime.TryParse(estimateDateTextBox.Text, out _)
                 || Convert.ToDateTime(estimateDateTextBox.Text) < DateTime.Now.Date)
             {
@@ -253,7 +239,7 @@ namespace btl_web_nangcao_task_management_system.page
         private bool validDropDownList(DropDownList dropDownList, Label feedbackLabel, string errorMessage)
         {
             bool isPassed = true;
-            if (dropDownList.SelectedIndex <= 0
+            if (dropDownList.SelectedIndex < 1
                 || dropDownList.SelectedItem.Value == null)
             {
                 dropDownList.CssClass = string.Format("{0} is-invalid", dropDownList.CssClass);

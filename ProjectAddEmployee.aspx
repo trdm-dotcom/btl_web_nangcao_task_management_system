@@ -44,7 +44,7 @@
 
         function validateForm() {
             let valid = true;
-            if (!projectDropDownList.value) {
+            if (!projectDropDownList.value || projectDropDownList.selectedIndex < 1) {
                 valid = false;
                 projectDropDownList.classList.add("is-invalid");
                 feedbackProject.innerText = "Please select a project";

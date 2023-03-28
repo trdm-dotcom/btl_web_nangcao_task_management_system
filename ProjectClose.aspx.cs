@@ -142,7 +142,7 @@ namespace btl_web_nangcao_task_management_system.page.project
         private bool validDropDownList(DropDownList dropDownList, Label feedbackLabel, string errorMessage)
         {
             bool isPassed = true;
-            if (dropDownList.SelectedIndex <= 0
+            if (dropDownList.SelectedIndex < 1
                 || dropDownList.SelectedItem.Value == null)
             {
                 dropDownList.CssClass = string.Format("{0} is-invalid", dropDownList.CssClass);

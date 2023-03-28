@@ -18,7 +18,7 @@
             <asp:ListBox ID="removeEmployeeListBox" runat="server" Height="100%" Width="100%" CssClass="form-control"></asp:ListBox>
             <asp:Label ID="feedbackRemoveEmployee" runat="server" CssClass="invalid-feedback"></asp:Label>
         </div>
-        <asp:Button ID="saveButton" runat="server" Text="Save" OnClientClick="return doRequest()" />
+        <button id="saveButton" type="button" onclick="doRequest()" >Save</button>
     </asp:Panel>
     <script>
         const projectDropDownList = document.getElementById("<%= projectDropDownList.ClientID %>");
@@ -30,7 +30,7 @@
 
         function validateForm() {
             let valid = true;
-            if (!projectDropDownList.value) {
+            if (!projectDropDownList.value || projectDropDownList.selectedIndex < 1) {
                 valid = false;
                 projectDropDownList.classList.add("is-invalid");
                 feedbackProject.innerText = "Please select a project";
@@ -54,14 +54,14 @@
         projectDropDownList.onchange = function () {
             let projectId = projectDropDownList.value;
             removeEmployeeListBox.innerHTML = null;
-            if (projectId) {
-                methodGet(`ProjectRemoveEmployee.aspx?action=loadEmployeeInProject&project=${projectId}`)
+            if (projectId && projectDropDownList.selectedIndex > 0) {
+                methodGet(`ProjectRemoveEmployee.aspx?action=loadEmployeeInProject&projectId=${projectId}`)
                     .then((data) => {
                         data.forEach((v, k) => {
                             let option = document.createElement("option");
                             option.text = v.employeeName;
                             option.value = v.employeeId;
-                            removeEmployeeListBox.appendChild(option);
+                            removeEmployeeListBox.add(option);
                         });
                     })
                     .catch((err) => {
@@ -71,26 +71,42 @@
         }
 
         function doRequest() {
+            errorMessage.innerText = null;
+            successMessage.innerText = null;
             if (validateForm()) {
-                let employeeIds = removeEmployeeListBox.options.map((option) => {
+                let employeeIds = [];
+                for (let option of removeEmployeeListBox.options) {
                     if (option.selected) {
-                        option.value;
+                        employeeIds.push(option.value);
                     }
-                });
+                }
+                if (employeeIds.length < 1) {
+                    errorMessage.innerHTML = "Please select employee";
+                    return;
+                }
                 const body = {
                     "projectId": projectDropDownList.value,
-                    "employeeId": employeeIds
+                    "employeeIds": employeeIds
                 };
-                console.log(body);
-               /* methodPut("ProjectRemoveEmployee.aspx/removeEmployee", body)
+                methodPost("ProjectRemoveEmployee.aspx/removeEmployee", body)
                     .then((data) => {
-                        console.log(data);
+                        let response = JSON.parse(data.d);
+                        if (response.error) {
+                            errorMessage.innerText = response.message;
+                        }
+                        else {
+                            successMessage.innerText = response.message;
+                            for (var i = 0; i < removeEmployeeListBox.length; i++) {
+                                if (employeeIds.includes(removeEmployeeListBox.options[i].value)) {
+                                    removeEmployeeListBox.remove(i);
+                                }
+                            }
+                        }
                     })
                     .catch((err) => {
                         errorMessage.innerText = err.message;
-                    });*/
+                    });
             }
-            return false;
         }
     </script>
 </asp:Content>

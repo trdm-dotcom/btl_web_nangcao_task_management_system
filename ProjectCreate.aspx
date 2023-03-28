@@ -3,6 +3,7 @@
 <asp:Content ID="ContentProjectCreate" runat="server" ContentPlaceHolderID="mainContentPlaceHolder">
     <asp:Panel runat="server" ID="Panel1">
         <asp:Label ID="errorMessage" runat="server" CssClass="invalid-feedback"></asp:Label>
+        <asp:Label ID="successMessage" runat="server" CssClass="success-feedback"></asp:Label>
         <div class="form-group">
             <asp:Label ID="Label1" runat="server" Text="Project Title:" AssociatedControl="titleTextBox"></asp:Label>
             <asp:TextBox ID="titleTextBox" runat="server" CssClass="form-control"></asp:TextBox>
@@ -134,7 +135,7 @@
                 selectedEmployeeListBox.classList.remove("is-invalid");
                 feedbackEmployee.innerText = null;
             }
-            if (!leadDropDownList.value) {
+            if (!leadDropDownList.value || leadDropDownList.selectedIndex < 1) {
                 valid = false;
                 leadDropDownList.classList.add("is-invalid");
                 feedbackLead.innerText = "Please select project's lead";
@@ -143,7 +144,7 @@
                 leadDropDownList.classList.remove("is-invalid");
                 feedbackLead.innerText = null;
             }
-            return true;
+            return valid;
         }
     </script>
 </asp:Content>

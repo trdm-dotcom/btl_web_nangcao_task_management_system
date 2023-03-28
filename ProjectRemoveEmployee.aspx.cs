@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Services;
@@ -25,13 +26,17 @@ namespace btl_web_nangcao_task_management_system.page.project
             {
                 FillProjectDropDownList();
             }
+            if (Request.QueryString["project"] != null)
+            {
+                FillEmployeeListBox(long.Parse(Request.QueryString["project"]));
+            }
             if (Request.QueryString["action"] != null)
             {
                 string response = string.Empty;
                 switch (Request.QueryString["action"])
                 {
                     case "loadEmployeeInProject":
-                        response = FillEmployeeListBox(long.Parse(Request.QueryString["project"]));
+                        response = getEmployeeInProject(long.Parse(Request.QueryString["projectId"]));
                         break;
                 }
                 Response.Clear();
@@ -44,70 +49,77 @@ namespace btl_web_nangcao_task_management_system.page.project
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static string removeEmployee(long projectId, List<long> employeeIds)
+        public static string removeEmployee(List<long> employeeIds, long projectId)
         {
             string message = string.Empty;
             bool error = false;
-            SqlConnection connection = new SqlConnection(connectionString);
-            try
+            if (employeeIds.Count < 1)
             {
-                connection.Open();
-                SqlCommand command = connection.CreateCommand();
-                SqlTransaction transaction;
-                transaction = connection.BeginTransaction();
-                command.Connection = connection;
-                command.Transaction = transaction;
+                message = "Please select employee";
+            }
+            else
+            {
+                SqlConnection connection = new SqlConnection(connectionString);
                 try
                 {
-                    ProjectRepository projectRepository = new ProjectRepository();
-                    Dictionary<string, object> parametes = new Dictionary<string, object>
+                    connection.Open();
+                    SqlCommand command = connection.CreateCommand();
+                    SqlTransaction transaction;
+                    transaction = connection.BeginTransaction();
+                    command.Connection = connection;
+                    command.Transaction = transaction;
+                    try
+                    {
+                        ProjectRepository projectRepository = new ProjectRepository();
+                        Dictionary<string, object> parametes = new Dictionary<string, object>
                     {
                         {"id",  projectId}
                     };
-                    List<Project> projects = projectRepository.findByConditionAnd(command, parametes);
-                    if (projects.Count > 0)
-                    {
-                        if (projects[0].status.Equals(ProjectStatus.OPEN))
+                        List<Project> projects = projectRepository.findByConditionAnd(command, parametes);
+                        if (projects.Count > 0)
                         {
-                            EmployeeProjectRepository employeeProjectRepository = new EmployeeProjectRepository();
-                            employeeIds.ForEach(employeeId =>
+                            if (projects[0].status.Equals(ProjectStatus.OPEN))
                             {
-                                EmployeeProject employeeProject = new EmployeeProject();
-                                employeeProject.employeeId = employeeId;
-                                employeeProject.projectId = projectId;
-                              /*  employeeProjectRepository.delete(command, employeeProject);*/
-                            });
-                            transaction.Commit();
-                            message = "Add success";
+                                EmployeeProjectRepository employeeProjectRepository = new EmployeeProjectRepository();
+                                employeeIds.ToList().ForEach(employeeId =>
+                                {
+                                    EmployeeProject employeeProject = new EmployeeProject();
+                                    employeeProject.employeeId = employeeId;
+                                    employeeProject.projectId = projectId;
+                                    employeeProjectRepository.delete(command, employeeProject);
+                                });
+                                transaction.Commit();
+                                message = "Remove success";
+                            }
+                            else
+                            {
+                                message = "Project was closed";
+                                error = true;
+                            }
                         }
                         else
                         {
-                            message = "Project was closed";
+                            message = "Project not found";
                             error = true;
                         }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        message = "Project not found";
-                        error = true;
+                        log.Error("error trying to delete", ex);
+                        transaction.Rollback();
+                        throw ex;
                     }
                 }
                 catch (Exception ex)
                 {
-                    log.Error("error trying to delete", ex);
-                    transaction.Rollback();
-                    throw ex;
+                    log.Error("error trying to do something", ex);
+                    message = "Internal error server";
+                    error = true;
                 }
-            }
-            catch (Exception ex)
-            {
-                log.Error("error trying to do something", ex);
-                message = "Internal error server";
-                error = true;
-            }
-            finally
-            {
-                connection.Close();
+                finally
+                {
+                    connection.Close();
+                }
             }
             return JsonConvert.SerializeObject(new
             {
@@ -145,7 +157,7 @@ namespace btl_web_nangcao_task_management_system.page.project
             }
         }
 
-        private string FillEmployeeListBox(long projectId)
+        private string getEmployeeInProject(long projectId)
         {
             string response = string.Empty;
             SqlConnection connection = new SqlConnection(connectionString);
@@ -169,22 +181,40 @@ namespace btl_web_nangcao_task_management_system.page.project
             return response;
         }
 
-        private bool validDropDownList(DropDownList dropDownList, Label feedbackLabel, string errorMessage)
+        private void FillEmployeeListBox(long projectId)
         {
-            bool isPassed = true;
-            if (dropDownList.SelectedIndex <= 0
-                || dropDownList.SelectedItem.Value == null)
+            errorMessage.Text = string.Empty;
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
             {
-                dropDownList.CssClass = string.Format("{0} is-invalid", dropDownList.CssClass);
-                feedbackLabel.Text = errorMessage;
-                isPassed = false;
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.Connection = connection;
+
+                EmployeeProjectRepository employeeProjectRepository = new EmployeeProjectRepository();
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "projectId", projectId}
+                };
+                removeEmployeeListBox.DataSource = employeeProjectRepository.findByConditionAnd(command, parameters);
+                removeEmployeeListBox.DataTextField = "employeeName";
+                removeEmployeeListBox.DataValueField = "employeeId";
+                removeEmployeeListBox.DataBind();
             }
-            else
+            catch (Exception ex)
             {
-                feedbackLabel.Text = string.Empty;
-                dropDownList.CssClass = dropDownList.CssClass.Replace("is-invalid", string.Empty);
+                log.Error("error trying to do something", ex);
+                errorMessage.Text = "Internal error server";
             }
-            return isPassed;
+            finally
+            {
+                ListItem listItem = projectDropDownList.Items.FindByValue(projectId.ToString());
+                if (listItem != null)
+                {
+                    listItem.Selected = true;
+                }
+                connection.Close();
+            }
         }
     }
 }

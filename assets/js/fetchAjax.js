@@ -21,7 +21,7 @@ function methodPost(url, body) {
     return new Promise(function (resolve, reject) {
         let req = new XMLHttpRequest();
         req.open("POST", url, true);
-        req.setRequestHeader("content-type", "application/json");
+        req.setRequestHeader("content-type", "application/json; charset=utf-8");
         req.setRequestHeader("Accept", "application/json");
         req.onload = () => {
             if (req.status == 200) resolve(JSON.parse(req.responseText));
@@ -39,7 +39,7 @@ function methodPut(url, body) {
     return new Promise(function (resolve, reject) {
         let req = new XMLHttpRequest();
         req.open("PUT", url, true);
-        req.setRequestHeader("content-type", "application/json");
+        req.setRequestHeader("content-type", "application/json; charset=utf-8");
         req.setRequestHeader("Accept", "application/json");
         req.onload = () => {
             if (req.status == 200) resolve(JSON.parse(req.responseText));

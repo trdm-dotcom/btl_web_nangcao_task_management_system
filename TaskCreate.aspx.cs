@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -41,27 +42,27 @@ namespace btl_web_nangcao_task_management_system.page.task
                     Task task = new Task();
                     task.name = titleTextBox.Text; 
                     task.description = descriptionTextBox.Text;
-                    task.projectId = int.Parse(projectDropDownList.SelectedItem.Value);
+                    task.projectId = long.Parse(projectDropDownList.SelectedItem.Value);
                     task.startDate = Convert.ToDateTime(startDateTextBox.Text);
                     task.estimatedTime = Convert.ToDateTime(estimateDateTextBox.Text);
-                    if(reporterDropDownList.SelectedItem.Value != null 
-                        && !reporterDropDownList.SelectedIndex.Equals(0))
+                    if(reporterDropDownList.SelectedIndex > 0)
                     {
-                        task.employeeReporter = int.Parse(reporterDropDownList.SelectedItem.Value);
+                        task.employeeReporter = long.Parse(reporterDropDownList.SelectedItem.Value);
                     }
-                    if (assigneeDropDownList.SelectedItem.Value != null
-                        && !assigneeDropDownList.SelectedIndex.Equals(0))
+                    if (assigneeDropDownList.SelectedIndex > 0)
                     {
-                        task.employeeAssignee = int.Parse(assigneeDropDownList.SelectedItem.Value);
+                        task.employeeAssignee = long.Parse(assigneeDropDownList.SelectedItem.Value);
                     }
-                    if (QADropDownList.SelectedItem.Value != null
-                        && !QADropDownList.SelectedIndex.Equals(0))
+                    if (QADropDownList.SelectedIndex > 0)
                     {
-                        task.employeeQA = int.Parse(QADropDownList.SelectedItem.Value);
+                        task.employeeQA = long.Parse(QADropDownList.SelectedItem.Value);
                     }
                     TaskRepository taskRepository = new TaskRepository();
-                    taskRepository.save(command, task);
+                    long taskId = taskRepository.save(command, task);
                     transaction.Commit();
+                    Response.Clear();
+                    Response.Redirect(string.Format("TaskEdit.aspx?task={0}", taskId));
+                    Response.Close();
                 }
                 catch (Exception ex)
                 {
@@ -135,18 +136,10 @@ namespace btl_web_nangcao_task_management_system.page.task
             return employees;
         }
 
-        protected void priorityDropDownList_DataBound(object sender, EventArgs e)
-        {
-            priorityDropDownList.Items.Insert(0, new ListItem("-Select-"));
-            priorityDropDownList.Items.Insert(1, new ListItem(TaskPriority.LOW.ToString(), TaskPriority.LOW.ToString()));
-            priorityDropDownList.Items.Insert(2, new ListItem(TaskPriority.MEDIUM.ToString(), TaskPriority.MEDIUM.ToString()));
-            priorityDropDownList.Items.Insert(3, new ListItem(TaskPriority.HIGH.ToString(), TaskPriority.HIGH.ToString()));
-        }
-
         private bool validDropDownList(DropDownList dropDownList, Label feedbackLabel, string errorMessage)
         {
             bool isPassed = true;
-            if (dropDownList.SelectedIndex.Equals(0)
+            if (dropDownList.SelectedIndex < 1
                 || dropDownList.SelectedItem.Value == null)
             {
                 dropDownList.CssClass = string.Format("{0} is-invalid", dropDownList.CssClass);
@@ -161,21 +154,6 @@ namespace btl_web_nangcao_task_management_system.page.task
             return isPassed;
         }
 
-        protected void reporterDropDownList_DataBound(object sender, EventArgs e)
-        {
-            reporterDropDownList.Items.Insert(0, new ListItem("-Select-"));
-        }
-
-        protected void assigneeDropDownList_DataBound(object sender, EventArgs e)
-        {
-            assigneeDropDownList.Items.Insert(0, new ListItem("-Select-"));
-        }
-
-        protected void QADropDownList_DataBound(object sender, EventArgs e)
-        {
-            QADropDownList.Items.Insert(0, new ListItem("-Select-"));
-        }
-
         private void FillProjectDropDownList()
         {
             SqlConnection connection = new SqlConnection(connectionString);
@@ -185,10 +163,10 @@ namespace btl_web_nangcao_task_management_system.page.task
                 SqlCommand command = connection.CreateCommand();
                 command.Connection = connection;
                 ProjectRepository projectRepository = new ProjectRepository();
-                projectDropDownList.DataSource = projectRepository.findAll(command);
-                projectDropDownList.DataTextField = "title";
-                projectDropDownList.DataValueField = "id";
-                projectDropDownList.DataBind();
+                projectRepository.findAll(command).ForEach(p =>
+                {
+                    projectDropDownList.Items.Add(new ListItem(p.title, p.id.ToString()));
+                });
             }
             catch (Exception ex)
             {
@@ -274,11 +252,6 @@ namespace btl_web_nangcao_task_management_system.page.task
                 estimateDateTextBox.CssClass = estimateDateTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             return isPassed;
-        }
-
-        protected void projectDropDownList_DataBound(object sender, EventArgs e)
-        {
-            projectDropDownList.Items.Insert(0, new ListItem("-Select-"));
         }
     }
 }

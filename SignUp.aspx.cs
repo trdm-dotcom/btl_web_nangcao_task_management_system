@@ -156,14 +156,6 @@ namespace btl_web_nangcao_task_management_system.page.authentication
             return isPassed;
         }
 
-        [WebMethod]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static string checkEmailAlreadyExists(string email) {
-            bool exists = doCheckEmailAlreadyExists(email) != 0;
-            CheckResponseExists response = new CheckResponseExists() { exists = exists };
-            return JsonConvert.SerializeObject(response);
-        }
-
         private static int doCheckEmailAlreadyExists(string email) {
             int isExists = 0;
             SqlConnection connection = new SqlConnection(connectionString);
