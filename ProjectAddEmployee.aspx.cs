@@ -74,7 +74,6 @@ namespace btl_web_nangcao_task_management_system.page.project
                                 }
                                 
                             }
-                            transaction.Commit();
                             successMessage.Text = "Add success";
                         }
                         else
@@ -86,6 +85,7 @@ namespace btl_web_nangcao_task_management_system.page.project
                     {
                         errorMessage.Text = "Project not found";
                     }
+                    transaction.Commit();
                 }
                 catch(Exception ex) {
                     transaction.Rollback();

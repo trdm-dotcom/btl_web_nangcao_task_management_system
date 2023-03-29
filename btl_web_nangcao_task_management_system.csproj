@@ -136,6 +136,7 @@
     <Compile Include="model\db\Project.cs" />
     <Compile Include="model\db\Task.cs" />
     <Compile Include="model\dto\ProjectDto.cs" />
+    <Compile Include="model\dto\TaskDto.cs" />
     <Compile Include="model\EmployeeRole.cs" />
     <Compile Include="model\ProjectStatus.cs" />
     <Compile Include="model\TaskPriority.cs" />

@@ -26,7 +26,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
                 task.name = dataRow["name"].ToString();
                 task.description = dataRow["description"].ToString();
                 task.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
-                task.estimatedTime = Convert.ToDateTime(dataRow["estimatedTime"].ToString());
+                task.estimateDate = Convert.ToDateTime(dataRow["estimateDate"].ToString());
                 task.employeeReporter = (long)dataRow["employeeReporter"];
                 task.employeeAssignee = (long)dataRow["employeeAssignee"];
                 task.employeeQA = (long)dataRow["employeeQA"];
@@ -74,7 +74,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
                 item.name = dataRow["name"].ToString();
                 item.description = dataRow["description"].ToString();
                 item.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
-                item.estimatedTime = Convert.ToDateTime(dataRow["estimatedTime"].ToString());
+                item.estimateDate = Convert.ToDateTime(dataRow["estimateDate"].ToString());
                 item.employeeReporter = (long)dataRow["employeeReporter"];
                 item.employeeAssignee = (long)dataRow["employeeAssignee"];
                 item.employeeQA = (long)dataRow["employeeQA"];
@@ -94,7 +94,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
             command.Parameters.AddWithValue("@description", task.description);
             command.Parameters.AddWithValue("@projectId", task.projectId);
             command.Parameters.AddWithValue("@startDate", task.startDate);
-            command.Parameters.AddWithValue("@estimateDate", task.estimatedTime);
+            command.Parameters.AddWithValue("@estimateDate", task.estimateDate);
             command.Parameters.AddWithValue("@employeeReporter", task.employeeReporter);
             command.Parameters.AddWithValue("@employeeAssignee", task.employeeAssignee);
             command.Parameters.AddWithValue("@employeeQA", task.employeeQA);
@@ -105,7 +105,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
             return id;
         }
 
-        public void update(SqlCommand command, Dictionary<string, object> parameters, int id)
+        public void update(SqlCommand command, Dictionary<string, object> parameters, long id)
         {
             StringBuilder sb = new StringBuilder("UPDATE t_task SET");
             foreach (string key in parameters.Keys)

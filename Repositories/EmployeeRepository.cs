@@ -92,11 +92,11 @@ namespace btl_web_nangcao_task_management_system.Repositories
             return employeeList;
         }
 
-        public List<Employee> findByEmployeeProjectProjectId(SqlCommand command, int projectId)
+        public List<Employee> findByEmployeeProjectProjectId(SqlCommand command, long projectId)
         {
             List<Employee> employeeList = new List<Employee>();
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT * FROM t_employee AS e INNER JOIN t_employProject AS ep " +
+            command.CommandText = "SELECT e.* FROM t_employee AS e INNER JOIN t_employeeProject AS ep " +
                 "ON e.id = ep.employeeId WHERE ep.projectId = @projectId";
             command.Parameters.AddWithValue("@projectId", projectId);
             DataTable dataTable = new DataTable();

@@ -29,6 +29,8 @@ namespace btl_web_nangcao_task_management_system.page
         {
             errorMessage.Text = string.Empty;
             successMessage.Text = string.Empty;
+            bool success = false;
+            long projectID = -1;
             if (!CheckInputValues())
             {
                 return;
@@ -51,7 +53,7 @@ namespace btl_web_nangcao_task_management_system.page
                 project.lead = long.Parse(leadDropDownList.SelectedItem.Value);
                 try {
                     ProjectRepository projectRepository = new ProjectRepository();
-                    long projectID = projectRepository.save(command, project);
+                    projectID = projectRepository.save(command, project);
                     EmployeeProjectRepository employeeProjectRepository = new EmployeeProjectRepository();
                     foreach (ListItem item in selectedEmployeeListBox.Items)
                     {
@@ -63,12 +65,8 @@ namespace btl_web_nangcao_task_management_system.page
                         employeeProjectRepository.save(command, employeeProject);
                     }
                     transaction.Commit();
-                    Response.Clear();
-                    Response.Redirect(string.Format("ProjectEdit.aspx?project={0}", projectID));
-                    Response.Close();
                 }
                 catch (Exception ex) {
-                    Debug.WriteLine(ex.ToString());
                     log.Error("error trying to insert", ex);
                     transaction.Rollback();
                     throw ex;
@@ -78,9 +76,16 @@ namespace btl_web_nangcao_task_management_system.page
             {
                 log.Error("error trying to something", ex);
                 errorMessage.Text = "Internal error server";
+                success = false;
             }
             finally {
                 connection.Close();
+            }
+            if(success)
+            {
+                Response.Clear();
+                Response.Redirect(string.Format("ProjectEdit.aspx?project={0}", projectID));
+                Response.Close();
             }
         }
 

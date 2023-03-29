@@ -47,6 +47,7 @@ namespace btl_web_nangcao_task_management_system.page.project
         protected void closeButton_Click(object sender, EventArgs e)
         {
             errorMessage.Text = string.Empty;
+            bool success = false;
             if (!validDropDownList(projectDropDownList, feedbackProject, "Please select a project"))
             {
                 return;
@@ -76,24 +77,22 @@ namespace btl_web_nangcao_task_management_system.page.project
                                 {"status", Enum.GetName(typeof(ProjectStatus), ProjectStatus.CLOSE)}
                             };
                             projectRepository.update(command, paramters, projects[0].id);
-                            transaction.Commit();
-                            Response.Clear();
-                            Response.Redirect("ProjectPage.aspx");
-                            Response.Close();
                         }
                         else
                         {
                             errorMessage.Text = "Project was closed";
+                            success = false;
                         }
                     }
                     else
                     {
                         errorMessage.Text = "Project not found";
+                        success = false;
                     }
+                    transaction.Commit();
                 }
                 catch (Exception ex)
                 {
-                    Debug.WriteLine(ex.Message);
                     log.Error("error trying to update record", ex);
                     transaction.Rollback();
                     throw ex;
@@ -103,10 +102,17 @@ namespace btl_web_nangcao_task_management_system.page.project
             {
                 log.Error("error trying to do something", ex);
                 errorMessage.Text = "Internal error server";
+                success = false;
             }
             finally
             {
                 connection.Close();
+            }
+            if(success)
+            {
+                Response.Clear();
+                Response.Redirect("ProjectPage.aspx");
+                Response.Close();
             }
         }
 

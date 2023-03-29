@@ -4,7 +4,7 @@
     <asp:GridView ID="ProjectGridView" runat="server" Width="100%" AutoGenerateColumns="False" AllowPaging="True" OnPageIndexChanging="ProjectGridView_PageIndexChanging" CssClass="table">
         <Columns>
             <asp:BoundField />
-            <asp:BoundField DataField="title" HeaderText="Name" />
+            <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="TaskPage.aspx?project={0}" DataTextField="title" HeaderText="Name" />
             <asp:BoundField DataField="leadName" HeaderText="Lead" />
             <asp:TemplateField HeaderText="Status">
                 <EditItemTemplate>

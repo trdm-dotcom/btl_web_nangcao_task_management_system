@@ -16,7 +16,7 @@ namespace btl_web_nangcao_task_management_system.model.db
         public string description { get; set; }
         public long projectId { get; set; }
         public DateTime startDate { get; set; }
-        public DateTime estimatedTime { get; set; }
+        public DateTime estimateDate { get; set; }
         public long employeeAssignee { get; set; }
         public long employeeReporter { get; set; }
         public long employeeQA { get; set; }

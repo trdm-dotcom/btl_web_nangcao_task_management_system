@@ -1,6 +1,7 @@
 ﻿<%@ Page Language="C#" MasterPageFile="MasterPage.Master" AutoEventWireup="true" CodeBehind="TaskView.aspx.cs" Inherits="btl_web_nangcao_task_management_system.page.task.TaskView" %>
 
 <asp:Content ID="ContentTaskView" runat="server" ContentPlaceHolderID="mainContentPlaceHolder">
+    <asp:Label ID="errorMessage" runat="server" CssClass="invalid-feedback"></asp:Label>
     <div class="row no-gutters">
         <div class="col c-12 m-9 l-9">
             <asp:Label ID="nameTaskLabel" runat="server" CssClass="h2"></asp:Label>

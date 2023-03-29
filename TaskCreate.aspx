@@ -5,7 +5,7 @@
         <asp:Label ID="errorMessage" runat="server" CssClass="invalid-feedback"></asp:Label>
         <div class="form-group">
             <asp:Label ID="Label5" runat="server" Text="Project:" AssociatedControlID="projectDropDownList"></asp:Label>
-            <asp:DropDownList ID="projectDropDownList" runat="server" CssClass="form-control" OnSelectedIndexChanged="projectDropDownList_SelectedIndexChanged">
+            <asp:DropDownList ID="projectDropDownList" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="projectDropDownList_SelectedIndexChanged">
                 <Items>
                     <asp:ListItem Text="-Select-"/>
                 </Items>
@@ -149,7 +149,7 @@
             if (!priorityDropDownList.value || priorityDropDownList.selectedIndex < 1) {
                 valid = false;
                 priorityDropDownList.classList.add("is-invalid");
-                feedbackPriority.innerText = "Please select priority";
+                feedbackPriority.innerText = "Please select priority for task";
             }
             else {
                 priorityDropDownList.classList.remove("is-invalid");

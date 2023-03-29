@@ -35,8 +35,9 @@
             <nav class="cd-side-nav js-cd-side-nav">
                 <ul class="cd-side__list js-cd-side__list">
                     <li class="cd-side__item cd-side__item--has-children js-cd-item--has-children">
-                        <a href="ProjectPage.aspx">Project</a>
+                        <a>Project</a>
                         <ul class="cd-side__sub-list">
+                             <li class="cd-side__sub-item"><a href="ProjectPage.aspx">View all Project</a></li>
                             <li class="cd-side__sub-item"><a href="ProjectCreate.aspx">Create a New Project</a></li>
                             <li class="cd-side__sub-item"><a href="ProjectClose.aspx">Close a Project</a></li>
                         </ul>
@@ -48,20 +49,10 @@
                         </ul>
                     </li>
                     <li class="cd-side__item cd-side__item--has-children js-cd-item--has-children">
-                        <a href="#0">Employee</a>
-
+                        <a>Employee</a>
                         <ul class="cd-side__sub-list">
                             <li class="cd-side__sub-item"><a href="ProjectAddEmployee.aspx">Add Employee to Project</a></li>
                             <li class="cd-side__sub-item"><a href="ProjectRemoveEmployee.aspx">Remove Employee from Project</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="cd-side__item cd-side__item--has-children js-cd-item--has-children">
-                        <a href="#0">Reports</a>
-
-                        <ul class="cd-side__sub-list">
-                            <li class="cd-side__sub-item"><a href="#0">Tasks And Projects</a></li>
-                            <li class="cd-side__sub-item"><a href="#0">Task History</a></li>
                         </ul>
                     </li>
                 </ul>

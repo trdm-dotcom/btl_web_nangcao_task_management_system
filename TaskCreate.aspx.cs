@@ -19,12 +19,18 @@ namespace btl_web_nangcao_task_management_system.page.task
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
-            FillProjectDropDownList();
+            if (!Page.IsPostBack)
+            {
+                FillProjectDropDownList();
+            }
         }
 
         protected void saveButton_Click(object sender, EventArgs e)
         {
-            if(!CheckInputValues())
+            errorMessage.Text = string.Empty;
+            bool success = false;
+            long taskId = -1;
+            if (!CheckInputValues())
             {
                 return;
             }
@@ -39,30 +45,42 @@ namespace btl_web_nangcao_task_management_system.page.task
                 command.Transaction = transaction;
                 try
                 {
-                    Task task = new Task();
-                    task.name = titleTextBox.Text; 
-                    task.description = descriptionTextBox.Text;
-                    task.projectId = long.Parse(projectDropDownList.SelectedItem.Value);
-                    task.startDate = Convert.ToDateTime(startDateTextBox.Text);
-                    task.estimatedTime = Convert.ToDateTime(estimateDateTextBox.Text);
-                    if(reporterDropDownList.SelectedIndex > 0)
+                    Dictionary<string, object> parameters = new Dictionary<string, object>
                     {
-                        task.employeeReporter = long.Parse(reporterDropDownList.SelectedItem.Value);
-                    }
-                    if (assigneeDropDownList.SelectedIndex > 0)
+                        {"id", long.Parse(projectDropDownList.SelectedItem.Value)},
+                        {"status", Enum.GetName(typeof(ProjectStatus), ProjectStatus.OPEN)}
+                    };
+                    ProjectRepository projectRepository = new ProjectRepository();
+                    if(projectRepository.findByConditionAnd(command, parameters).Count() > 0)
                     {
-                        task.employeeAssignee = long.Parse(assigneeDropDownList.SelectedItem.Value);
+                        Task task = new Task();
+                        task.name = titleTextBox.Text;
+                        task.description = descriptionTextBox.Text;
+                        task.projectId = long.Parse(projectDropDownList.SelectedItem.Value);
+                        task.startDate = Convert.ToDateTime(startDateTextBox.Text);
+                        task.estimateDate = Convert.ToDateTime(estimateDateTextBox.Text);
+                        if (reporterDropDownList.SelectedIndex > 0)
+                        {
+                            task.employeeReporter = long.Parse(reporterDropDownList.SelectedItem.Value);
+                        }
+                        if (assigneeDropDownList.SelectedIndex > 0)
+                        {
+                            task.employeeAssignee = long.Parse(assigneeDropDownList.SelectedItem.Value);
+                        }
+                        if (QADropDownList.SelectedIndex > 0)
+                        {
+                            task.employeeQA = long.Parse(QADropDownList.SelectedItem.Value);
+                        }
+                        task.priority = (TaskPriority)Enum.Parse(typeof(TaskPriority), priorityDropDownList.SelectedItem.Value);
+                        TaskRepository taskRepository = new TaskRepository();
+                        taskId = taskRepository.save(command, task);
                     }
-                    if (QADropDownList.SelectedIndex > 0)
+                    else
                     {
-                        task.employeeQA = long.Parse(QADropDownList.SelectedItem.Value);
+                        errorMessage.Text = "Invalid project";
+                        success = false;
                     }
-                    TaskRepository taskRepository = new TaskRepository();
-                    long taskId = taskRepository.save(command, task);
                     transaction.Commit();
-                    Response.Clear();
-                    Response.Redirect(string.Format("TaskEdit.aspx?task={0}", taskId));
-                    Response.Close();
                 }
                 catch (Exception ex)
                 {
@@ -75,10 +93,17 @@ namespace btl_web_nangcao_task_management_system.page.task
             {
                 log.Error("error trying to do something", ex);
                 errorMessage.Text = "Internal error server";
+                success = false;
             }
             finally
             {
                 connection.Close();
+            }
+            if(success)
+            {
+                Response.Clear();
+                Response.Redirect(string.Format("TaskEdit.aspx?task={0}", taskId));
+                Response.Close();
             }
         }
 
@@ -91,27 +116,15 @@ namespace btl_web_nangcao_task_management_system.page.task
             {
                 return;
             }
-            int projectId = int.Parse(projectDropDownList.SelectedItem.Value);
-            List<Employee> employees = GetEmployees(projectId);
-            assigneeDropDownList.DataSource = employees;
-            assigneeDropDownList.DataTextField = "name";
-            assigneeDropDownList.DataValueField = "id";
-            assigneeDropDownList.DataBind();
-
-            
-
-            reporterDropDownList.DataSource = employees;
-            reporterDropDownList.DataTextField = "name";
-            reporterDropDownList.DataValueField = "id";
-            reporterDropDownList.DataBind();
-
-            QADropDownList.DataSource = employees;
-            QADropDownList.DataTextField = "name";
-            QADropDownList.DataValueField = "id";
-            QADropDownList.DataBind();
+            GetEmployees(long.Parse(projectDropDownList.SelectedItem.Value)).ForEach(it =>
+            {
+                assigneeDropDownList.Items.Add(new ListItem(it.name, it.id.ToString()));
+                reporterDropDownList.Items.Add(new ListItem(it.name, it.id.ToString()));
+                QADropDownList.Items.Add(new ListItem(it.name, it.id.ToString()));
+            });
         }
 
-        private List<Employee> GetEmployees(int projectId)
+        private List<Employee> GetEmployees(long projectId)
         {
             List<Employee> employees= new List<Employee>();
             SqlConnection connection = new SqlConnection(connectionString);
@@ -163,7 +176,11 @@ namespace btl_web_nangcao_task_management_system.page.task
                 SqlCommand command = connection.CreateCommand();
                 command.Connection = connection;
                 ProjectRepository projectRepository = new ProjectRepository();
-                projectRepository.findAll(command).ForEach(p =>
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    {"status", Enum.GetName(typeof(ProjectStatus), ProjectStatus.OPEN)}
+                };
+                projectRepository.findByConditionAnd(command, parameters).ForEach(p =>
                 {
                     projectDropDownList.Items.Add(new ListItem(p.title, p.id.ToString()));
                 });
@@ -181,7 +198,7 @@ namespace btl_web_nangcao_task_management_system.page.task
 
         private bool CheckInputValues()
         {
-            bool isPassed = validDropDownList(projectDropDownList, feedbackProject, "Please select a project");
+            bool isPassed = validDropDownList(projectDropDownList, feedbackProject, "Please select a project") && validDropDownList(priorityDropDownList, feedbackPriority, "Please select priority for task");
             if (string.IsNullOrEmpty(titleTextBox.Text))
             {
                 titleTextBox.CssClass = string.Format("{0} is-invalid", titleTextBox.CssClass);

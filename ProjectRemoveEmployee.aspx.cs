@@ -88,7 +88,6 @@ namespace btl_web_nangcao_task_management_system.page.project
                                     employeeProject.projectId = projectId;
                                     employeeProjectRepository.delete(command, employeeProject);
                                 });
-                                transaction.Commit();
                                 message = "Remove success";
                             }
                             else
@@ -102,6 +101,7 @@ namespace btl_web_nangcao_task_management_system.page.project
                             message = "Project not found";
                             error = true;
                         }
+                        transaction.Commit();
                     }
                     catch (Exception ex)
                     {

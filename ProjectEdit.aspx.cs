@@ -19,18 +19,15 @@ namespace btl_web_nangcao_task_management_system.page
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
+            if(string.IsNullOrEmpty(Request.QueryString["project"]))
+            {
+                Response.Clear();
+                Response.Redirect("ProjectPage.aspx");
+                Response.Close();
+            }
             if (!Page.IsPostBack)
             {
-                if (!string.IsNullOrEmpty(Request.QueryString["project"]))
-                {
-                    LoadProjectData(int.Parse(Request.QueryString["project"]));
-                }
-                else
-                {
-                    Response.Clear();
-                    Response.Redirect("ProjectPage.aspx");
-                    Response.Close();
-                }
+                LoadProjectData(long.Parse(Request.QueryString["project"]));
             }
         }
 
@@ -57,11 +54,11 @@ namespace btl_web_nangcao_task_management_system.page
                 command.Connection = connection;
                 command.Transaction = transaction;
                 ProjectRepository projectRepository = new ProjectRepository();
-                Dictionary<string, object> parametes = new Dictionary<string, object>
+                Dictionary<string, object> parameters = new Dictionary<string, object>
                 {
                     {"id",  projectId}
                 };
-                List<Project> projects = projectRepository.findByConditionAnd(command, parametes);
+                List<Project> projects = projectRepository.findByConditionAnd(command, parameters);
                 try
                 {
                     if (projects.Count > 0)
@@ -69,16 +66,15 @@ namespace btl_web_nangcao_task_management_system.page
                         if (projects[0].status.Equals(ProjectStatus.OPEN))
                         {
                             Project project = projects[0];
-                            Dictionary<string, object> parameters = new Dictionary<string, object>()
+                            parameters = new Dictionary<string, object>()
                             {
                                 {"title",  titleTextBox.Text},
                                 {"description", descriptionTextBox.Text},
                                 {"startDate", Convert.ToDateTime(startDateTextBox.Text)},
                                 {"estimateDate", Convert.ToDateTime(estimateDateTextBox.Text)},
-                                {"lead", int.Parse(leadDropDownList.SelectedItem.Value)}
+                                {"lead", long.Parse(leadDropDownList.SelectedItem.Value)}
                             };
                             projectRepository.update(command, parameters, project.id);
-                            transaction.Commit();
                             successMessage.Text = "Update success";
                         }
                         else
@@ -90,6 +86,7 @@ namespace btl_web_nangcao_task_management_system.page
                     {
                         errorMessage.Text = "Project not found";
                     }
+                    transaction.Commit();
                 }
                 catch (Exception ex)
                 {
@@ -110,9 +107,10 @@ namespace btl_web_nangcao_task_management_system.page
             }
         }
 
-        private void LoadProjectData(int projectId)
+        private void LoadProjectData(long projectId)
         {
             errorMessage.Text = string.Empty;
+            successMessage.Text = string.Empty;
             SqlConnection connection = new SqlConnection(connectionString);
             try
             {
@@ -144,17 +142,17 @@ namespace btl_web_nangcao_task_management_system.page
                         descriptionTextBox.Text = project.description;
                         startDateTextBox.Text = project.startDate.ToString("yyyy-MM-dd");
                         estimateDateTextBox.Text = project.estimateDate.ToString("yyyy-MM-dd");
-                        ViewState["projectId"] = result[0].id;
+                        ListItem listItem = leadDropDownList.Items.FindByValue(project.lead.ToString());
+                        if (listItem != null)
+                        {
+                            listItem.Selected = true;
+                        }
+                        ViewState["projectId"] = project.id;
                     }
                     else
                     {
                         errorMessage.Text = "Project was close";
                         updateButton.Enabled = false;
-                    }
-                    ListItem listItem = leadDropDownList.Items.FindByValue(result[0].lead.ToString());
-                    if (listItem != null)
-                    {
-                        listItem.Selected = true;
                     }
                 }
                 else
