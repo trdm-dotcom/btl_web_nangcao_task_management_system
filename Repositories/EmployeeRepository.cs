@@ -123,7 +123,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
                 sb.Append(',');
             }
             sb.Remove(sb.Length - 1, 1);
-            sb.Append("WHERE id = @id");
+            sb.Append(" WHERE id = @id");
             command.CommandType = CommandType.Text;
             command.CommandText = sb.ToString();
             command.Parameters.AddWithValue("@id", id);

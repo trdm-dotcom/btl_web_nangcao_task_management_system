@@ -15,15 +15,6 @@ namespace btl_web_nangcao_task_management_system.page.project
     {
 
         /// <summary>
-        /// Panel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel Panel1;
-
-        /// <summary>
         /// errorMessage control.
         /// </summary>
         /// <remarks>
@@ -31,6 +22,15 @@ namespace btl_web_nangcao_task_management_system.page.project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label errorMessage;
+
+        /// <summary>
+        /// successMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label successMessage;
 
         /// <summary>
         /// Label1 control.

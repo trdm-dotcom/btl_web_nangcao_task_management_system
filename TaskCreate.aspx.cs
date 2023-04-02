@@ -55,7 +55,7 @@ namespace btl_web_nangcao_task_management_system.page.task
                     {
                         Task task = new Task();
                         task.name = titleTextBox.Text;
-                        task.description = descriptionTextBox.Text;
+                        task.description = descriptionCKEditor.Text;
                         task.projectId = long.Parse(projectDropDownList.SelectedItem.Value);
                         task.startDate = Convert.ToDateTime(startDateTextBox.Text);
                         task.estimateDate = Convert.ToDateTime(estimateDateTextBox.Text);
@@ -210,16 +210,14 @@ namespace btl_web_nangcao_task_management_system.page.task
                 feedbackTitle.Text = string.Empty;
                 titleTextBox.CssClass = titleTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
-            if (string.IsNullOrEmpty(descriptionTextBox.Text))
+            if (string.IsNullOrEmpty(descriptionCKEditor.Text))
             {
-                descriptionTextBox.CssClass = string.Format("{0} is-invalid", titleTextBox.CssClass);
                 feedbackDescription.Text = "Please enter project description";
                 isPassed = false;
             }
             else
             {
                 feedbackDescription.Text = string.Empty;
-                descriptionTextBox.CssClass = descriptionTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             if (string.IsNullOrEmpty(startDateTextBox.Text))
             {

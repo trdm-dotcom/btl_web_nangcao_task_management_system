@@ -47,6 +47,7 @@ namespace btl_web_nangcao_task_management_system.page.project
         protected void closeButton_Click(object sender, EventArgs e)
         {
             errorMessage.Text = string.Empty;
+            successMessage.Text = string.Empty;
             bool success = false;
             if (!validDropDownList(projectDropDownList, feedbackProject, "Please select a project"))
             {
@@ -77,6 +78,7 @@ namespace btl_web_nangcao_task_management_system.page.project
                                 {"status", Enum.GetName(typeof(ProjectStatus), ProjectStatus.CLOSE)}
                             };
                             projectRepository.update(command, paramters, projects[0].id);
+                            successMessage.Text = "Close project success";
                         }
                         else
                         {

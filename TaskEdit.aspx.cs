@@ -56,11 +56,11 @@ namespace btl_web_nangcao_task_management_system.page.task
                     {
                         Task task = result[0];
                         titleTextBox.Text = task.name;
-                        descriptionTextBox.Text = task.description;
+                        descriptionCKEditor.Text = task.description;
                         startDateTextBox.Text = task.startDate.ToString("yyyy-MM-dd");
                         estimateDateTextBox.Text = task.estimateDate.ToString("yyyy-MM-dd");
                         ViewState["taskId"] = task.id;
-                        GetEmployees(task.projectId).ForEach(it =>
+                        GetEmployees(command, task.projectId).ForEach(it =>
                         {
                             assigneeDropDownList.Items.Add(new ListItem(it.name, it.id.ToString()));
                             reporterDropDownList.Items.Add(new ListItem(it.name, it.id.ToString()));
@@ -106,6 +106,11 @@ namespace btl_web_nangcao_task_management_system.page.task
                             }
                         });
                         t4.Start();
+
+                        t1.Join();
+                        t2.Join();
+                        t3.Join();
+                        t4.Join();
                     }
                     else
                     {
@@ -166,10 +171,10 @@ namespace btl_web_nangcao_task_management_system.page.task
                         parameters = new Dictionary<string, object>
                         {
                             {"name", titleTextBox.Text },
-                            {"description", descriptionTextBox.Text},
+                            {"description", descriptionCKEditor.Text},
                             {"startDate", Convert.ToDateTime(startDateTextBox.Text)},
                             {"estimateDate", Convert.ToDateTime(estimateDateTextBox.Text)},
-                            {"priority",  Enum.GetName(typeof(TaskPriority), priorityDropDownList.SelectedItem.Value) },
+                            {"priority",  priorityDropDownList.SelectedItem.Value },
                         };
                         if (reporterDropDownList.SelectedIndex > 0)
                         {
@@ -199,6 +204,7 @@ namespace btl_web_nangcao_task_management_system.page.task
             }
             catch (Exception ex)
             {
+                Debug.WriteLine(ex);
                 log.Error("error trying to do something", ex);
                 errorMessage.Text = "Internal error server";
             }
@@ -222,16 +228,14 @@ namespace btl_web_nangcao_task_management_system.page.task
                 feedbackTitle.Text = string.Empty;
                 titleTextBox.CssClass = titleTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
-            if (string.IsNullOrEmpty(descriptionTextBox.Text))
+            if (string.IsNullOrEmpty(descriptionCKEditor.Text))
             {
-                descriptionTextBox.CssClass = string.Format("{0} is-invalid", titleTextBox.CssClass);
                 feedbackDescription.Text = "Please enter project description";
                 isPassed = false;
             }
             else
             {
                 feedbackDescription.Text = string.Empty;
-                descriptionTextBox.CssClass = descriptionTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
             if (string.IsNullOrEmpty(startDateTextBox.Text))
             {
@@ -288,30 +292,10 @@ namespace btl_web_nangcao_task_management_system.page.task
             return isPassed;
         }
 
-        private List<Employee> GetEmployees(long projectId)
+        private List<Employee> GetEmployees(SqlCommand command, long projectId)
         {
-            List<Employee> employees = new List<Employee>();
-            SqlConnection connection = new SqlConnection(connectionString);
-            try
-            {
-                connection.Open();
-                SqlCommand command = connection.CreateCommand();
-                command.Connection = connection;
-
-                EmployeeRepository employeeRepository = new EmployeeRepository();
-                employees = employeeRepository.findByEmployeeProjectProjectId(command, projectId);
-                Debug.WriteLine(employees.Count);
-            }
-            catch (Exception ex)
-            {
-                log.Error("error trying to do something", ex);
-                errorMessage.Text = "Internal error server";
-            }
-            finally
-            {
-                connection.Close();
-            }
-            return employees;
+            EmployeeRepository employeeRepository = new EmployeeRepository();
+            return employeeRepository.findByEmployeeProjectProjectId(command, projectId);
         }
     }
 }

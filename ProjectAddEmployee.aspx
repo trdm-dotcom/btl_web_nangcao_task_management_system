@@ -2,8 +2,11 @@
 
 <asp:Content ID="ContentProjectAddEmployee" runat="server" ContentPlaceHolderID="mainContentPlaceHolder">
     <asp:Panel runat="server" ID="Panel1">
-        <asp:Label ID="errorMessage" runat="server" CssClass="invalid-feedback"></asp:Label>
-        <asp:Label ID="successMessage" runat="server" CssClass="success-feedback"></asp:Label>
+        <div class="messageFeedback">
+            <asp:Label ID="errorMessage" runat="server" CssClass="invalid-feedback"></asp:Label>
+            <asp:Label ID="successMessage" runat="server" CssClass="success-feedback"></asp:Label>
+            <div id="toastBox"></div>
+        </div>
         <div class="form-group">
             <asp:Label ID="Label1" runat="server" Text="Select Project:" AssociatedControl="titleTextBox"></asp:Label>
             <asp:DropDownList ID="projectDropDownList" runat="server" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="projectDropDownList_SelectedIndexChanged">

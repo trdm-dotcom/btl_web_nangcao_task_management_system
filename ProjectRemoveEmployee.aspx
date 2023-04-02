@@ -1,25 +1,26 @@
-﻿<%@ Page Language="C#" MasterPageFile="MasterPage.Master" AutoEventWireup="true" enableEventValidation="true" CodeBehind="ProjectRemoveEmployee.aspx.cs" Inherits="btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee" %>
+﻿<%@ Page Language="C#" MasterPageFile="MasterPage.Master" AutoEventWireup="true" EnableEventValidation="true" CodeBehind="ProjectRemoveEmployee.aspx.cs" Inherits="btl_web_nangcao_task_management_system.page.project.ProjectRemoveEmployee" %>
 
 <asp:Content ID="ContentProjectRemoveEmployee" runat="server" ContentPlaceHolderID="mainContentPlaceHolder">
-    <asp:Panel runat="server" ID="Panel1">
+    <div class="messageFeedback">
         <asp:Label ID="errorMessage" runat="server" CssClass="invalid-feedback"></asp:Label>
         <asp:Label ID="successMessage" runat="server" CssClass="success-feedback"></asp:Label>
-        <div class="form-group">
-            <asp:Label ID="Label1" runat="server" Text="Select Project:" AssociatedControl="titleTextBox"></asp:Label>
-            <asp:DropDownList ID="projectDropDownList" runat="server" AutoPostBack="False" CssClass="form-control">
-                <Items>
-                    <asp:ListItem Text="-Select-"/>
-                </Items>
-            </asp:DropDownList>
-            <asp:Label ID="feedbackProject" runat="server" CssClass="invalid-feedback"></asp:Label>
-        </div>
-        <div class="form-group">
-            <asp:Label ID="Label2" runat="server" Text="Select Emplyee to remove:" AssociatedControl="removeEmployeeListBox"></asp:Label>
-            <asp:ListBox ID="removeEmployeeListBox" runat="server" Height="100%" Width="100%" CssClass="form-control"></asp:ListBox>
-            <asp:Label ID="feedbackRemoveEmployee" runat="server" CssClass="invalid-feedback"></asp:Label>
-        </div>
-        <button id="saveButton" type="button" onclick="doRequest()" >Save</button>
-    </asp:Panel>
+        <div id="toastBox"></div>
+    </div>
+    <div class="form-group">
+        <asp:Label ID="Label1" runat="server" Text="Select Project:" AssociatedControl="titleTextBox"></asp:Label>
+        <asp:DropDownList ID="projectDropDownList" runat="server" AutoPostBack="False" CssClass="form-control">
+            <Items>
+                <asp:ListItem Text="-Select-" />
+            </Items>
+        </asp:DropDownList>
+        <asp:Label ID="feedbackProject" runat="server" CssClass="invalid-feedback"></asp:Label>
+    </div>
+    <div class="form-group">
+        <asp:Label ID="Label2" runat="server" Text="Select Emplyee to remove:" AssociatedControl="removeEmployeeListBox"></asp:Label>
+        <asp:ListBox ID="removeEmployeeListBox" runat="server" Height="100%" Width="100%" CssClass="form-control"></asp:ListBox>
+        <asp:Label ID="feedbackRemoveEmployee" runat="server" CssClass="invalid-feedback"></asp:Label>
+    </div>
+    <button id="saveButton" type="button" onclick="doRequest()">Save</button>
     <script>
         const projectDropDownList = document.getElementById("<%= projectDropDownList.ClientID %>");
         const feedbackProject = document.getElementById("<%= feedbackProject.ClientID %>");
@@ -65,8 +66,11 @@
                         });
                     })
                     .catch((err) => {
-                        errorMessage.innerText = err.message;
+                        showPopupNotification(document.getElementById("toastBox"), err.message, "error");
                     });
+            }
+            else {
+                showPopupNotification(document.getElementById("toastBox"), "Invalid project", "warning");
             }
         }
 
@@ -92,10 +96,10 @@
                     .then((data) => {
                         let response = JSON.parse(data.d);
                         if (response.error) {
-                            errorMessage.innerText = response.message;
+                            showPopupNotification(document.getElementById("toastBox"), response.message, "error");
                         }
                         else {
-                            successMessage.innerText = response.message;
+                            showPopupNotification(document.getElementById("toastBox"), response.message, "success");
                             for (var i = 0; i < removeEmployeeListBox.length; i++) {
                                 if (employeeIds.includes(removeEmployeeListBox.options[i].value)) {
                                     removeEmployeeListBox.remove(i);
@@ -104,7 +108,8 @@
                         }
                     })
                     .catch((err) => {
-                        errorMessage.innerText = err.message;
+                        console.error(err);
+                        showPopupNotification(document.getElementById("toastBox"), "Internal error server", "error");
                     });
             }
         }

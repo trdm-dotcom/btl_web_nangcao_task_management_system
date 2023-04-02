@@ -1,4 +1,6 @@
-﻿*, ::after, ::before {
+﻿*,
+::after,
+::before {
     box-sizing: border-box;
 }
 
@@ -219,7 +221,6 @@ svg {
     --zindex-fixed-element: 10;
     --zindex-overlay: 15;
     --radius: 0.25em;
-    --font-primary: sans-serif;
     --text-base-size: 1em;
     --text-scale-ratio: 1.2;
     --text-xs: calc(1em/var(--text-scale-ratio)/var(--text-scale-ratio));
@@ -619,6 +620,11 @@ a {
         box-shadow: none;
         transition: none
     }
+
+    cd-side__list {
+        position: fixed;
+        top: auto;
+    }
 }
 
 .cd-side-nav--is-visible {
@@ -628,7 +634,6 @@ a {
 
 .cd-side__item,
 .cd-nav__item {
-    font-size: 0.875em;
     position: relative
 }
 
@@ -653,10 +658,6 @@ a {
 }
 
 @media (min-width: 64rem) {
-    .cd-side__item {
-        font-size: 0.65em
-    }
-
     .cd-side__item a {
         padding-left: 0.75em;
         padding-left: var(--space-sm)
@@ -823,7 +824,6 @@ a {
 
 @media (min-width: 64rem) {
     .cd-nav__list {
-        font-size: 0.75em;
         height: 45px;
         height: var(--cd-header-height);
         margin-left: auto;
@@ -916,14 +916,14 @@ a {
     }
 }
 
-.detail-box .main-detail-box, .detail-box .header-detail-box{
+.detail-box .main-detail-box,
+.detail-box .header-detail-box {
     padding: 1.25rem 1rem;
 }
 
 .detail-box .main-detail-box .child-element-detail-box {
     margin-bottom: 1.5rem;
     font-size: 0.75rem;
-
 }
 
 .table {
@@ -938,7 +938,8 @@ a {
     border-bottom: 1px solid #dee2e6;
 }
 
-.table td, .table th {
+.table td,
+.table th {
     padding: 0.75rem;
     vertical-align: top;
     text-align: left;
@@ -1037,7 +1038,7 @@ a {
 
 .task:hover {
     box-shadow: rgba(99, 99, 99, 0.3) 0px 2px 8px 0px;
-    border-color: rgba(162,179,207,.2) !important;
+    border-color: rgba(162, 179, 207, .2) !important;
 }
 
 .task__tags {
@@ -1069,4 +1070,134 @@ a {
 
 .text-primary {
     color: #007bff !important;
+}
+
+.window-header {
+    min-height: 32px;
+    padding: 12px 40px 8px 0;
+    position: relative;
+    z-index: 1;
+}
+
+.window-main-col {
+    float: left;
+    margin: 0;
+    min-height: 24px;
+    padding: 0 8px 8px 16px;
+    position: relative;
+    z-index: 1;
+}
+
+.window-sidebar {
+    float: right;
+    overflow: hidden;
+    padding: 0 16px 8px 8px;
+    z-index: 10;
+}
+
+.window-title {
+    padding: 12px 0 0;
+}
+
+.window-title h2 {
+    margin-right: 4px;
+}
+
+.card-detail-title-assist {
+    display: none;
+}
+
+.window-module {
+    clear: both;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+.window-module-title.description-title {
+    align-items: center;
+    display: flex;
+    min-height: 32px;
+}
+
+.window-module-title-no-divider {
+    border-bottom: none;
+}
+
+.window-module-title {
+    border-bottom: 1px solid #091e4221;
+}
+
+.window-module-panel,
+.window-module-title {
+    position: relative;
+}
+
+.window-module-title.description-title {
+    align-items: center;
+    display: flex;
+    min-height: 32px;
+}
+
+.window-module-title-no-divider {
+    border-bottom: none;
+}
+
+.window-module-title h3 {
+    display: inline-block;
+    margin: 0;
+    min-height: 18px;
+    min-width: 40px;
+    width: auto;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.window-module-panel, .window-module-title {
+    padding: 8px 0;
+    position: relative;
+}
+
+.u-inline-block {
+    display: inline-block;
+}
+
+.atlaskit-portal-container .ml-4,
+body .ml-4 {
+    margin-left: 8px;
+}
+
+.atlaskit-portal-container .nch-button,
+body .nch-button {
+    align-items: center;
+    background-color: #091e420a;
+    border: none;
+    border-radius: 3px;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #172b4d;
+    color: inherit;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: var(--font-primary, sans-serif);
+    font-size: 14px;
+    font-weight: 400;
+    justify-content: center;
+    line-height: 20px;
+    padding: 6px 12px;
+    text-decoration: none;
+    transition-duration: 85ms;
+    transition-property: background-color, border-color, box-shadow;
+    transition-timing-function: ease;
+    white-space: normal;
+}
+
+.description-content {
+    position: relative;
+}
+
+:where(.markeddown,.markdown) {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    word-break: break-word;
 }

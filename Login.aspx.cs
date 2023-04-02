@@ -16,7 +16,6 @@ namespace btl_web_nangcao_task_management_system.page.authentication
     public partial class Login : System.Web.UI.Page
     {
         string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
-        HttpCookie cookie = null;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,6 +29,8 @@ namespace btl_web_nangcao_task_management_system.page.authentication
 
         protected void loginButton_Click(object sender, EventArgs e)
         {
+            HttpCookie cookie = Request.Cookies["userLogin"];
+            bool success = false;
             errorMessage.Text = string.Empty;
             if (!CheckInputValues())
             {
@@ -51,16 +52,14 @@ namespace btl_web_nangcao_task_management_system.page.authentication
                 {
                     if (BC.Verify(passwordTextBox.Text, employees[0].password))
                     {
-                        Session["userID"] = employees[0].id.ToString();
+                        Session["userID"] = employees[0].id;
+                        Session["role"] = employees[0].role;
                         if(cookie == null)
                         {
                             cookie = new HttpCookie("userLogin");
                         }
                         cookie["email"] = employees[0].email;
-                        Response.Clear();
-                        Response.Cookies.Add(cookie);
-                        Response.Redirect("~/page/Home.aspx");
-                        Response.Close();
+                        success = true;
                     }
                     else
                     {
@@ -80,6 +79,13 @@ namespace btl_web_nangcao_task_management_system.page.authentication
             finally
             {
                 connection.Close();
+            }
+            if(success)
+            {
+                Response.Clear();
+                Response.Cookies.Add(cookie);
+                Response.Redirect("Home.aspx");
+                Response.Close();
             }
         }
 

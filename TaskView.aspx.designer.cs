@@ -24,6 +24,15 @@ namespace btl_web_nangcao_task_management_system.page.task
         protected global::System.Web.UI.WebControls.Label errorMessage;
 
         /// <summary>
+        /// successMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label successMessage;
+
+        /// <summary>
         /// nameTaskLabel control.
         /// </summary>
         /// <remarks>
@@ -33,13 +42,13 @@ namespace btl_web_nangcao_task_management_system.page.task
         protected global::System.Web.UI.WebControls.Label nameTaskLabel;
 
         /// <summary>
-        /// DescriptionLabel control.
+        /// descriptionPanel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label DescriptionLabel;
+        protected global::System.Web.UI.WebControls.Panel descriptionPanel;
 
         /// <summary>
         /// statusDropDownList control.
@@ -60,13 +69,13 @@ namespace btl_web_nangcao_task_management_system.page.task
         protected global::System.Web.UI.WebControls.DropDownList reporterDropDownList;
 
         /// <summary>
-        /// AssigneeDropDownList control.
+        /// assigneeDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList AssigneeDropDownList;
+        protected global::System.Web.UI.WebControls.DropDownList assigneeDropDownList;
 
         /// <summary>
         /// QADropDownList control.

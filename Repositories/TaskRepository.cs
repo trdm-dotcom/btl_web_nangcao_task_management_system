@@ -23,6 +23,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
             {
                 Task task = new Task();
                 task.id = (long)dataRow["id"];
+                task.projectId = (long)dataRow["projectId"];
                 task.name = dataRow["name"].ToString();
                 task.description = dataRow["description"].ToString();
                 task.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
@@ -71,6 +72,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
             {
                 Task item = new Task();
                 item.id = (long)dataRow["id"];
+                item.projectId = (long)dataRow["projectId"];
                 item.name = dataRow["name"].ToString();
                 item.description = dataRow["description"].ToString();
                 item.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
@@ -114,7 +116,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
                 sb.Append(',');
             }
             sb.Remove(sb.Length - 1, 1);
-            sb.Append("WHERE id = @id");
+            sb.Append(" WHERE id = @id");
             command.CommandType = CommandType.Text;
             command.CommandText = sb.ToString();
             command.Parameters.AddWithValue("@id", id);

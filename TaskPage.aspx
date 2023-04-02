@@ -1,8 +1,11 @@
 ﻿<%@ Page Language="C#" MasterPageFile="MasterPage.Master" AutoEventWireup="true" CodeBehind="TaskPage.aspx.cs" Inherits="btl_web_nangcao_task_management_system.page.task.TaskAll" %>
 
 <asp:Content ID="ContentTaskPage" runat="server" ContentPlaceHolderID="mainContentPlaceHolder">
-    <asp:Label ID="errorMessage" runat="server" CssClass="invalid-feedback"></asp:Label>
-
+    <div class="messageFeedback">
+        <asp:Label ID="errorMessage" runat="server" CssClass="invalid-feedback"></asp:Label>
+        <asp:Label ID="successMessage" runat="server" CssClass="success-feedback"></asp:Label>
+        <div id="toastBox"></div>
+    </div>
     <div class="row no-gutters">
         <div class="col c-12 m-4 l-4 status status-1">
             <div class="tags has-addons">
