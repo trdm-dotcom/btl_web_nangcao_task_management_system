@@ -14,7 +14,6 @@ using System.Web.Script.Services;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BC = BCrypt.Net.BCrypt;
 
 namespace btl_web_nangcao_task_management_system.page.authentication
 {
@@ -25,7 +24,7 @@ namespace btl_web_nangcao_task_management_system.page.authentication
 
     public partial class SignUp : System.Web.UI.Page
     {
-        static string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
+        private static string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
         const string EMAIL_REGEX = "^(?!\\.)[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$(?<!\\.)";
         const string NAME_REGEX = "^(?<!\\.)^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\\s]*$(?<!\\.)";
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
@@ -53,7 +52,7 @@ namespace btl_web_nangcao_task_management_system.page.authentication
                 {
                     email = emailTextBox.Text,
                     name = nameTextBox.Text,
-                    password = BC.HashPassword(passwordTextBox.Text),
+                    password = BCrypt.Net.BCrypt.HashPassword(passwordTextBox.Text),
                     role = EmployeeRole.INIT
                 };
                 try

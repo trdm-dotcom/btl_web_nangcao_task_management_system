@@ -15,19 +15,29 @@ namespace btl_web_nangcao_task_management_system.page
 {
     public partial class ProjectEdit : System.Web.UI.Page
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
+        private static string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(Request.QueryString["project"]))
+            if (Session["role"] != null && (string)Session["role"] == Enum.GetName(typeof(EmployeeRole), EmployeeRole.ADMIN))
+            {
+                if (string.IsNullOrEmpty(Request.QueryString["project"]))
+                {
+                    Response.Clear();
+                    Response.Redirect("ProjectPage.aspx");
+                    Response.Close();
+                }
+                if (!Page.IsPostBack)
+                {
+                    LoadProjectData(long.Parse(Request.QueryString["project"]));
+                }
+            }
+            else
             {
                 Response.Clear();
-                Response.Redirect("ProjectPage.aspx");
-                Response.Close();
-            }
-            if (!Page.IsPostBack)
-            {
-                LoadProjectData(long.Parse(Request.QueryString["project"]));
+                Response.Status = "403 Forbidden";
+                Response.StatusCode = 403;
+                Response.Clear();
             }
         }
 

@@ -16,13 +16,23 @@ namespace btl_web_nangcao_task_management_system.page.project
 {
     public partial class ProjectAddEmployee : System.Web.UI.Page
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
+        private static string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if(!Page.IsPostBack)
+            if (Session["role"] != null && (string)Session["role"] == Enum.GetName(typeof(EmployeeRole), EmployeeRole.ADMIN))
             {
-                FillProjectDropDownList();
+                if (!Page.IsPostBack)
+                {
+                    FillProjectDropDownList();
+                }
+            }
+            else
+            {
+                Response.Clear();
+                Response.Status = "403 Forbidden";
+                Response.StatusCode = 403;
+                Response.Clear();
             }
         }
 

@@ -18,32 +18,42 @@ namespace btl_web_nangcao_task_management_system.page.project
 {
     public partial class ProjectRemoveEmployee : System.Web.UI.Page
     {
-        static string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
+        private static string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (Session["role"] != null && (string)Session["role"] == Enum.GetName(typeof(EmployeeRole), EmployeeRole.ADMIN))
             {
-                FillProjectDropDownList();
-            }
-            if (Request.QueryString["project"] != null)
-            {
-                FillEmployeeListBox(long.Parse(Request.QueryString["project"]));
-            }
-            if (Request.QueryString["action"] != null)
-            {
-                string response = string.Empty;
-                switch (Request.QueryString["action"])
+                if (!Page.IsPostBack)
                 {
-                    case "loadEmployeeInProject":
-                        response = getEmployeeInProject(long.Parse(Request.QueryString["projectId"]));
-                        break;
+                    FillProjectDropDownList();
                 }
+                if (Request.QueryString["project"] != null)
+                {
+                    FillEmployeeListBox(long.Parse(Request.QueryString["project"]));
+                }
+                if (Request.QueryString["action"] != null)
+                {
+                    string response = string.Empty;
+                    switch (Request.QueryString["action"])
+                    {
+                        case "loadEmployeeInProject":
+                            response = getEmployeeInProject(long.Parse(Request.QueryString["projectId"]));
+                            break;
+                    }
+                    Response.Clear();
+                    Response.Write(response);
+                    Response.ContentType = "application/json";
+                    Response.Flush();
+                    Response.Close();
+                }
+            }
+            else
+            {
                 Response.Clear();
-                Response.Write(response);
-                Response.ContentType = "application/json";
-                Response.Flush();
-                Response.Close();
+                Response.Status = "403 Forbidden";
+                Response.StatusCode = 403;
+                Response.Clear();
             }
         }
 

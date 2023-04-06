@@ -1,4 +1,5 @@
-﻿using btl_web_nangcao_task_management_system.model.db;
+﻿using btl_web_nangcao_task_management_system.model;
+using btl_web_nangcao_task_management_system.model.db;
 using btl_web_nangcao_task_management_system.Repositories;
 using System;
 using System.Collections.Generic;
@@ -9,13 +10,12 @@ using System.Net;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using BC = BCrypt.Net.BCrypt;
 
 namespace btl_web_nangcao_task_management_system.page.authentication
 {
     public partial class Login : System.Web.UI.Page
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
+        private static string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -50,10 +50,12 @@ namespace btl_web_nangcao_task_management_system.page.authentication
                 List<Employee> employees = employeeRepository.findByConditionAnd(command, parameters);
                 if(employees.Count > 0)
                 {
-                    if (BC.Verify(passwordTextBox.Text, employees[0].password))
+                    Employee employee = employees[0];
+                    if (BCrypt.Net.BCrypt.Verify(passwordTextBox.Text, employee.password))
                     {
-                        Session["userID"] = employees[0].id;
-                        Session["role"] = employees[0].role;
+                        Session["user"] = employee.id;
+                        Session["name"] = employee.name;
+                        Session["role"] = Enum.GetName(typeof(EmployeeRole), employee.role);
                         if(cookie == null)
                         {
                             cookie = new HttpCookie("userLogin");

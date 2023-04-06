@@ -17,20 +17,31 @@ namespace btl_web_nangcao_task_management_system.page.task
 {
     public partial class TaskEdit : System.Web.UI.Page
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
+        private static string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(Request.QueryString["task"]))
+            if (Session["role"] != null && (string)Session["role"] != Enum.GetName(typeof(EmployeeRole), EmployeeRole.INIT))
+            {
+                if (string.IsNullOrEmpty(Request.QueryString["task"]))
+                {
+                    Response.Clear();
+                    Response.Redirect("TaskCreate.aspx");
+                    Response.Close();
+                }
+                if (!Page.IsPostBack)
+                {
+                    LoadTaskData(long.Parse(Request.QueryString["task"]));
+                }
+            }
+            else
             {
                 Response.Clear();
-                Response.Redirect("TaskCreate.aspx");
-                Response.Close();
+                Response.Status = "403 Forbidden";
+                Response.StatusCode = 403;
+                Response.Clear();
             }
-            if (!Page.IsPostBack)
-            {
-                LoadTaskData(long.Parse(Request.QueryString["task"]));
-            }
+            
         }
         
         private void LoadTaskData(long taskId)
@@ -56,7 +67,7 @@ namespace btl_web_nangcao_task_management_system.page.task
                     {
                         Task task = result[0];
                         titleTextBox.Text = task.name;
-                        descriptionCKEditor.Text = task.description;
+                        descriptionTextBox.Text = task.description;
                         startDateTextBox.Text = task.startDate.ToString("yyyy-MM-dd");
                         estimateDateTextBox.Text = task.estimateDate.ToString("yyyy-MM-dd");
                         ViewState["taskId"] = task.id;
@@ -171,7 +182,7 @@ namespace btl_web_nangcao_task_management_system.page.task
                         parameters = new Dictionary<string, object>
                         {
                             {"name", titleTextBox.Text },
-                            {"description", descriptionCKEditor.Text},
+                            {"description", descriptionTextBox.Text},
                             {"startDate", Convert.ToDateTime(startDateTextBox.Text)},
                             {"estimateDate", Convert.ToDateTime(estimateDateTextBox.Text)},
                             {"priority",  priorityDropDownList.SelectedItem.Value },
@@ -228,7 +239,7 @@ namespace btl_web_nangcao_task_management_system.page.task
                 feedbackTitle.Text = string.Empty;
                 titleTextBox.CssClass = titleTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
-            if (string.IsNullOrEmpty(descriptionCKEditor.Text))
+            if (string.IsNullOrEmpty(descriptionTextBox.Text))
             {
                 feedbackDescription.Text = "Please enter project description";
                 isPassed = false;

@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace btl_web_nangcao_task_management_system.page.project
+namespace btl_web_nangcao_task_management_system
 {
 
 
-    public partial class ProjectPage
+    public partial class ProjectView
     {
 
         /// <summary>
@@ -31,14 +31,5 @@ namespace btl_web_nangcao_task_management_system.page.project
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label successMessage;
-
-        /// <summary>
-        /// ProjectGridView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView ProjectGridView;
     }
 }

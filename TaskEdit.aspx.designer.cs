@@ -69,13 +69,13 @@ namespace btl_web_nangcao_task_management_system.page.task
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// descriptionCKEditor control.
+        /// descriptionTextBox control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CKEditor.NET.CKEditorControl descriptionCKEditor;
+        protected global::System.Web.UI.WebControls.TextBox descriptionTextBox;
 
         /// <summary>
         /// feedbackDescription control.

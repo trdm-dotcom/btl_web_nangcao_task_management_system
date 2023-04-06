@@ -15,13 +15,23 @@ namespace btl_web_nangcao_task_management_system.page.task
 {
     public partial class TaskCreate : System.Web.UI.Page
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
+        private static string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (Session["role"] != null && (string)Session["role"] != Enum.GetName(typeof(EmployeeRole), EmployeeRole.INIT))
             {
-                FillProjectDropDownList();
+                if (!Page.IsPostBack)
+                {
+                    FillProjectDropDownList();
+                }
+            }
+            else
+            {
+                Response.Clear();
+                Response.Status = "403 Forbidden";
+                Response.StatusCode = 403;
+                Response.Clear();
             }
         }
 
@@ -55,7 +65,7 @@ namespace btl_web_nangcao_task_management_system.page.task
                     {
                         Task task = new Task();
                         task.name = titleTextBox.Text;
-                        task.description = descriptionCKEditor.Text;
+                        task.description = descriptionTextBox.Text;
                         task.projectId = long.Parse(projectDropDownList.SelectedItem.Value);
                         task.startDate = Convert.ToDateTime(startDateTextBox.Text);
                         task.estimateDate = Convert.ToDateTime(estimateDateTextBox.Text);
@@ -210,7 +220,7 @@ namespace btl_web_nangcao_task_management_system.page.task
                 feedbackTitle.Text = string.Empty;
                 titleTextBox.CssClass = titleTextBox.CssClass.Replace("is-invalid", string.Empty);
             }
-            if (string.IsNullOrEmpty(descriptionCKEditor.Text))
+            if (string.IsNullOrEmpty(descriptionTextBox.Text))
             {
                 feedbackDescription.Text = "Please enter project description";
                 isPassed = false;

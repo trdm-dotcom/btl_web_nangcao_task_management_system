@@ -1,5 +1,6 @@
 ﻿using btl_web_nangcao_task_management_system.model;
 using btl_web_nangcao_task_management_system.model.db;
+using btl_web_nangcao_task_management_system.repositories;
 using btl_web_nangcao_task_management_system.Repositories;
 using Newtonsoft.Json;
 using System;
@@ -12,6 +13,7 @@ using System.Threading;
 using System.Web;
 using System.Web.Script.Services;
 using System.Web.Services;
+using System.Web.Services.Description;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -19,9 +21,8 @@ namespace btl_web_nangcao_task_management_system.page.task
 {
     public partial class TaskView : System.Web.UI.Page
     {
-        static string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
+        private static string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        Task task = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(Request.QueryString["task"]))
@@ -53,13 +54,14 @@ namespace btl_web_nangcao_task_management_system.page.task
                 List<Task> tasks = taskRepository.findByConditionAnd(command, parameters);
                 if (taskId > 0)
                 {
-                    task = tasks[0];
+                    Task task = tasks[0];
                     nameTaskLabel.Text = task.name;
                     descriptionPanel.Controls.Add(new LiteralControl(task.description));
                     priorityLabel.Text = Enum.GetName(typeof(TaskPriority), task.priority);
                     priorityLabel.CssClass = task.priority.Equals(TaskPriority.HIGH) ? "text-danger" : (task.priority.Equals(TaskPriority.MEDIUM) ? "text-warning" : "text-primary");
                     startDateLabel.Text = task.startDate.ToString("dd/MM/yyyy");
                     estimateDateLabel.Text = task.estimateDate.ToString("dd/MM/yyyy");
+                    ViewState["task"] = task.id;
                     GetEmployees(command, task.projectId).ForEach(it =>
                     {
                         assigneeDropDownList.Items.Add(new ListItem(it.name, it.id.ToString()));
@@ -128,11 +130,6 @@ namespace btl_web_nangcao_task_management_system.page.task
             }
         }
 
-        protected string getId()
-        {
-            return task.id.ToString();
-        }
-
         private List<Employee> GetEmployees(SqlCommand command, long projectId)
         {
             EmployeeRepository employeeRepository = new EmployeeRepository();
@@ -141,7 +138,7 @@ namespace btl_web_nangcao_task_management_system.page.task
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static string updateStatus(long status, long taskId)
+        public static string updateStatus(string status, long task)
         {
             string message = string.Empty;
             bool error = false;
@@ -158,9 +155,59 @@ namespace btl_web_nangcao_task_management_system.page.task
                     TaskRepository taskRepository = new TaskRepository();
                     Dictionary<string, Object> parameters = new Dictionary<string, object>
                     {
-                        { "status", Enum.GetName(typeof(TaskStatus), status) },
+                        { "status", status },
                     };
-                    taskRepository.update(command, parameters, taskId);
+                    taskRepository.update(command, parameters, task);
+                    transaction.Commit();
+                    message = "Update success";
+                }
+                catch (Exception ex)
+                {
+                    log.Error("error trying to update", ex);
+                    transaction.Rollback();
+                    throw ex;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                log.Error("error trying to do something", ex);
+                message = "Internal error server";
+                error = true;
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return JsonConvert.SerializeObject(new
+            {
+                error = error,
+                message = message
+            });
+        }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static string updateEmployee(String role, long employee, long task)
+        {
+            string message = string.Empty;
+            bool error = false;
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                SqlTransaction transaction = connection.BeginTransaction();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                command.Transaction = transaction;
+                try
+                {
+                    TaskRepository taskRepository = new TaskRepository();
+                    Dictionary<string, Object> parameters = new Dictionary<string, object>
+                    {
+                        { role, employee },
+                    };
+                    taskRepository.update(command, parameters, task);
                     transaction.Commit();
                     message = "Update success";
                 }
@@ -190,7 +237,7 @@ namespace btl_web_nangcao_task_management_system.page.task
 
         [WebMethod]
         [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public static string updateEmployee(String role, long employeeId, long taskId)
+        public static string postComments(String content, long user, long task, string name)
         {
             string message = string.Empty;
             bool error = false;
@@ -204,14 +251,17 @@ namespace btl_web_nangcao_task_management_system.page.task
                 command.Transaction = transaction;
                 try
                 {
-                    TaskRepository taskRepository = new TaskRepository();
-                    Dictionary<string, Object> parameters = new Dictionary<string, object>
+                    Comment comment = new Comment()
                     {
-                        { role, employeeId },
+                        content = content,
+                        taskId = task,
+                        employeeId = user,
+                        employeeName = name
                     };
-                    taskRepository.update(command, parameters, taskId);
+                    CommentRepository commentRepository = new CommentRepository();
+                    commentRepository.save(command, comment);
                     transaction.Commit();
-                    message = "Update success";
+                    message = "Post comment success";
                 }
                 catch (Exception ex)
                 {
@@ -235,6 +285,36 @@ namespace btl_web_nangcao_task_management_system.page.task
                 error = error,
                 message = message
             });
+        }
+
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        public static string getComments(long task, long offset, long order)
+        {
+            List<Comment> comments = new List<Comment>();
+            SqlConnection connection = new SqlConnection(connectionString);
+            try
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand();
+                command.Connection = connection;
+                Dictionary<string, Object> parameters = new Dictionary<string, object>
+                {
+                    { "taskId", task },
+                };
+                CommentRepository commentRepository = new CommentRepository();
+                comments = commentRepository.findByConditionAndWithPaging(command, parameters, offset, order == 1 ? "DESC" : "ASC");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                log.Error("error trying to do something", ex);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return JsonConvert.SerializeObject(comments);
         }
     }
 }

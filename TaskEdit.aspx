@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" MasterPageFile="MasterPage.Master" AutoEventWireup="true" CodeBehind="TaskEdit.aspx.cs" Inherits="btl_web_nangcao_task_management_system.page.task.TaskEdit" %>
 
-<%@ Register Assembly="CKEditor.NET" Namespace="CKEditor.NET" TagPrefix="CKEditor" %>
 <asp:Content ID="ContentTaskEdit" runat="server" ContentPlaceHolderID="mainContentPlaceHolder">
     <div class="messageFeedback">
         <asp:Label ID="errorMessage" runat="server" CssClass="invalid-feedback"></asp:Label>
@@ -14,7 +13,7 @@
     </div>
     <div class="form-group">
         <asp:Label ID="Label2" runat="server" Text="Description:" CssClass="labelForm" AssociatedControl="descriptionTextBox"></asp:Label>
-        <CKEditor:CKEditorControl ID="descriptionCKEditor" runat="server" BasePath="/Scripts/ckeditor"></CKEditor:CKEditorControl>
+        <asp:TextBox ID="descriptionTextBox" runat="server" TextMode="multiline" Rows="10" CssClass="form-control"></asp:TextBox>
         <asp:Label ID="feedbackDescription" runat="server" CssClass="invalid-feedback"></asp:Label>
     </div>
     <div class="form-row no-gutters">
@@ -70,7 +69,7 @@
     <asp:Button ID="updateButton" runat="server" Text="Update" OnClick="updateButton_Click" OnClientClick="return validateForm()" />
     <script>
         const titleTextBox = document.getElementById("<%= titleTextBox.ClientID %>");
-        const descriptionCKEditor = document.getElementById("<%= descriptionCKEditor.ClientID %>");
+        const descriptionTextBox = document.getElementById("<%= descriptionTextBox.ClientID %>");
         const startDateTextBox = document.getElementById("<%= startDateTextBox.ClientID %>");
         const estimateDateTextBox = document.getElementById("<%= estimateDateTextBox.ClientID %>");
         const priorityDropDownList = document.getElementById("<%= priorityDropDownList.ClientID %>");
@@ -92,11 +91,13 @@
                 titleTextBox.classList.remove("is-invalid");
                 feedbackTitle.innerText = null;
             }
-            if (!descriptionCKEditor.value.trim()) {
+            if (!descriptionTextBox.value.trim()) {
                 valid = false;
+                descriptionTextBox.classList.add("is-invalid");
                 feedbackDescription.innerText = "Please enter project description";
             }
             else {
+                descriptionTextBox.classList.remove("is-invalid");
                 feedbackDescription.innerText = null;
             }
             if (!startDateTextBox.value.trim()) {

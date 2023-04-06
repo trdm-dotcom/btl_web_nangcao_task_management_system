@@ -1127,3 +1127,290 @@ System.Data.SqlClient.SqlException (0x80131904): Must declare the scalar variabl
    at btl_web_nangcao_task_management_system.page.task.TaskEdit.updateButton_Click(Object sender, EventArgs e) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskEdit.aspx.cs:line 186
 ClientConnectionId:bb308bc7-5926-4ff3-b85e-122e0cf3c2f9
 Error Number:137,State:2,Class:15
+ERROR 2023-04-05 16:48:12 – [6] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 304 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'LIMIT'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 103
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 304
+ClientConnectionId:e9994624-9531-47a5-954f-20289543d6db
+Error Number:102,State:1,Class:15
+ERROR 2023-04-05 16:50:52 – [9] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 304 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'LIMIT'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 103
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 304
+ClientConnectionId:cd2f21b3-02ca-4ef0-a3af-cc7171ef4f8e
+Error Number:102,State:1,Class:15
+ERROR 2023-04-05 16:59:13 – [6] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 304 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'LIMIT'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 103
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 304
+ClientConnectionId:427e9e32-f2a2-4acb-a2d5-4851736c3cb3
+Error Number:102,State:1,Class:15
+ERROR 2023-04-05 17:00:04 – [7] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 304 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'LIMIT'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 103
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 304
+ClientConnectionId:b0c9d12b-278a-4b56-a0ff-97b314fa480f
+Error Number:102,State:1,Class:15
+ERROR 2023-04-05 17:02:43 – [7] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 304 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'LIMIT'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 103
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 304
+ClientConnectionId:ea5fb787-1980-4ffe-9844-368ef9dea16a
+Error Number:102,State:1,Class:15
+ERROR 2023-04-05 17:03:00 – [9] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 304 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'LIMIT'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 103
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 304
+ClientConnectionId:ea5fb787-1980-4ffe-9844-368ef9dea16a
+Error Number:102,State:1,Class:15
+ERROR 2023-04-05 17:04:32 – [8] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 304 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'LIMIT'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 105
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 304
+ClientConnectionId:a27c4c0f-62ff-4c24-ba70-57ed4105ea80
+Error Number:102,State:1,Class:15
+ERROR 2023-04-05 17:07:03 – [8] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 305 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'LIMIT'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 104
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 305
+ClientConnectionId:75cd3891-ca08-4a9c-a029-90f952285280
+Error Number:102,State:1,Class:15
+ERROR 2023-04-05 17:07:30 – [8] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 305 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'LIMIT'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 104
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 305
+ClientConnectionId:75cd3891-ca08-4a9c-a029-90f952285280
+Error Number:102,State:1,Class:15
+ERROR 2023-04-05 17:07:39 – [7] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 305 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'LIMIT'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 104
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 305
+ClientConnectionId:75cd3891-ca08-4a9c-a029-90f952285280
+Error Number:102,State:1,Class:15
+ERROR 2023-04-05 17:15:57 – [6] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 305 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'OFFSET'.
+Invalid usage of the option NEXT in the FETCH statement.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 104
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 305
+ClientConnectionId:68f05746-5f61-4363-9dd8-e13229e200de
+Error Number:102,State:1,Class:15
+ERROR 2023-04-06 07:01:45 – [6] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 305 
+System.Data.SqlClient.SqlException (0x80131904): Incorrect syntax near 'OFFSET'.
+Invalid usage of the option NEXT in the FETCH statement.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader()
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 104
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 305
+ClientConnectionId:4fbad191-cf6c-4e17-a958-e3b66c65d96c
+Error Number:102,State:1,Class:15
+ERROR 2023-04-06 07:09:06 – [7] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 305 
+System.ArgumentException: Column 'createdAt' does not belong to table t_comment.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 114
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 305
+ERROR 2023-04-06 07:09:42 – [8] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 305 
+System.ArgumentException: Column 'createdAt' does not belong to table t_comment.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 114
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 305
+ERROR 2023-04-06 07:10:51 – [7] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 305 
+System.ArgumentException: Column 'createdAt' does not belong to table t_comment.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 114
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 305
+ERROR 2023-04-06 07:12:25 – [8] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 305 
+System.ArgumentException: Column 'createdAt' does not belong to table t_comment.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 114
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 305
+ERROR 2023-04-06 07:12:47 – [7] error trying to do something method:getComments 
+ stacktrace:System.Web.Script.Services.WebServiceMethodData.CallMethod > System.Reflection.RuntimeMethodInfo.Invoke > System.Reflection.RuntimeMethodInfo.UnsafeInvokeInternal > System.RuntimeMethodHandle.InvokeMethod > btl_web_nangcao_task_management_system.page.task.TaskView.getComments 
+ type:btl_web_nangcao_task_management_system.page.task.TaskView 
+ line: 305 
+System.ArgumentException: Column 'createdAt' does not belong to table t_comment.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at btl_web_nangcao_task_management_system.repositories.CommentRepository.findByConditionAndWithPaging(SqlCommand command, Dictionary`2 parameters, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\repositories\CommentRepository.cs:line 114
+   at btl_web_nangcao_task_management_system.page.task.TaskView.getComments(Int64 task, Int64 offset) in C:\Users\minh\source\repos\btl_web_nangcao_task_management_system\btl_web_nangcao_task_management_system\TaskView.aspx.cs:line 305

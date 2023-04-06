@@ -39,7 +39,7 @@ namespace btl_web_nangcao_task_management_system.UI
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink logoutHyperLink;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor logoutHyperLink;
 
         /// <summary>
         /// mainContentPlaceHolder control.

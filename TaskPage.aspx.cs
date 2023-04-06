@@ -19,13 +19,12 @@ namespace btl_web_nangcao_task_management_system.page.task
 {
     public partial class TaskAll : System.Web.UI.Page
     {
-        string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
+        private static string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-        Dictionary<long, string> employeeProjects = new Dictionary<long, string>();
+        
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Request.QueryString["project"] != null) {
-                loadInEmployeeProject(long.Parse(Request.QueryString["project"]));
                 loadTask(long.Parse(Request.QueryString["project"]));
             }
             else
@@ -36,54 +35,31 @@ namespace btl_web_nangcao_task_management_system.page.task
             }
         }
 
-        private void loadInEmployeeProject(long projectId) {
-            SqlConnection connection = new SqlConnection(connectionString);
-            try
-            {
-                connection.Open();
-                SqlCommand command = connection.CreateCommand();
-                command.Connection = connection;
-
-                EmployeeProjectRepository employeeProjectRepository = new EmployeeProjectRepository();
-                Dictionary<string, object> parameters = new Dictionary<string, object>
-                {
-                    { "projectId", projectId}
-                };
-                employeeProjectRepository.findByConditionAnd(command, parameters)
-                    .ForEach(it =>
-                    {
-                        employeeProjects.Add(it.employeeId, it.employeeName);
-                    });
-            }
-            catch (Exception ex)
-            {
-                log.Error("error trying to do something", ex);
-                errorMessage.Text = "Internal error server";
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
         private void loadTask(long projectId)
         {
             SqlConnection connection = new SqlConnection(connectionString);
             try
             {
-                connection.Open();
-                SqlCommand command = connection.CreateCommand();
-                command.Connection = connection;
-                Dictionary<string, object> parametes = new Dictionary<string, object>
-                {
-                    {"projectId",  projectId}
-                };
+                Dictionary<long, string> employeeProjects = new Dictionary<long, string>();
                 TaskRepository taskRepository = new TaskRepository();
                 List<TaskDto> todoTasks = new List<TaskDto>();
                 List<TaskDto> progessTasks = new List<TaskDto>();
                 List<TaskDto> doneTasks = new List<TaskDto>();
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.Connection = connection;
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    {"projectId",  projectId}
+                };
+                EmployeeProjectRepository employeeProjectRepository = new EmployeeProjectRepository();
+                employeeProjectRepository.findByConditionAnd(command, parameters)
+                    .ForEach(it =>
+                    {
+                        employeeProjects.Add(it.employeeId, it.employeeName);
+                    });
                 string value = string.Empty;
-                taskRepository.findByConditionAnd(command, parametes)
+                taskRepository.findByConditionAnd(command, parameters)
                     .ForEach(task =>
                     {
                         TaskDto taskDto = new TaskDto
@@ -95,13 +71,13 @@ namespace btl_web_nangcao_task_management_system.page.task
                             priority = task.priority
                         };
                         switch (task.status) {
-                            case model.TaskStatus.TODO:
+                            case TaskStatus.TODO:
                                 todoTasks.Add(taskDto);
                                 break;
-                            case model.TaskStatus.PROGESS: 
+                            case TaskStatus.PROGESS: 
                                 progessTasks.Add(taskDto);
                                 break;
-                            case model.TaskStatus.DONE:
+                            case TaskStatus.DONE:
                                 doneTasks.Add(taskDto);
                                 break;
                         }
