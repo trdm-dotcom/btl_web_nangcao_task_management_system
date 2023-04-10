@@ -114,7 +114,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
             return employeeList;
         }
 
-        public void update(SqlCommand command, Dictionary<string, object> parameters, int id)
+        public void update(SqlCommand command, Dictionary<string, object> parameters, long id)
         {
             StringBuilder sb = new StringBuilder("UPDATE t_employee SET");
             foreach (string key in parameters.Keys)
@@ -131,6 +131,15 @@ namespace btl_web_nangcao_task_management_system.Repositories
             {
                 command.Parameters.AddWithValue(string.Format("@{0}", element.Key), element.Value);
             }
+            command.ExecuteNonQuery();
+            command.Parameters.Clear();
+        }
+
+        public void delete(SqlCommand command, long id)
+        {
+            command.CommandType = CommandType.Text;
+            command.CommandText = "DELETE FROM t_employee WHERE id = @id";
+            command.Parameters.AddWithValue("@id", id);  
             command.ExecuteNonQuery();
             command.Parameters.Clear();
         }

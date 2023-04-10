@@ -1,4 +1,7 @@
-﻿using System;
+﻿using btl_web_nangcao_task_management_system.model;
+using btl_web_nangcao_task_management_system.model.db;
+using btl_web_nangcao_task_management_system.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
@@ -34,6 +37,28 @@ namespace btl_web_nangcao_task_management_system
             try
             {
                 connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.Connection = connection;
+                Dictionary<string, object> parameters = new Dictionary<string, object>
+                {
+                    { "id", id }
+                };
+                ProjectRepository projectRepository = new ProjectRepository();
+                List<Project> result = projectRepository.findByConditionAnd(command, parameters);
+                if (result.Count > 0)
+                {
+                    Project project = result[0];
+                    projectTitleLabel.Text = project.title;
+                    projectDescriptionLabel.Text= project.description;
+                    projectStartDateLabel.Text = project.startDate.ToString("dd/M/yyyy");
+                    projectEstimateDateLabel.Text = project.estimateDate.ToString("dd/M/yyyy");
+                    projectLeadLabel.Text = project.lead.ToString();
+                    projectStatusLabel.Text = Enum.GetName(typeof(ProjectStatus), project.status);
+                }
+                else
+                {
+                    errorMessage.Text = "Project not found";
+                }
             }
             catch (Exception ex)
             {

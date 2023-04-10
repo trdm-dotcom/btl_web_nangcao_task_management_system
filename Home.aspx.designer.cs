@@ -13,5 +13,23 @@ namespace btl_web_nangcao_task_management_system.page
 
     public partial class Home
     {
+
+        /// <summary>
+        /// recentProjectListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView recentProjectListView;
+
+        /// <summary>
+        /// taskAssignedListView control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListView taskAssignedListView;
     }
 }

@@ -32,21 +32,6 @@ namespace btl_web_nangcao_task_management_system.page.project
                 {
                     FillEmployeeListBox(long.Parse(Request.QueryString["project"]));
                 }
-                if (Request.QueryString["action"] != null)
-                {
-                    string response = string.Empty;
-                    switch (Request.QueryString["action"])
-                    {
-                        case "loadEmployeeInProject":
-                            response = getEmployeeInProject(long.Parse(Request.QueryString["projectId"]));
-                            break;
-                    }
-                    Response.Clear();
-                    Response.Write(response);
-                    Response.ContentType = "application/json";
-                    Response.Flush();
-                    Response.Close();
-                }
             }
             else
             {
@@ -167,7 +152,9 @@ namespace btl_web_nangcao_task_management_system.page.project
             }
         }
 
-        private string getEmployeeInProject(long projectId)
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        private string getEmployeeInProject(long project)
         {
             string response = string.Empty;
             SqlConnection connection = new SqlConnection(connectionString);
@@ -180,9 +167,13 @@ namespace btl_web_nangcao_task_management_system.page.project
                 EmployeeProjectRepository employeeProjectRepository = new EmployeeProjectRepository();
                 Dictionary<string, object> parameters = new Dictionary<string, object>
                 {
-                    { "projectId", projectId}
+                    { "projectId", project}
                 };
                 response = JsonConvert.SerializeObject(employeeProjectRepository.findByConditionAnd(command, parameters));
+            }
+            catch (Exception ex)
+            {
+                log.Error("error trying to do something", ex);
             }
             finally
             {

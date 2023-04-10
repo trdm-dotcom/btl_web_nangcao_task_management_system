@@ -7,7 +7,7 @@
         <div id="toastBox"></div>
     </div>
     <div class="form-group">
-        <asp:Label ID="Label1" runat="server" Text="Select Project to Close:" AssociatedControl="titleTextBox"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="Select Project to Close:" CssClass="labelForm" AssociatedControl="titleTextBox"></asp:Label>
         <asp:DropDownList ID="projectDropDownList" runat="server" AutoPostBack="False" CssClass="form-control">
             <Items>
                 <asp:ListItem Text="-Select-" />
@@ -16,10 +16,10 @@
         <asp:Label ID="feedbackProject" runat="server" CssClass="invalid-feedback"></asp:Label>
     </div>
     <div class="form-group">
-        <asp:Label ID="Label2" runat="server" Text="Status:" AssociatedControl="titleTextBox"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Text="Status:" CssClass="labelForm" AssociatedControl="titleTextBox"></asp:Label>
         <asp:Label ID="statusProjectLabel" runat="server"></asp:Label>
     </div>
-    <asp:Button ID="closeButton" runat="server" Text="Close Project" OnClick="closeButton_Click" OnClientClick="return validateForm()" />
+    <asp:Button ID="closeButton" runat="server" CssClass="btn btn-primary" Text="Close Project" OnClick="closeButton_Click" OnClientClick="return validateForm()" />
     <script>
         const projectDropDownList = document.getElementById("<%= projectDropDownList.ClientID %>");
         const feedbackProject = document.getElementById("<%= feedbackProject.ClientID %>");
@@ -28,9 +28,10 @@
         projectDropDownList.onchange = function () {
             let projectId = projectDropDownList.value;
             if (projectId && projectDropDownList.selectedIndex > 0) {
-                methodGet(`ProjectClose.aspx?action=loadProject&project=${projectId}`)
-                    .then((data) => {
-                        statusProjectLabel.innerText = data.status;
+                methodGet(`ProjectClose.aspx/loadProjectData?project=${projectId}`)
+                    .then((result) => {
+                        const response = JSON.parse(result.d);
+                        statusProjectLabel.innerText = response.status;
                     })
                     .catch((err) => {
                         showPopupNotification(document.getElementById("toastBox"), err.message, "error");

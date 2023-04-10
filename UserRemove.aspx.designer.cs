@@ -69,12 +69,12 @@ namespace btl_web_nangcao_task_management_system
         protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// userRoleLabel control.
+        /// employeeRoleLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label userRoleLabel;
+        protected global::System.Web.UI.WebControls.Label employeeRoleLabel;
     }
 }

@@ -8,6 +8,7 @@ using System.Text;
 using System.Web;
 using btl_web_nangcao_task_management_system.model;
 using btl_web_nangcao_task_management_system.model.db;
+using btl_web_nangcao_task_management_system.model.dto;
 
 namespace btl_web_nangcao_task_management_system.Repositories
 {
@@ -33,6 +34,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
                 task.employeeQA = (long)dataRow["employeeQA"];
                 task.status = (TaskStatus)Enum.Parse(typeof(TaskStatus), dataRow["status"].ToString());
                 task.priority = (TaskPriority)Enum.Parse(typeof(TaskPriority), dataRow["priority"].ToString());
+                task.createdAt = Convert.ToDateTime(dataRow["createAt"].ToString());
                 taskList.Add(task);
             }
             return taskList;
@@ -82,6 +84,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
                 item.employeeQA = (long)dataRow["employeeQA"];
                 item.status = (TaskStatus)Enum.Parse(typeof(TaskStatus), dataRow["status"].ToString());
                 item.priority = (TaskPriority)Enum.Parse(typeof(TaskPriority), dataRow["priority"].ToString());
+                item.createdAt = Convert.ToDateTime(dataRow["createAt"].ToString());
                 taskList.Add(item);
             }
             return taskList;
@@ -126,6 +129,65 @@ namespace btl_web_nangcao_task_management_system.Repositories
             }
             command.ExecuteNonQuery();
             command.Parameters.Clear();
+        }
+
+        public List<TaskDto> findAllTaskAssigneeToEmployee(SqlCommand command, long employee)
+        {
+            List<TaskDto> taskList = new List<TaskDto>();
+            command.CommandType = CommandType.Text;
+            command.CommandText = "SELECT t.*, p.title FROM t_task AS t INNER JOIN t_project AS p ON t.projectId = p.id WHERE employeeAssignee = @employeeAssignee ORDER BY createAt DESC";
+            command.Parameters.AddWithValue("@employeeAssignee", employee);
+            DataTable dataTable = new DataTable();
+            dataTable.Load(command.ExecuteReader());
+            command.Parameters.Clear();
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                TaskDto item = new TaskDto();
+                item.id = (long)dataRow["id"];
+                item.projectId = (long)dataRow["projectId"];
+                item.name = dataRow["name"].ToString();
+                item.description = dataRow["description"].ToString();
+                item.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
+                item.estimateDate = Convert.ToDateTime(dataRow["estimateDate"].ToString());
+                item.employeeReporter = (long)dataRow["employeeReporter"];
+                item.employeeAssignee = (long)dataRow["employeeAssignee"];
+                item.employeeQA = (long)dataRow["employeeQA"];
+                item.status = (TaskStatus)Enum.Parse(typeof(TaskStatus), dataRow["status"].ToString());
+                item.priority = (TaskPriority)Enum.Parse(typeof(TaskPriority), dataRow["priority"].ToString());
+                item.projectTitle = dataRow["title"].ToString();
+                item.createdAt = Convert.ToDateTime(dataRow["createAt"].ToString());
+                taskList.Add(item);
+            }
+            return taskList;
+        }
+
+        public List<TaskDto> findAllTaskDto(SqlCommand command)
+        {
+            List<TaskDto> taskList = new List<TaskDto>();
+            command.CommandType = CommandType.Text;
+            command.CommandText = "SELECT t.*, p.title FROM t_task AS t INNER JOIN t_project AS p ON t.projectId = p.id WHERE 1=1";
+            DataTable dataTable = new DataTable();
+            dataTable.Load(command.ExecuteReader());
+            command.Parameters.Clear();
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                TaskDto task = new TaskDto();
+                task.id = (long)dataRow["id"];
+                task.projectId = (long)dataRow["projectId"];
+                task.name = dataRow["name"].ToString();
+                task.description = dataRow["description"].ToString();
+                task.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
+                task.estimateDate = Convert.ToDateTime(dataRow["estimateDate"].ToString());
+                task.employeeReporter = (long)dataRow["employeeReporter"];
+                task.employeeAssignee = (long)dataRow["employeeAssignee"];
+                task.employeeQA = (long)dataRow["employeeQA"];
+                task.status = (TaskStatus)Enum.Parse(typeof(TaskStatus), dataRow["status"].ToString());
+                task.priority = (TaskPriority)Enum.Parse(typeof(TaskPriority), dataRow["priority"].ToString());
+                task.projectTitle = dataRow["title"].ToString();
+                task.createdAt = Convert.ToDateTime(dataRow["createAt"].ToString());
+                taskList.Add(task);
+            }
+            return taskList;
         }
     }
 }

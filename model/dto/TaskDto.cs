@@ -11,5 +11,6 @@ namespace btl_web_nangcao_task_management_system.model.dto
         public string nameEmployeeAssignee { get; set; }
         public string nameEmployeeReporter { get; set; }
         public string nameEmployeeQA { get; set; }
+        public string projectTitle { get; set; }
     }
 }

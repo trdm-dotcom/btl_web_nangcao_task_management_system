@@ -8,7 +8,7 @@
             <div id="toastBox"></div>
         </div>
         <div class="form-group">
-            <asp:Label ID="Label1" runat="server" Text="Select Project:" AssociatedControl="titleTextBox"></asp:Label>
+            <asp:Label ID="Label1" runat="server" Text="Select Project:" CssClass="labelForm" AssociatedControl="titleTextBox"></asp:Label>
             <asp:DropDownList ID="projectDropDownList" runat="server" AutoPostBack="True" CssClass="form-control" OnSelectedIndexChanged="projectDropDownList_SelectedIndexChanged">
                 <Items>
                     <asp:ListItem Text="-Select-"/>
@@ -17,7 +17,7 @@
             <asp:Label ID="feedbackProject" runat="server" CssClass="invalid-feedback"></asp:Label>
         </div>
         <div class="form-group">
-            <asp:Label ID="employeesLabel" runat="server" Text="Employee:"></asp:Label>
+            <asp:Label ID="employeesLabel" runat="server" CssClass="labelForm" Text="Employee:"></asp:Label>
             <div class="form-row no-gutters">
                 <div class="col c-5 m-5 l-5">
                     <asp:ListBox ID="allEmployeeListBox" runat="server" Height="100%" Width="100%" CssClass="form-control"></asp:ListBox>
@@ -36,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <asp:Button ID="saveButton" runat="server" Text="Save" OnClick="saveButton_Click" OnClientClick="return validateForm()" />
+        <asp:Button ID="saveButton" runat="server" Text="Save" OnClick="saveButton_Click" CssClass="btn btn-primary" OnClientClick="return validateForm()" />
     </asp:Panel>
     <script>
         const allEmployeeListBox = document.getElementById("<%= allEmployeeListBox.ClientID %>");

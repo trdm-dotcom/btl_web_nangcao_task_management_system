@@ -7,7 +7,7 @@
         <div id="toastBox"></div>
     </div>
     <div class="form-group">
-        <asp:Label ID="Label1" runat="server" Text="Employee:" AssociatedControl="employeeDropDownList"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="Employee:" CssClass="labelForm" AssociatedControl="employeeDropDownList"></asp:Label>
         <asp:DropDownList ID="employeeDropDownList" runat="server" AutoPostBack="false" CssClass="form-control">
             <Items>
                 <asp:ListItem Text="-Select-" />
@@ -16,22 +16,20 @@
         <asp:Label ID="feedbackEmployeeDropDownList" runat="server" CssClass="invalid-feedback"></asp:Label>
     </div>
     <div class="form-group">
-        <asp:Label ID="Label2" runat="server" Text="Employee role:" AssociatedControl="userDropDownList"></asp:Label>
-        <asp:Label ID="userRoleLabel" runat="server" Text=""></asp:Label>
-    </div>
-    <div class="form-group">
-        <asp:Label ID="Label3" runat="server" Text="Role:" AssociatedControl="roleDownList"></asp:Label>
+        <asp:Label ID="Label3" runat="server" Text="Role:" CssClass="labelForm" AssociatedControl="roleDownList"></asp:Label>
         <asp:DropDownList ID="roleDownList" runat="server" AutoPostBack="false" CssClass="form-control">
             <Items>
                 <asp:ListItem Text="-Select-" />
+                <asp:ListItem Text="BA" />
+                <asp:ListItem Text="QA" />
+                <asp:ListItem Text="DEV" />
             </Items>
         </asp:DropDownList>
         <asp:Label ID="feedbackRoleDropDownList" runat="server" CssClass="invalid-feedback"></asp:Label>
     </div>
-    <button type="button" onclick="doUpate()" >Update</button>
+    <button type="button" onclick="doUpate()" CssClass="btn btn-primary" >Update</button>
     <script>
         const employeeDropDownList = document.getElementById("<%= employeeDropDownList.ClientID %>");
-        const userRoleLabel = document.getElementById("<%= userRoleLabel.ClientID %>");
         const roleDownList = document.getElementById("<%= roleDownList.ClientID %>");
 
         const feedbackEmployeeDropDownList = document.getElementById("<%= feedbackEmployeeDropDownList.ClientID %>");
@@ -40,7 +38,7 @@
         function validateForm() {
             let valid = true;
             if (employeeDropDownList.value == null
-                || userDropDownList.selectedIndex < 1) {
+                || employeeDropDownList.selectedIndex < 1) {
                 valid = false;
                 employeeDropDownList.classList.add("is-invalid");
                 feedbackEmployeeDropDownList.innerText = "Please choose employee";
@@ -64,7 +62,7 @@
 
         employeeDropDownList.onchange = function () {
             if (employeeDropDownList.value == null
-                || userDropDownList.selectedIndex < 1) {
+                || employeeDropDownList.selectedIndex < 1) {
                 showPopupNotification(document.getElementById("toastBox"), "Invalid employee", "warning");
                 return;
             }
@@ -75,7 +73,7 @@
                         showPopupNotification(document.getElementById("toastBox"), response.message, "error");
                     }
                     else {
-                        userRoleLabel.innerText = response.message;
+                        roleDownList.value = response.message;
                     }
                 })
                 .catch((err) => {
@@ -89,7 +87,7 @@
                 return;
             }
             const body = {
-                user: userDropDownList.value,
+                employee: employeeDropDownList.value,
                 role: roleDownList.value
             }
             methodPost("UserEditRole.aspx/updateRole", body)
@@ -99,6 +97,7 @@
                         showPopupNotification(document.getElementById("toastBox"), response.message, "error");
                     }
                     else {
+                        employeeRoleLabel.innerText = roleDownList.value;
                         showPopupNotification(document.getElementById("toastBox"), response.message, "success");
                     }
                 })

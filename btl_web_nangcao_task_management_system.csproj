@@ -87,6 +87,7 @@
     <Content Include="ProjectEdit.aspx" />
     <Content Include="ProjectPage.aspx" />
     <Content Include="ProjectRemoveEmployee.aspx" />
+    <Content Include="TaskAll.aspx" />
     <Content Include="TaskPage.aspx" />
     <Content Include="TaskCreate.aspx" />
     <Content Include="TaskEdit.aspx" />
@@ -195,6 +196,13 @@
     </Compile>
     <Compile Include="ProjectRemoveEmployee.aspx.designer.cs">
       <DependentUpon>ProjectRemoveEmployee.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TaskAll.aspx.cs">
+      <DependentUpon>TaskAll.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TaskAll.aspx.designer.cs">
+      <DependentUpon>TaskAll.aspx</DependentUpon>
     </Compile>
     <Compile Include="TaskPage.aspx.cs">
       <DependentUpon>TaskPage.aspx</DependentUpon>

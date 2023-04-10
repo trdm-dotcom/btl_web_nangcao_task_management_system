@@ -99,7 +99,7 @@
                     <p>Show:</p>
                     <button aria-current="true" class="nch-button" data-testid="issue-activity-feed.ui.buttons.Comments" type="button">Comments</button>
                 </div>
-                <select id="sortSelect">
+                <select id="sortSelect" class="form-control">
                     <option value="1">Newest first</option>
                     <option value="2">Older first</option>
                 </select>

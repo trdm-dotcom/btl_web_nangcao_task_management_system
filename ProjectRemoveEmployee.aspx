@@ -7,7 +7,7 @@
         <div id="toastBox"></div>
     </div>
     <div class="form-group">
-        <asp:Label ID="Label1" runat="server" Text="Select Project:" AssociatedControl="titleTextBox"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="Select Project:" CssClass="labelForm" AssociatedControl="titleTextBox"></asp:Label>
         <asp:DropDownList ID="projectDropDownList" runat="server" AutoPostBack="False" CssClass="form-control">
             <Items>
                 <asp:ListItem Text="-Select-" />
@@ -16,11 +16,11 @@
         <asp:Label ID="feedbackProject" runat="server" CssClass="invalid-feedback"></asp:Label>
     </div>
     <div class="form-group">
-        <asp:Label ID="Label2" runat="server" Text="Select Emplyee to remove:" AssociatedControl="removeEmployeeListBox"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Text="Select Emplyee to remove:" CssClass="labelForm" AssociatedControl="removeEmployeeListBox"></asp:Label>
         <asp:ListBox ID="removeEmployeeListBox" runat="server" Height="100%" Width="100%" CssClass="form-control"></asp:ListBox>
         <asp:Label ID="feedbackRemoveEmployee" runat="server" CssClass="invalid-feedback"></asp:Label>
     </div>
-    <button id="saveButton" type="button" onclick="doRequest()">Save</button>
+    <button id="saveButton" type="button" cssclass="btn btn-danger" onclick="doRequest()">Save</button>
     <script>
         const projectDropDownList = document.getElementById("<%= projectDropDownList.ClientID %>");
         const feedbackProject = document.getElementById("<%= feedbackProject.ClientID %>");
@@ -56,9 +56,10 @@
             let projectId = projectDropDownList.value;
             removeEmployeeListBox.innerHTML = null;
             if (projectId && projectDropDownList.selectedIndex > 0) {
-                methodGet(`ProjectRemoveEmployee.aspx?action=loadEmployeeInProject&projectId=${projectId}`)
-                    .then((data) => {
-                        data.forEach((v, k) => {
+                methodGet(`ProjectRemoveEmployee.aspx/getEmployeeInProject?project=${projectId}`)
+                    .then((result) => {
+                        const response = JSON.parse(result.d);
+                        response.forEach((v, k) => {
                             let option = document.createElement("option");
                             option.text = v.employeeName;
                             option.value = v.employeeId;
@@ -78,39 +79,41 @@
             errorMessage.innerText = null;
             successMessage.innerText = null;
             if (validateForm()) {
-                let employeeIds = [];
-                for (let option of removeEmployeeListBox.options) {
-                    if (option.selected) {
-                        employeeIds.push(option.value);
-                    }
-                }
-                if (employeeIds.length < 1) {
-                    errorMessage.innerHTML = "Please select employee";
-                    return;
-                }
-                const body = {
-                    "projectId": projectDropDownList.value,
-                    "employeeIds": employeeIds
-                };
-                methodPost("ProjectRemoveEmployee.aspx/removeEmployee", body)
-                    .then((data) => {
-                        let response = JSON.parse(data.d);
-                        if (response.error) {
-                            showPopupNotification(document.getElementById("toastBox"), response.message, "error");
+                if (window.confirm("Do you want to remove employee")) {
+                    let employeeIds = [];
+                    for (let option of removeEmployeeListBox.options) {
+                        if (option.selected) {
+                            employeeIds.push(option.value);
                         }
-                        else {
-                            showPopupNotification(document.getElementById("toastBox"), response.message, "success");
-                            for (var i = 0; i < removeEmployeeListBox.length; i++) {
-                                if (employeeIds.includes(removeEmployeeListBox.options[i].value)) {
-                                    removeEmployeeListBox.remove(i);
+                    }
+                    if (employeeIds.length < 1) {
+                        errorMessage.innerHTML = "Please select employee";
+                        return;
+                    }
+                    const body = {
+                        "projectId": projectDropDownList.value,
+                        "employeeIds": employeeIds
+                    };
+                    methodPost("ProjectRemoveEmployee.aspx/removeEmployee", body)
+                        .then((data) => {
+                            let response = JSON.parse(data.d);
+                            if (response.error) {
+                                showPopupNotification(document.getElementById("toastBox"), response.message, "error");
+                            }
+                            else {
+                                showPopupNotification(document.getElementById("toastBox"), response.message, "success");
+                                for (var i = 0; i < removeEmployeeListBox.length; i++) {
+                                    if (employeeIds.includes(removeEmployeeListBox.options[i].value)) {
+                                        removeEmployeeListBox.remove(i);
+                                    }
                                 }
                             }
-                        }
-                    })
-                    .catch((err) => {
-                        console.error(err);
-                        showPopupNotification(document.getElementById("toastBox"), "Internal error server", "error");
-                    });
+                        })
+                        .catch((err) => {
+                            console.error(err);
+                            showPopupNotification(document.getElementById("toastBox"), "Internal error server", "error");
+                        });
+                }
             }
         }
     </script>

@@ -20,11 +20,11 @@ namespace btl_web_nangcao_task_management_system.page.authentication
         protected void Page_Load(object sender, EventArgs e)
         {
             ((MasterPageAuthentication)Master).LabelHeaderMasterPageAuthentication.Text = "Login";
-            HttpCookie cookie = Request.Cookies["userLogin"];
+            /*HttpCookie cookie = Request.Cookies["userLogin"];
             if(cookie != null)
             {
                 emailTextBox.Text = cookie["email"].ToString();
-            }
+            }*/
         }
 
         protected void loginButton_Click(object sender, EventArgs e)

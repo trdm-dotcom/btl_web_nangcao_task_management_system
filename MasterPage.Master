@@ -48,6 +48,9 @@
                                         <li class="dropdown-link">
                                             <a href="TaskCreate.aspx">Create a Task</a>
                                         </li>
+                                        <li class="dropdown-link">
+                                            <a href="TaskAll.aspx">View all Task</a>
+                                        </li>
                                         <div class="arrow"></div>
                                     </ul>
                                 </div>
@@ -68,7 +71,7 @@
                                             <a href="UserEditRole.aspx">Edit an Existing Employee</a>
                                         </li>
                                          <li class="dropdown-link">
-                                            <a href="UserEditRole.aspx">Delete Existing Employee</a>
+                                            <a href="UserRemove.aspx">Delete Existing Employee</a>
                                         </li>
                                         <div class="arrow"></div>
                                     </ul>

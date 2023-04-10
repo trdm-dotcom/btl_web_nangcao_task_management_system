@@ -11,7 +11,7 @@ namespace btl_web_nangcao_task_management_system
 {
 
 
-    public partial class UserEditRole
+    public partial class TaskAll
     {
 
         /// <summary>
@@ -33,15 +33,6 @@ namespace btl_web_nangcao_task_management_system
         protected global::System.Web.UI.WebControls.Label successMessage;
 
         /// <summary>
-        /// Label1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
-
-        /// <summary>
         /// employeeDropDownList control.
         /// </summary>
         /// <remarks>
@@ -51,39 +42,21 @@ namespace btl_web_nangcao_task_management_system
         protected global::System.Web.UI.WebControls.DropDownList employeeDropDownList;
 
         /// <summary>
-        /// feedbackEmployeeDropDownList control.
+        /// statusDropDownList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label feedbackEmployeeDropDownList;
+        protected global::System.Web.UI.WebControls.DropDownList statusDropDownList;
 
         /// <summary>
-        /// Label3 control.
+        /// TaskGridView control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
-
-        /// <summary>
-        /// roleDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList roleDownList;
-
-        /// <summary>
-        /// feedbackRoleDropDownList control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label feedbackRoleDropDownList;
+        protected global::System.Web.UI.WebControls.GridView TaskGridView;
     }
 }

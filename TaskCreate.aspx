@@ -3,7 +3,7 @@
 <asp:Content ID="ContentTaskCreate" runat="server" ContentPlaceHolderID="mainContentPlaceHolder">
     <asp:Label ID="errorMessage" runat="server" CssClass="invalid-feedback"></asp:Label>
     <div class="form-group">
-        <asp:Label ID="Label5" runat="server" Text="Project:" AssociatedControlID="projectDropDownList"></asp:Label>
+        <asp:Label ID="Label5" runat="server" Text="Project:" CssClass="labelForm" AssociatedControlID="projectDropDownList"></asp:Label>
         <asp:DropDownList ID="projectDropDownList" runat="server" AutoPostBack="true" CssClass="form-control" OnSelectedIndexChanged="projectDropDownList_SelectedIndexChanged">
             <Items>
                 <asp:ListItem Text="-Select-" />
@@ -12,7 +12,7 @@
         <asp:Label ID="feedbackProject" runat="server" CssClass="invalid-feedback"></asp:Label>
     </div>
     <div class="form-group">
-        <asp:Label ID="Label1" runat="server" Text="Task Title:" AssociatedControl="titleTextBox"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="Task Title:" CssClass="labelForm" AssociatedControl="titleTextBox"></asp:Label>
         <asp:TextBox ID="titleTextBox" runat="server" CssClass="form-control"></asp:TextBox>
         <asp:Label ID="feedbackTitle" runat="server" CssClass="invalid-feedback"></asp:Label>
     </div>
@@ -23,7 +23,7 @@
     </div>
     <div class="form-row no-gutters">
         <div class="form-group col c-12 m-3 l-3">
-            <asp:Label ID="Label7" runat="server" Text="Reporter:" AssociatedControlID="reporterDropDownList"></asp:Label>
+            <asp:Label ID="Label7" runat="server" Text="Reporter:" CssClass="labelForm" AssociatedControlID="reporterDropDownList"></asp:Label>
             <asp:DropDownList ID="reporterDropDownList" runat="server" CssClass="form-control">
                 <Items>
                     <asp:ListItem Text="-Select-" />
@@ -31,7 +31,7 @@
             </asp:DropDownList>
         </div>
         <div class="form-group col c-12 m-3 l-3">
-            <asp:Label ID="Label6" runat="server" Text="Assignee:" AssociatedControlID="assigneeDropDownList"></asp:Label>
+            <asp:Label ID="Label6" runat="server" Text="Assignee:" CssClass="labelForm" AssociatedControlID="assigneeDropDownList"></asp:Label>
             <asp:DropDownList ID="assigneeDropDownList" runat="server" CssClass="form-control">
                 <Items>
                     <asp:ListItem Text="-Select-" />
@@ -39,7 +39,7 @@
             </asp:DropDownList>
         </div>
         <div class="form-group col c-12 m-3 l-3">
-            <asp:Label ID="Label8" runat="server" Text="QA:" AssociatedControlID="QADropDownList"></asp:Label>
+            <asp:Label ID="Label8" runat="server" Text="QA:" CssClass="labelForm" AssociatedControlID="QADropDownList"></asp:Label>
             <asp:DropDownList ID="QADropDownList" runat="server" CssClass="form-control">
                 <Items>
                     <asp:ListItem Text="-Select-" />
@@ -49,17 +49,17 @@
     </div>
     <div class="form-row no-gutters">
         <div class="form-group col c-12 m-3 l-3">
-            <asp:Label ID="Label3" runat="server" Text="Start Date:" AssociatedControl="startDateTextBox"></asp:Label>
+            <asp:Label ID="Label3" runat="server" Text="Start Date:" CssClass="labelForm" AssociatedControl="startDateTextBox"></asp:Label>
             <asp:TextBox ID="startDateTextBox" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
             <asp:Label ID="feedbackStartDate" runat="server" CssClass="invalid-feedback"></asp:Label>
         </div>
         <div class="form-group col c-12 m-3 l-3">
-            <asp:Label ID="Label4" runat="server" Text="Estimate Date:" AssociatedControlID="estimateDateTextBox"></asp:Label>
+            <asp:Label ID="Label4" runat="server" Text="Estimate Date:" CssClass="labelForm" AssociatedControlID="estimateDateTextBox"></asp:Label>
             <asp:TextBox ID="estimateDateTextBox" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
             <asp:Label ID="feedbackestimateDate" runat="server" CssClass="invalid-feedback"></asp:Label>
         </div>
         <div class="form-group col c-12 m-3 l-3">
-            <asp:Label ID="Label10" runat="server" Text="Priority" AssociatedControlID="priorityDropDownList"></asp:Label>
+            <asp:Label ID="Label10" runat="server" Text="Priority" CssClass="labelForm" AssociatedControlID="priorityDropDownList"></asp:Label>
             <asp:DropDownList ID="priorityDropDownList" runat="server" CssClass="form-control">
                 <Items>
                     <asp:ListItem Text="-Select-" />
@@ -71,11 +71,7 @@
             <asp:Label ID="feedbackPriority" runat="server" CssClass="invalid-feedback"></asp:Label>
         </div>
     </div>
-    <div class="form-group">
-        <asp:Label ID="Label9" runat="server" Text="Attach a file (optional)" CssClass="labelForm" AssociatedControl="attachmentFileUpload"></asp:Label>
-        <asp:FileUpload ID="attachmentFileUpload" runat="server"/>
-    </div>
-    <asp:Button ID="saveButton" runat="server" Text="Save" OnClick="saveButton_Click" OnClientClick="return validateForm()" />
+    <asp:Button ID="saveButton" runat="server" CssClass="btn btn-primary" Text="Save" OnClick="saveButton_Click" OnClientClick="return validateForm()" />
     <script>
         const projectDropDownList = document.getElementById("<%= projectDropDownList.ClientID %>");
         const titleTextBox = document.getElementById("<%= titleTextBox.ClientID %>");

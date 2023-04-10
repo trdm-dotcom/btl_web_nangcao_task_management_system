@@ -139,5 +139,30 @@ namespace btl_web_nangcao_task_management_system.Repositories
             }
             return projectList;
         }
+
+        public List<ProjectDto> findAllProjectEmployeeJoinIn(SqlCommand command, long employee)
+        {
+            command.CommandType = CommandType.Text;
+            command.CommandText = "SELECT p.*, e.name FROM t_project AS p INNER JOIN t_employeeProject AS ep ON p.id = ep.projectId LEFT JOIN t_employee AS e ON p.lead = e.id WHERE ep.employeeId = @employee";
+            command.Parameters.AddWithValue("@employee", employee);
+            DataTable dataTable = new DataTable();
+            dataTable.Load(command.ExecuteReader());
+            command.Parameters.Clear();
+            List<ProjectDto> projectList = new List<ProjectDto>();
+            foreach (DataRow dataRow in dataTable.Rows)
+            {
+                ProjectDto item = new ProjectDto();
+                item.id = (long)dataRow["id"];
+                item.title = dataRow["title"].ToString();
+                item.description = dataRow["description"].ToString();
+                item.startDate = Convert.ToDateTime(dataRow["startDate"].ToString());
+                item.estimateDate = Convert.ToDateTime(dataRow["estimateDate"].ToString());
+                item.status = (ProjectStatus)Enum.Parse(typeof(ProjectStatus), dataRow["status"].ToString());
+                item.lead = (long)dataRow["lead"];
+                item.leadName = dataRow["name"].ToString();
+                projectList.Add(item);
+            }
+            return projectList;
+        }
     }
 }

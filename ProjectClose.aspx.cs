@@ -14,6 +14,8 @@ using System.Security.Cryptography;
 using static log4net.Appender.ColoredConsoleAppender;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using System.Web.Script.Services;
+using System.Web.Services;
 
 namespace btl_web_nangcao_task_management_system.page.project
 {
@@ -28,21 +30,6 @@ namespace btl_web_nangcao_task_management_system.page.project
                 if (!Page.IsPostBack)
                 {
                     FillProjectDropDownList();
-                }
-                if (Request.QueryString["action"] != null)
-                {
-                    string response = string.Empty;
-                    switch (Request.QueryString["action"])
-                    {
-                        case "loadProject":
-                            response = LoadProjectData(long.Parse(Request.QueryString["project"]));
-                            break;
-                    }
-                    Response.Clear();
-                    Response.Write(response);
-                    Response.ContentType = "application/json";
-                    Response.Flush();
-                    Response.Close();
                 }
             }
             else
@@ -175,7 +162,9 @@ namespace btl_web_nangcao_task_management_system.page.project
             return isPassed;
         }
 
-        private string LoadProjectData(long projectId)
+        [WebMethod]
+        [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
+        private string loadProjectData(long project)
         {
             SqlConnection connection = new SqlConnection(connectionString);
             string response = string.Empty;
@@ -186,21 +175,24 @@ namespace btl_web_nangcao_task_management_system.page.project
                 command.Connection = connection;
                 Dictionary<string, object> parameters = new Dictionary<string, object>
                 {
-                    { "id", projectId }
+                    { "id", project }
                 };
                 ProjectRepository projectRepository = new ProjectRepository();
                 List<Project> result = projectRepository.findByConditionAnd(command, parameters);
                 if (result.Count > 0)
                 {
-                    Project project = result[0];
-
+                    Project projectEntity = result[0];
                     response = JsonConvert.SerializeObject(new
                     {
-                        title = project.title,
-                        description = project.description,
-                        status = Enum.GetName(typeof(ProjectStatus), project.status)
+                        title = projectEntity.title,
+                        description = projectEntity.description,
+                        status = Enum.GetName(typeof(ProjectStatus), projectEntity.status)
                     });
                 }
+            }
+            catch(Exception ex)
+            {
+                log.Error("error trying to do something", ex);
             }
             finally
             {

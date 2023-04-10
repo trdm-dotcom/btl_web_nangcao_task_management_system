@@ -8,67 +8,60 @@ using System.Configuration;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace btl_web_nangcao_task_management_system.page
+namespace btl_web_nangcao_task_management_system
 {
-    public partial class Home : System.Web.UI.Page
+    public partial class TaskAll : System.Web.UI.Page
     {
         private static string connectionString = ConfigurationManager.ConnectionStrings["connDBTaskManagementSystem"].ConnectionString;
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            long userId = (long)Session["user"];
-            Thread t1 = new Thread(() => loadProject(userId));
-            Thread t2 = new Thread(() => loadTask(userId));
-            t1.Start();
-            t1.Join();
-            t2.Start();
-            t2.Join();
+            if (!Page.IsPostBack)
+            {
+                ViewState["task"] = loadTask();
+                TaskGridView.DataSource = (List<TaskDto>)ViewState["task"];
+                TaskGridView.DataBind();
+            }
         }
 
-        private void loadProject(long userId)
+
+        protected void TaskGridView_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+            TaskGridView.PageIndex = e.NewPageIndex;
+            TaskGridView.DataSource = (List<TaskDto>)ViewState["task"];
+            TaskGridView.DataBind();
+        }
+
+        private List<TaskDto> loadTask()
+        {
+            errorMessage.Text = string.Empty;
             SqlConnection connection = new SqlConnection(connectionString);
             try
             {
                 connection.Open();
                 SqlCommand command = new SqlCommand();
                 command.Connection = connection;
-                ProjectRepository projectRepository = new ProjectRepository();
-                recentProjectListView.DataSource = projectRepository.findAllProjectEmployeeJoinIn(command, userId);
-                recentProjectListView.DataBind();
-            }
-            catch (Exception ex)
-            {
-                log.Error("error trying to do something", ex);
-            }
-            finally
-            {
-                connection.Close();
-            }
-        }
-
-        private void loadTask(long userId)
-        {
-            SqlConnection connection = new SqlConnection(connectionString);
-            try
-            {
-                connection.Open();
-                SqlCommand command = new SqlCommand();
-                command.Connection = connection;
+                EmployeeRepository employeeRepository = new EmployeeRepository();
+                Dictionary<long, string> keyValues = employeeRepository.findAll(command).ToDictionary(keySelector: it => it.id, elementSelector: it => it.name);
                 TaskRepository taskRepository = new TaskRepository();
-                taskAssignedListView.DataSource = taskRepository.findAllTaskAssigneeToEmployee(command, userId);
-                taskAssignedListView.DataBind();
+                return (List<TaskDto>)taskRepository.findAllTaskDto(command).Select(it =>
+                {
+                    it.nameEmployeeAssignee = keyValues[it.employeeAssignee] != null ? keyValues[it.employeeAssignee] : string.Empty;
+                    it.nameEmployeeReporter = keyValues[it.employeeReporter] != null ? keyValues[it.employeeReporter] : string.Empty;
+                    it.nameEmployeeQA = keyValues[it.employeeQA] != null ? keyValues[it.employeeQA] : string.Empty;
+                    return it;
+                });
             }
-            catch (Exception ex)
+            catch(Exception ex)
             {
-                Debug.WriteLine(ex);
+                Debug.Write(ex);
                 log.Error("error trying to do something", ex);
+                errorMessage.Text = "Internal error server";
+                return null;
             }
             finally
             {

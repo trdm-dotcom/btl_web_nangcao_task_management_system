@@ -7,7 +7,7 @@
         <div id="toastBox"></div>
     </div>
     <div class="form-group">
-        <asp:Label ID="Label2" runat="server" Text="Project Title:" AssociatedControl="titleTextBox"></asp:Label>
+        <asp:Label ID="Label2" runat="server" Text="Project Title:" CssClass="labelForm" AssociatedControl="titleTextBox"></asp:Label>
         <asp:TextBox ID="titleTextBox" runat="server" CssClass="form-control"></asp:TextBox>
         <asp:Label ID="feedbackTitle" runat="server" CssClass="invalid-feedback"></asp:Label>
     </div>
@@ -18,18 +18,18 @@
     </div>
     <div class="form-row no-gutters">
         <div class="form-group col c-12 m-3 l-3">
-            <asp:Label ID="Label4" runat="server" Text="Start Date:" AssociatedControl="startDateTextBox"></asp:Label>
+            <asp:Label ID="Label4" runat="server" Text="Start Date:" CssClass="labelForm" AssociatedControl="startDateTextBox"></asp:Label>
             <asp:TextBox ID="startDateTextBox" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
             <asp:Label ID="feedbackStartDate" runat="server" CssClass="invalid-feedback"></asp:Label>
         </div>
         <div class="form-group col c-12 m-3 l-3">
-            <asp:Label ID="Label5" runat="server" Text="Estimate Date:" AssociatedControlID="estimateDateTextBox"></asp:Label>
+            <asp:Label ID="Label5" runat="server" Text="Estimate Date:" CssClass="labelForm" AssociatedControlID="estimateDateTextBox"></asp:Label>
             <asp:TextBox ID="estimateDateTextBox" runat="server" TextMode="Date" CssClass="form-control"></asp:TextBox>
             <asp:Label ID="feedbackestimateDate" runat="server" CssClass="invalid-feedback"></asp:Label>
         </div>
     </div>
     <div class="form-group">
-        <asp:Label ID="Label1" runat="server" Text="Lead:" AssociatedControl="leadDropDownList"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Text="Lead:" CssClass="labelForm" AssociatedControl="leadDropDownList"></asp:Label>
         <asp:DropDownList ID="leadDropDownList" runat="server" AutoPostBack="false" CssClass="form-control">
             <Items>
                 <asp:ListItem Text="-Select-" />
@@ -37,7 +37,7 @@
         </asp:DropDownList>
         <asp:Label ID="feedbackLead" runat="server" CssClass="invalid-feedback"></asp:Label>
     </div>
-    <asp:Button ID="updateButton" runat="server" Text="update" OnClick="updateButton_Click" OnClientClick="return validateForm()" />
+    <asp:Button ID="updateButton" runat="server" Text="update" CssClass="btn btn-primary" OnClick="updateButton_Click" OnClientClick="return validateForm()" />
     <script>
         const titleTextBox = document.getElementById("<%= titleTextBox.ClientID %>");
         const descriptionTextBox = document.getElementById("<%= descriptionTextBox.ClientID %>");

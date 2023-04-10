@@ -128,6 +128,10 @@ namespace btl_web_nangcao_task_management_system.page.task
             }
             GetEmployees(long.Parse(projectDropDownList.SelectedItem.Value)).ForEach(it =>
             {
+                if(it.role.Equals(EmployeeRole.INIT))
+                {
+                    return;
+                }
                 assigneeDropDownList.Items.Add(new ListItem(it.name, it.id.ToString()));
                 reporterDropDownList.Items.Add(new ListItem(it.name, it.id.ToString()));
                 QADropDownList.Items.Add(new ListItem(it.name, it.id.ToString()));
