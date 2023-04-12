@@ -22,7 +22,8 @@ namespace btl_web_nangcao_task_management_system.page.project
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["role"] != null && (string)Session["role"] == Enum.GetName(typeof(EmployeeRole), EmployeeRole.ADMIN))
+            if (Session["role"] != null
+                 && ((string)Session["role"]).Equals(Enum.GetName(typeof(EmployeeRole), EmployeeRole.ADMIN)))
             {
                 if (!Page.IsPostBack)
                 {
@@ -38,7 +39,7 @@ namespace btl_web_nangcao_task_management_system.page.project
                 Response.Clear();
                 Response.Status = "403 Forbidden";
                 Response.StatusCode = 403;
-                Response.Clear();
+                Response.Close();
             }
         }
 
@@ -154,7 +155,7 @@ namespace btl_web_nangcao_task_management_system.page.project
 
         [WebMethod]
         [ScriptMethod(UseHttpGet = true, ResponseFormat = ResponseFormat.Json)]
-        private string getEmployeeInProject(long project)
+        public static string getEmployeeInProject(long project)
         {
             string response = string.Empty;
             SqlConnection connection = new SqlConnection(connectionString);

@@ -27,7 +27,7 @@
         </asp:DropDownList>
         <asp:Label ID="feedbackRoleDropDownList" runat="server" CssClass="invalid-feedback"></asp:Label>
     </div>
-    <button type="button" onclick="doUpate()" CssClass="btn btn-primary" >Update</button>
+    <button type="button" onclick="doUpate()" class="btn btn-primary" >Update</button>
     <script>
         const employeeDropDownList = document.getElementById("<%= employeeDropDownList.ClientID %>");
         const roleDownList = document.getElementById("<%= roleDownList.ClientID %>");

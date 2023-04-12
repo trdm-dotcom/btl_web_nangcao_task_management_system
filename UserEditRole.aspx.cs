@@ -21,7 +21,19 @@ namespace btl_web_nangcao_task_management_system
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
         protected void Page_Load(object sender, EventArgs e)
         {
-            loadEmployee();
+            if (Session["role"] != null
+                && ((string)Session["role"]).Equals(Enum.GetName(typeof(EmployeeRole), EmployeeRole.ADMIN)))
+            {
+                loadEmployee();
+            }
+            else
+            {
+                Response.Clear();
+                Response.Status = "403 Forbidden";
+                Response.StatusCode = 403;
+                Response.Close();
+            }
+                
         }
 
         private void loadEmployee()

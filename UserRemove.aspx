@@ -19,7 +19,7 @@
         <asp:Label ID="Label2" runat="server" Text="Employee role:" CssClass="labelForm" AssociatedControl="userDropDownList"></asp:Label>
         <asp:Label ID="employeeRoleLabel" runat="server" Text=""></asp:Label>
     </div>
-    <button type="button" onclick="doRemove()" CssClass="btn btn-danger" >Delete</button>
+    <button type="button" onclick="doRemove()" class="btn btn-danger" >Delete</button>
     <script>
         const employeeDropDownList = document.getElementById("<%= employeeDropDownList.ClientID %>");
         const feedbackEmployeeDropDownList = document.getElementById("<%= feedbackEmployeeDropDownList.ClientID %>");

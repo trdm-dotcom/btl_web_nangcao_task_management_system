@@ -19,16 +19,15 @@
         <asp:Label ID="Label2" runat="server" Text="Status:" CssClass="labelForm" AssociatedControl="titleTextBox"></asp:Label>
         <asp:Label ID="statusProjectLabel" runat="server"></asp:Label>
     </div>
-    <asp:Button ID="closeButton" runat="server" CssClass="btn btn-primary" Text="Close Project" OnClick="closeButton_Click" OnClientClick="return validateForm()" />
+    <asp:Button ID="closeButton" runat="server" CssClass="btn btn-danger" Text="Close Project" OnClick="closeButton_Click" OnClientClick="return validateForm()" />
     <script>
         const projectDropDownList = document.getElementById("<%= projectDropDownList.ClientID %>");
         const feedbackProject = document.getElementById("<%= feedbackProject.ClientID %>");
         const errorMessage = document.getElementById("<%= errorMessage.ClientID %>");
         const statusProjectLabel = document.getElementById("<%= statusProjectLabel.ClientID %>");
         projectDropDownList.onchange = function () {
-            let projectId = projectDropDownList.value;
-            if (projectId && projectDropDownList.selectedIndex > 0) {
-                methodGet(`ProjectClose.aspx/loadProjectData?project=${projectId}`)
+            if (projectDropDownList.value != null  && projectDropDownList.selectedIndex > 0) {
+                methodGet(`ProjectClose.aspx/loadProjectData?project=${projectDropDownList.value}`)
                     .then((result) => {
                         const response = JSON.parse(result.d);
                         statusProjectLabel.innerText = response.status;
@@ -53,7 +52,10 @@
                 projectDropDownList.classList.remove();
                 feedbackProject.innerText = null;
             }
-            return valid;
+            if (valid) {
+                valid = window.confirm(`Do you want close project ${projectDropDownList.options[projectDropDownList.selectedIndex].text}`);
+            }
+            return valid; 
         }
     </script>
 </asp:Content>

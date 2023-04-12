@@ -20,7 +20,7 @@
         <asp:ListBox ID="removeEmployeeListBox" runat="server" Height="100%" Width="100%" CssClass="form-control"></asp:ListBox>
         <asp:Label ID="feedbackRemoveEmployee" runat="server" CssClass="invalid-feedback"></asp:Label>
     </div>
-    <button id="saveButton" type="button" cssclass="btn btn-danger" onclick="doRequest()">Save</button>
+    <button id="saveButton" type="button" class="btn btn-danger" onclick="doRequest()">Remove</button>
     <script>
         const projectDropDownList = document.getElementById("<%= projectDropDownList.ClientID %>");
         const feedbackProject = document.getElementById("<%= feedbackProject.ClientID %>");
