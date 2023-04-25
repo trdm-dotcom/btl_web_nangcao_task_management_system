@@ -14,8 +14,8 @@
             <asp:DropDownList ID="employeeDropDownList" runat="server" AutoPostBack="false" CssClass="form-control">
                 <Items>
                     <asp:ListItem Text="-Select-" />
-                    <asp:ListItem Text="Current User" Value='<%= (long)Session["user"] %>'/>
-                    <asp:ListItem Text="Unassigned"  Value="NaN"/>
+                    <asp:ListItem Text="Current User" Value='<%= (long)Session["user"] %>' />
+                    <asp:ListItem Text="Unassigned" Value="NaN" />
                 </Items>
             </asp:DropDownList>
         </div>
@@ -30,27 +30,28 @@
             </asp:DropDownList>
         </div>
     </div>
-    <asp:GridView ID="TaskGridView" runat="server" Width="100%" AutoGenerateColumns="False" AllowPaging="True" BorderStyle="None" GridLines="None" OnPageIndexChanging="TaskGridView_PageIndexChanging">
+    <asp:GridView ID="TaskGridView" runat="server" Width="100%" AutoGenerateColumns="False" AllowPaging="True" AllowSorting="True" BorderStyle="None" GridLines="None" OnPageIndexChanging="TaskGridView_PageIndexChanging" OnSorting="TaskGridView_Sorting" PageSize="20">
         <Columns>
             <asp:TemplateField HeaderText="No.">
                 <ItemTemplate>
                     <%# Container.DataItemIndex + 1 %>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="name" HeaderText="Name" />
-            <asp:BoundField DataField="nameEmployeeAssignee" HeaderText="Assignee" />
-            <asp:BoundField DataField="nameEmployeeReporter" HeaderText="Reporter" />
+            <asp:HyperLinkField DataNavigateUrlFields="id" DataNavigateUrlFormatString="TaskView.aspx?task={0}" DataTextField="name" HeaderText="Name" SortExpression="name" />
+            <asp:HyperLinkField DataNavigateUrlFields="projectId" DataNavigateUrlFormatString="TaskPage.aspx?project={0}" DataTextField="projectTitle" HeaderText="Project" SortExpression="projectTitle" />
+            <asp:BoundField DataField="nameEmployeeAssignee" HeaderText="Assignee"/>
+            <asp:BoundField DataField="nameEmployeeReporter" HeaderText="Reporter"/>
             <asp:TemplateField HeaderText="Priority">
                 <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server"><%# showPriority(Eval("priority")) %></asp:Label>
+                    <asp:Label ID="Label1" CssClass='<%# (showPriority(Eval("priority")) == "HIGH" ? "badge badge-danger" : (showPriority(Eval("priority")) == "MEDIUM" ? "badge badge-warning" : "badge badge-primary")) %>' runat="server"><%# showPriority(Eval("priority")) %></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
             <asp:TemplateField HeaderText="Status">
                 <ItemTemplate>
-                    <asp:Label ID="Label1" runat="server"><%# showStatus(Eval("status")) %></asp:Label>
+                    <asp:Label ID="Label2" runat="server"><%# showStatus(Eval("status")) %></asp:Label>
                 </ItemTemplate>
             </asp:TemplateField>
-            <asp:BoundField DataField="createAt" HeaderText="Created" DataFormatString="{0:dd/MM/yyyy}"/>
+            <asp:BoundField DataField="createdAt" HeaderText="Created" DataFormatString="{0:dd/MM/yyyy}" SortExpression="createdAt" />
         </Columns>
     </asp:GridView>
 </asp:Content>

@@ -6,6 +6,7 @@ using System.Web;
 
 namespace btl_web_nangcao_task_management_system.model.dto
 {
+    [Serializable]
     public class TaskDto : Task
     {
         public string nameEmployeeAssignee { get; set; }

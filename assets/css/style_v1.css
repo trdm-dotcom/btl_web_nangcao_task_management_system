@@ -946,12 +946,22 @@ body .ml-4 {
 
 .badge-success {
     color: #fff;
-    background-color: #28a745;
+    background-color: #28a745 !important;
 }
 
 .badge-danger {
     color: #fff;
-    background-color: #dc3545;
+    background-color: #dc3545 !important;
+}
+
+.badge-warning {
+    color: #fff;
+    background-color: #ffc107 !important;
+}
+
+.badge-primary {
+    color: #fff;
+    background-color: #337ab7 !important;
 }
 
 .btn {

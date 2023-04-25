@@ -5,6 +5,7 @@ using System.Web;
 
 namespace btl_web_nangcao_task_management_system.model.db
 {
+    [Serializable]
     public class Project
     {
         public Project()

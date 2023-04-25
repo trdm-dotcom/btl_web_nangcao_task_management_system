@@ -165,7 +165,7 @@ namespace btl_web_nangcao_task_management_system.Repositories
         {
             List<TaskDto> taskList = new List<TaskDto>();
             command.CommandType = CommandType.Text;
-            command.CommandText = "SELECT t.*, p.title FROM t_task AS t INNER JOIN t_project AS p ON t.projectId = p.id WHERE 1=1";
+            command.CommandText = "SELECT t.*, p.title FROM t_task AS t INNER JOIN t_project AS p ON t.projectId = p.id WHERE 1=1 ORDER BY createAt desc, name asc";
             DataTable dataTable = new DataTable();
             dataTable.Load(command.ExecuteReader());
             command.Parameters.Clear();
